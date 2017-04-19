@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        velwalk = 1;
+        velwalk = 4;
         velrun = 2;
         vel = velwalk;
     }
