@@ -7,60 +7,57 @@ using UnityEngine;
 public class EaglosBehaving : MonoBehaviour {
 
     double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
+    bool Attacking;
  
     //double BossPlayerAngle;
     public GameObject player;
 
 	// Use this for initialization
 	void Start () {
-        EaglosSpeed = 3.5d;
+        EaglosSpeed = 4.5d;
+        Attacking = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //BossPlayerAngle = Math.Atan((transform.position.y-player.transform.position.y)/(transform.position.x - player.transform.position.x));
-        //GetComponent<Rigidbody2D>().velocity = new Vector2 ()
 
-        /*if (transform.position.x < (player.transform.position.x + 2)&& transform.position.y < (player.transform.position.x + 2))
+       
+            //Velocidad de Eaglos
+            EaglosSpeed = 4.5d;
+
+            //Movimiento de Eaglos: Obtener vector hacia el jugador
+            distX = transform.position.x - player.transform.position.x;
+            distY = transform.position.y - player.transform.position.y;
+
+            moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
+
+            uniX = distX / moduloDist;
+            uniY = distY / moduloDist;
+
+        if (Attacking == false)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-EaglosSpeed, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -EaglosSpeed);
-             Debug.Log("1");
+            //Movimiento de Eaglos: Desplazarse hacia el jugador
+            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -uniX), System.Convert.ToSingle(EaglosSpeed * -uniY));
         }
-
-        if (transform.position.x < (player.transform.position.x + 2) && transform.position.y > (player.transform.position.x + 2))
+        //Atacar al llegar a cierta distancia al jugador
+        if (moduloDist<2)
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(-EaglosSpeed, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, EaglosSpeed);
-             Debug.Log("2"); 
+            Attacking = true;
+            float auxTime = Time.time;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            //EaglosSpeed = 0.0d;
+            if (Time.time - auxTime == 1)
+            {
+                Debug.Log("SHWING!");
+            }
+
+            auxTime = Time.time;
+
+            if (Time.time - auxTime == 3)
+            {
+                Attacking = false;
+            }
         }
-
-        if (transform.position.x > (player.transform.position.x + 2)&& transform.position.y < (player.transform.position.x + 2))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(EaglosSpeed, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, -EaglosSpeed);
-            Debug.Log("2");
-        }
-
-        if (transform.position.x > (player.transform.position.x + 2) && transform.position.y > (player.transform.position.x + 2))
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(EaglosSpeed, 0);
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, EaglosSpeed);
-            Debug.Log("2");
-        }
-
-
-        else { Debug.Log("Eaglos no ve nada"); }*/
-
-        distX = transform.position.x - player.transform.position.x;
-        distY = transform.position.y - player.transform.position.y;
-
-        moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
-
-        uniX = distX / moduloDist;
-        uniY = distY / moduloDist;
-
-        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle( EaglosSpeed * uniX), System.Convert.ToSingle( EaglosSpeed * uniY));
     }
 }
