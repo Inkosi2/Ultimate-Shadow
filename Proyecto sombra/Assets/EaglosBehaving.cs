@@ -31,12 +31,14 @@ public class EaglosBehaving : MonoBehaviour {
         }*/
     }
 
+    //Función para que persiga al jugador
     void Chase ()
     {
         //Movimiento de Eaglos: Desplazarse hacia el jugador
         GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -uniX), System.Convert.ToSingle(EaglosSpeed * -uniY));
     }
 
+    //Función para hacer el ataque básico
     void Attack ()
     {
         Attacking = true;
@@ -47,6 +49,7 @@ public class EaglosBehaving : MonoBehaviour {
         Attacking = false;
     }
 
+    //Función para dar ataque en dash en la fase 2
     void Dash()
     {
         Attacking = true;
@@ -56,11 +59,19 @@ public class EaglosBehaving : MonoBehaviour {
         EaglosSpeed = 4.5;
     }
 
+    //Función para iniciar la cuarta fase en la que vuela
     void Fly()
     {
+        int hits = 0;
         Attacking = true;
         //Desplazarse de lado a lado
         //Disparar cada pocos segundos
+        /*if (flecha clavada) 
+         {
+         hits--;
+         } 
+         
+         */
     }
 
 	// Update is called once per frame
