@@ -7,19 +7,64 @@ using UnityEngine;
 public class EaglosBehaving : MonoBehaviour {
 
     double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
-    bool Attacking;
- 
+    bool Attacking, DashCD;
+    int fase;
     //double BossPlayerAngle;
     public GameObject player;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
         EaglosSpeed = 4.5d;
         Attacking = false;
 	}
 	
+    void Stun ()
+    {
+        //Espera 4 segundos.
+        if (fase == 4)
+        {
+            //muere
+        }
+        /*if ( Recibe daño ) 
+        { 
+        fase++;
+        }*/
+    }
+
+    void Chase ()
+    {
+        //Movimiento de Eaglos: Desplazarse hacia el jugador
+        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -uniX), System.Convert.ToSingle(EaglosSpeed * -uniY));
+    }
+
+    void Attack ()
+    {
+        Attacking = true;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        //Esperar medio segundo
+        //Atacar (Crear Triggered 2D object en forma de cono que hace daño al jugador)
+        //Esperar 2 segunos
+        Attacking = false;
+    }
+
+    void Dash()
+    {
+        Attacking = true;
+        EaglosSpeed = 9;
+        //vector fijo. Tal vez haga falta igualar los unitarios a dos variables auxiliares y usarlas pera que el vector no se actualize. 
+        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -uniX), System.Convert.ToSingle(EaglosSpeed * -uniY));
+        EaglosSpeed = 4.5;
+    }
+
+    void Fly()
+    {
+        Attacking = true;
+        //Desplazarse de lado a lado
+        //Disparar cada pocos segundos
+    }
+
 	// Update is called once per frame
-	void Update ()
+	void Update()
     {
 
        
@@ -35,29 +80,21 @@ public class EaglosBehaving : MonoBehaviour {
             uniX = distX / moduloDist;
             uniY = distY / moduloDist;
 
+        //Perseguir el jugador.
         if (Attacking == false)
         {
-            //Movimiento de Eaglos: Desplazarse hacia el jugador
-            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -uniX), System.Convert.ToSingle(EaglosSpeed * -uniY));
+            Chase();
         }
+
         //Atacar al llegar a cierta distancia al jugador
-        if (moduloDist<2)
+        if (moduloDist<2 && Attacking == false)
         {
-            Attacking = true;
-            float auxTime = Time.time;
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            //EaglosSpeed = 0.0d;
-            if (Time.time - auxTime == 1)
-            {
-                Debug.Log("SHWING!");
-            }
+            Attack();
+        }
 
-            auxTime = Time.time;
-
-            if (Time.time - auxTime == 3)
-            {
-                Attacking = false;
-            }
+        if (moduloDist > 4 && moduloDist < 10 && Attacking == false && DashCD = true)
+        {
+            Dash();
         }
     }
 }
