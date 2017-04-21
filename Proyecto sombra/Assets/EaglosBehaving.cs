@@ -9,12 +9,13 @@ public class EaglosBehaving : MonoBehaviour {
     double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
     bool Attacking, DashCD;
     int fase;
+    public int time;
     //double BossPlayerAngle;
     public GameObject player;
 
 	// Use this for initialization
 	void Start() {
-        int fase = 2;
+        int fase = 1;
         EaglosSpeed = 4.5d;
         Attacking = false;
 	}
@@ -44,6 +45,7 @@ public class EaglosBehaving : MonoBehaviour {
     {
         Attacking = true;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
         //Esperar medio segundo
         //Atacar (Crear Triggered 2D object en forma de cono que hace daño al jugador)
         //Esperar 2 segunos
@@ -85,8 +87,9 @@ public class EaglosBehaving : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
     {
+        //Time.deltaTime;
 
-       
+        time++;
             //Velocidad de Eaglos
             EaglosSpeed = 4.5d;
 
