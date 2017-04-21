@@ -49,42 +49,51 @@ public class EaglosBehaving : MonoBehaviour {
     //Función para hacer el ataque básico
     void Attack ()
     {
-       
-        auxAttack = 0;
-        Attacking = true;
+
+        if (moduloDist < 2)
+        {
+
+
+            if (attackDone == true)
+            {
+                time = 0;
+                attackDone = false;
+            }
+        }
+
+            if (attackDone == false)
+            {
+                auxAttack = 0;
+                Attacking = true;
+
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                GetComponent<SpriteRenderer>().color = Color.yellow;
+
+                if (time >= 0.5f && auxAttack == 0)
+                {
+                    GetComponent<SpriteRenderer>().color = Color.red;
+                    auxAttack++;
+                }
+                else { Attacking = false; }
+
+                if (time >= 1.0d && auxAttack == 1)
+                {
+                    GetComponent<SpriteRenderer>().color = Color.green;
+                    auxAttack++;
+                }
+                else { Attacking = false; }
+
+                if (time >= 3.0d && auxAttack == 2)
+                {
+                    GetComponent<SpriteRenderer>().color = Color.white;
+                    Attacking = false;
+                    time = 0;
+                    auxAttack++;
+                    attackDone = true;
+                }
+                else { Attacking = false; }
             
-        if (attackDone == true)
-        {
-            time = 0;
-            attackDone = false;
-        } 
-       
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        GetComponent<SpriteRenderer>().color = Color.yellow;
-
-        if (time >= 0.5f && auxAttack == 0)
-        {
-            GetComponent<SpriteRenderer>().color = Color.red;
-            auxAttack++;
         }
-        else { Attacking = false; }
-
-        if (time >= 1.0d && auxAttack == 1)
-        {
-            GetComponent<SpriteRenderer>().color = Color.green;
-            auxAttack++;
-        }
-        else { Attacking = false; }
-
-        if (time >= 3.0d && auxAttack == 2)
-        {
-            GetComponent<SpriteRenderer>().color = Color.white;
-            Attacking = false;
-            time = 0;
-            auxAttack++;
-        }
-        else { Attacking = false; }
-
        
     }
 
@@ -144,7 +153,7 @@ public class EaglosBehaving : MonoBehaviour {
         }
 
     //Atacar al llegar a cierta distancia al jugador
-    if (Attacking == false && moduloDist < 2)
+    if (Attacking == false)
     {
         Attack();
     }
