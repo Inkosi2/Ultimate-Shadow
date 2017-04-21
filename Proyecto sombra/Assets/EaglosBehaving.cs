@@ -92,7 +92,7 @@ public class EaglosBehaving : MonoBehaviour {
             Attack();
         }
 
-        if (moduloDist > 4 && moduloDist < 10 && Attacking == false && DashCD = true)
+        if (moduloDist > 4 && moduloDist < 10 && Attacking == false && DashCD == true)
         {
             Dash();
         }
