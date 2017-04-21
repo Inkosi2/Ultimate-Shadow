@@ -7,18 +7,24 @@ using UnityEngine;
 public class EaglosBehaving : MonoBehaviour {
 
     double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
-    bool Attacking, DashCD;
+    public bool Attacking, DashCD;
     int fase;
-    public int time;
+    int auxAttack;
+    bool attackDone;
+    public float time;
     //double BossPlayerAngle;
     public GameObject player;
+    //auxiliares
+    
 
-	// Use this for initialization
-	void Start() {
-        int fase = 1;
+
+    // Use this for initialization
+    void Start() {
+        fase = 1;
         EaglosSpeed = 4.5d;
         Attacking = false;
-	}
+        attackDone = true;
+    }
 	
     void Stun ()
     {
@@ -43,15 +49,43 @@ public class EaglosBehaving : MonoBehaviour {
     //Función para hacer el ataque básico
     void Attack ()
     {
+       
+        auxAttack = 0;
         Attacking = true;
+            
+        if (attackDone == true)
+        {
+            time = 0;
+            attackDone = false;
+        } 
+       
         GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        GetComponent<SpriteRenderer>().color = Color.yellow;
 
-        //Esperar medio segundo
-        //Atacar (Crear Triggered 2D object en forma de cono que hace daño al jugador)
-        //Esperar 2 segunos
-        
+        if (time >= 0.5f && auxAttack == 0)
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            auxAttack++;
+        }
+        else { Attacking = false; }
+
+        if (time >= 1.0d && auxAttack == 1)
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+            auxAttack++;
+        }
+        else { Attacking = false; }
+
+        if (time >= 3.0d && auxAttack == 2)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
             Attacking = false;
-        
+            time = 0;
+            auxAttack++;
+        }
+        else { Attacking = false; }
+
+       
     }
 
     //Función para dar ataque en dash en la fase 2
@@ -87,34 +121,34 @@ public class EaglosBehaving : MonoBehaviour {
 	// Update is called once per frame
 	void Update()
     {
-        //Time.deltaTime;
+       
+        //Contador de tiempo
+        time+=Time.deltaTime;
 
-        time++;
-            //Velocidad de Eaglos
-            EaglosSpeed = 4.5d;
+        //Velocidad de Eaglos
+        EaglosSpeed = 4.5d;
 
-            //Movimiento de Eaglos: Obtener vector hacia el jugador
-            distX = transform.position.x - player.transform.position.x;
-            distY = transform.position.y - player.transform.position.y;
+        //Movimiento de Eaglos: Obtener vector hacia el jugador
+        distX = transform.position.x - player.transform.position.x;
+        distY = transform.position.y - player.transform.position.y;
 
-            moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
+        moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
 
-            uniX = distX / moduloDist;
-            uniY = distY / moduloDist;
+        uniX = distX / moduloDist;
+        uniY = distY / moduloDist;
 
         //Perseguir el jugador.
-        if (/*moduloDist > 4 &&*/ Attacking == false)
+        if (Attacking == false && attackDone==true)
         {
             Chase();
         }
 
-        //Atacar al llegar a cierta distancia al jugador
-        if (moduloDist<2 && Attacking == false)
-        {
-            Attack();
-        }
-
-        if (moduloDist > 4 && moduloDist < 15 && Attacking == false && fase<=2 /*&& DashCD = true*/)
+    //Atacar al llegar a cierta distancia al jugador
+    if (Attacking == false && moduloDist < 2)
+    {
+        Attack();
+    }
+        if (moduloDist > 4 && moduloDist < 15 && Attacking == false && fase>=2 && DashCD == true)
         {
             Dash();
         }
