@@ -14,6 +14,7 @@ public class EaglosBehaving : MonoBehaviour {
 
 	// Use this for initialization
 	void Start() {
+        int fase = 2;
         EaglosSpeed = 4.5d;
         Attacking = false;
 	}
@@ -46,17 +47,24 @@ public class EaglosBehaving : MonoBehaviour {
         //Esperar medio segundo
         //Atacar (Crear Triggered 2D object en forma de cono que hace daño al jugador)
         //Esperar 2 segunos
-        Attacking = false;
+        
+            Attacking = false;
+        
     }
 
     //Función para dar ataque en dash en la fase 2
     void Dash()
     {
+        double auxDashX = uniX;
+        double auxDashY = uniY;
+
         Attacking = true;
-        EaglosSpeed = 9;
-        //vector fijo. Tal vez haga falta igualar los unitarios a dos variables auxiliares y usarlas pera que el vector no se actualize. 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -uniX), System.Convert.ToSingle(EaglosSpeed * -uniY));
+        EaglosSpeed = 15;
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -auxDashX), System.Convert.ToSingle(EaglosSpeed * -auxDashY));
+        //GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         EaglosSpeed = 4.5;
+        Attacking = false;
     }
 
     //Función para iniciar la cuarta fase en la que vuela
@@ -92,7 +100,7 @@ public class EaglosBehaving : MonoBehaviour {
             uniY = distY / moduloDist;
 
         //Perseguir el jugador.
-        if (Attacking == false)
+        if (/*moduloDist > 4 &&*/ Attacking == false)
         {
             Chase();
         }
@@ -103,7 +111,7 @@ public class EaglosBehaving : MonoBehaviour {
             Attack();
         }
 
-        if (moduloDist > 4 && moduloDist < 10 && Attacking == false && DashCD = true)
+        if (moduloDist > 4 && moduloDist < 15 && Attacking == false && fase<=2 /*&& DashCD = true*/)
         {
             Dash();
         }
