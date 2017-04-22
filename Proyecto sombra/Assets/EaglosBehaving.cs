@@ -24,7 +24,6 @@ public class EaglosBehaving : MonoBehaviour {
     // Use this for initialization
     void Start() {
         fase = 2;
-        EaglosSpeed = 4.5d;
         Attacking = false;
         attackDone = true;
         dashDone = true;
@@ -170,7 +169,7 @@ public class EaglosBehaving : MonoBehaviour {
             GetComponent<SpriteRenderer>().color = Color.white;
             Attacking = false;
             time = 0;
-            EaglosSpeed = 4.5;
+            EaglosSpeed = 1 + time / 4;
             dashDone = true;
             dashCD = false;
         }
@@ -201,7 +200,7 @@ public class EaglosBehaving : MonoBehaviour {
         time+=Time.deltaTime;
 
         //Velocidad de Eaglos
-        EaglosSpeed = 4.5d;
+        EaglosSpeed = 2 + fase + time / 4; 
 
         //Movimiento de Eaglos: Obtener vector hacia el jugador
         distX = transform.position.x - player.transform.position.x;
@@ -227,7 +226,7 @@ public class EaglosBehaving : MonoBehaviour {
         //Atacar al llegar a cierta distancia al jugador
         if (Attacking == false && dashDone == true)
         {
-           Attack();
+          // Attack();
         }
 
        
