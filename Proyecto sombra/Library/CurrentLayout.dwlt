@@ -427,7 +427,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: ac220000b42200009c250000d0260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -516,23 +516,23 @@ MonoBehaviour:
     height: 551
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 60faffff
-    m_LastClickedID: 0
-    m_ExpandedIDs: e2fbffff00000000
+    m_SelectedIDs: 88250000
+    m_LastClickedID: 9608
+    m_ExpandedIDs: e2fbffff0000000088250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Diana
+      m_OriginalName: Diana
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -1066
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 4}
     m_SearchString: 
@@ -568,14 +568,14 @@ MonoBehaviour:
     width: 1127
     height: 551
   m_SceneLighting: 1
-  lastFramingTime: 9510.498624281887
+  lastFramingTime: 16.23891723823577
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -7.263431, y: 22.984356, z: 0}
+    m_Target: {x: 6.205778, y: 11.411455, z: 0}
     speed: 2
-    m_Value: {x: -7.263431, y: 22.984356, z: 0}
+    m_Value: {x: 6.205778, y: 11.411455, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -602,9 +602,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 19.82273
+    m_Target: 42.331154
     speed: 2
-    m_Value: 19.82273
+    m_Value: 42.331154
   m_Ortho:
     m_Target: 1
     speed: 2
