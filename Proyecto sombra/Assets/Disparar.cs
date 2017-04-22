@@ -5,10 +5,11 @@ using UnityEngine;
 public class Disparar : MonoBehaviour
 {
 
-    int municion;
+    public int municion, lastShot;
     float nextFire, fireRateBullet, timer;
     public GameObject flecha;
     public GameObject player;
+    public GameObject f1, f2, f3;
 
     // Use this for initialization
     void Start()
@@ -24,7 +25,23 @@ public class Disparar : MonoBehaviour
         if (Time.time > nextFire && municion > 0)
         {
             nextFire = Time.time + fireRateBullet;
-            var bullet = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+            //var bullet = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+
+            if (municion == 3)
+            {
+                f1 = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+                lastShot = 1;
+            }
+            else if (municion == 2)
+            {
+                f2 = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+                lastShot = 2;
+            }
+            else if (municion == 1)
+            {
+                f3 = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+                lastShot = 3;
+            }
             municion--;
         }
     }
@@ -38,6 +55,24 @@ public class Disparar : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.DownArrow))
         {
                 Fire();
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (lastShot == 1)
+            {
+                Destroy(f1);
+                municion++;
+            }
+            else if (lastShot == 2)
+            {
+                Destroy(f2);
+                municion++;
+            }
+            else if (lastShot == 3)
+            {
+                Destroy(f3);
+                municion++;
+            }
         }
     }
 
