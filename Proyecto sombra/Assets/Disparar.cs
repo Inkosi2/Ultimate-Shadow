@@ -10,6 +10,7 @@ public class Disparar : MonoBehaviour
     public GameObject flecha;
     public GameObject player;
     public GameObject f1, f2, f3;
+    public bool Pressed, previousPressed;
 
     // Use this for initialization
     void Start()
@@ -56,24 +57,29 @@ public class Disparar : MonoBehaviour
         {
                 Fire();
         }
+        Pressed = Input.GetKey(KeyCode.Q);
         if (Input.GetKey(KeyCode.Q))
         {
-            if (lastShot == 1)
+            if (lastShot == 1 && municion == 2 && Pressed != previousPressed)
             {
                 Destroy(f1);
                 municion++;
+                lastShot--;
             }
-            else if (lastShot == 2)
+            else if (lastShot == 2 && municion == 1 && Pressed != previousPressed)
             {
                 Destroy(f2);
                 municion++;
+                lastShot--;
             }
-            else if (lastShot == 3)
+            else if (lastShot == 3 && municion == 0 && Pressed != previousPressed)
             {
                 Destroy(f3);
                 municion++;
+                lastShot--;
             }
         }
+        previousPressed = Pressed;
     }
 
     void OnCollisionEnter2D(Collision2D coll)
