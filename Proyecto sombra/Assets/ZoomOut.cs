@@ -14,12 +14,13 @@ public class ZoomOut : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        miCamara.orthographicSize = 9;
+
+    }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.tag == "ZoomSlate")
+        if (coll.tag == "Jugador")
         {
             miCamara.orthographicSize = 9;
         }
