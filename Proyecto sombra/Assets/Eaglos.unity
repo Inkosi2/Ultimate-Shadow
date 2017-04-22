@@ -241,7 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39482ad4e3df88d4994b453d5df7e674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Attacking: 0
+  dashCD: 0
+  auxAttack: 0
+  time: 0
   player: {fileID: 505834865}
+  auxDashX: 0
+  auxDashY: 0
 --- !u!1 &1111020352
 GameObject:
   m_ObjectHideFlags: 0
