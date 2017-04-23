@@ -5,10 +5,12 @@ using UnityEngine;
 public class Disparar : MonoBehaviour
 {
 
-    int municion;
+    public int municion, lastShot;
     float nextFire, fireRateBullet, timer;
     public GameObject flecha;
     public GameObject player;
+    public GameObject f1, f2, f3;
+    public bool Pressed, previousPressed;
 
     // Use this for initialization
     void Start()
@@ -24,7 +26,23 @@ public class Disparar : MonoBehaviour
         if (Time.time > nextFire && municion > 0)
         {
             nextFire = Time.time + fireRateBullet;
-            var bullet = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+            //var bullet = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+
+            if (municion == 3)
+            {
+                f1 = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+                lastShot = 1;
+            }
+            else if (municion == 2)
+            {
+                f2 = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+                lastShot = 2;
+            }
+            else if (municion == 1)
+            {
+                f3 = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
+                lastShot = 3;
+            }
             municion--;
         }
     }
@@ -39,6 +57,29 @@ public class Disparar : MonoBehaviour
         {
                 Fire();
         }
+        Pressed = Input.GetKey(KeyCode.Q);
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (lastShot == 1 && municion == 2 && Pressed != previousPressed)
+            {
+                Destroy(f1);
+                municion++;
+                lastShot--;
+            }
+            else if (lastShot == 2 && municion == 1 && Pressed != previousPressed)
+            {
+                Destroy(f2);
+                municion++;
+                lastShot--;
+            }
+            else if (lastShot == 3 && municion == 0 && Pressed != previousPressed)
+            {
+                Destroy(f3);
+                municion++;
+                lastShot--;
+            }
+        }
+        previousPressed = Pressed;
     }
 
     void OnCollisionEnter2D(Collision2D coll)

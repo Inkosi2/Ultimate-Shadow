@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - ZoomSlate
+  - Jugador
+  - Attack
+  - Arrow
+  - MeneeEnemy
   layers:
   - Default
   - TransparentFX
