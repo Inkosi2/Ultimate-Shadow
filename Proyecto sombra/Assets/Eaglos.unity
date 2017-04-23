@@ -253,38 +253,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1994733372860922, guid: 82f13268eaf64eb47ade0de29a16e76f,
     type: 2}
   m_PrefabInternal: {fileID: 1071527617}
---- !u!114 &915346371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 915346370}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60d0a477321bcc498fc12e298867c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 0
-  distX: 0
-  distY: 0
-  moduloDist: 0
-  uniX: 0
-  uniY: 0
-  distX0: 0
-  distY0: 0
-  moduloDist0: 0
-  uniX0: 0
-  uniY0: 0
-  Xinicial: 0
-  Yinicial: 0
-  Attacking: 0
-  auxAttack: 0
-  attackDone: 0
-  aggro: 0
-  estatico: 0
-  aux: 0
-  time: 0
-  player: {fileID: 1684733919045926, guid: 37d97edcfa8bd68428aaebd7d4a9f1ed, type: 2}
 --- !u!114 &915346376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,10 +261,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 915346370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d888e0f094bf3c48af26307e4e7e52d, type: 3}
+  m_Script: {fileID: 11500000, guid: 41ff8769b2cab7f4ba2d1c1a4c312aa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
   distX: 0
   distY: 0
   moduloDist: 0
@@ -309,14 +276,11 @@ MonoBehaviour:
   uniY0: 0
   Xinicial: 0
   Yinicial: 0
-  Attacking: 0
-  auxAttack: 0
-  attackDone: 0
-  aggro: 0
-  estatico: 0
-  aux: 0
+  targetX: 0
+  targetY: 0
+  player: {fileID: 505834865}
   time: 0
-  player: {fileID: 1684733919045926, guid: 37d97edcfa8bd68428aaebd7d4a9f1ed, type: 2}
+  Attacking: 0
 --- !u!1001 &1071527617
 Prefab:
   m_ObjectHideFlags: 0
@@ -391,6 +355,26 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 697e81a4a81437d458a1bdd24a63a9d7,
         type: 3}
+    - target: {fileID: 61521126196571964, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61521126196571964, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 61521126196571964, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 212585528117175784, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114372911254770028, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
@@ -674,6 +658,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61521126196571964, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
