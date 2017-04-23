@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
             time = 0;
             cono = (GameObject)Instantiate(conoInstanciado);
             cono.transform.position = new Vector2(player.transform.position.x, System.Convert.ToSingle(player.transform.position.y - 0.8));
+            cono.transform.rotation = Quaternion.Euler(0, 0, rotation);
             attacking = true;
             player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
