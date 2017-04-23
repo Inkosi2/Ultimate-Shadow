@@ -14,7 +14,7 @@ public class EaglosBehaving : MonoBehaviour {
 
    
     public float time;
-    //double BossPlayerAngle;
+   
     public GameObject player;
     //auxiliares
     public double auxDashX;
