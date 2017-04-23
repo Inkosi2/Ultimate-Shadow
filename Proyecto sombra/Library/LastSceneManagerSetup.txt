@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Mapa arco.unity
+- path: Assets/Scenes/Escena1.unity
   isLoaded: 1
   isActive: 1

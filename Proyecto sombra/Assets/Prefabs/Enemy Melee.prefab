@@ -114,12 +114,14 @@ MonoBehaviour:
   Yinicial: 0
   Attacking: 0
   auxAttack: 0
+  hp: 0
   attackDone: 0
   aggro: 0
   vulnerability: 0
   aux: 0
   time: 0
   player: {fileID: 0}
+  Enemy: {fileID: 0}
 --- !u!212 &212697503116128958
 SpriteRenderer:
   m_ObjectHideFlags: 1
