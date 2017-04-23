@@ -10,6 +10,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial;
     public bool Attacking;
     public int auxAttack;
+    int hp
     public bool attackDone, aggro, vulnerability;
     //auxiliares
     public int aux;
@@ -29,6 +30,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
         Yinicial=transform.position.y;
         //Inicializar valores de regreso a su posición inicial.
         moduloDist0 = 1;
+        hp = 3;
     }
     //Función para que persiga al jugador.
     void Chase()
@@ -171,6 +173,14 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
         }
 
+    }
+
+    void OnTriggerEnter2D(Collider2D cono)
+    {
+        if (cono.tag == "Attack")
+        {
+            hp--;
+        }
     }
 }
 

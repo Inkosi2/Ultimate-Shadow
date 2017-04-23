@@ -21,7 +21,7 @@ public class EaglosBehaving : MonoBehaviour {
 
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
 
-    public int hits;
+    public int hp;
 
     //auxiliares
     public double auxDashX, auxDashY, auxDashX2, auxDashY2;
@@ -46,7 +46,7 @@ public class EaglosBehaving : MonoBehaviour {
         Xderecha = 10;
         Yizquierda = 4;
         Yderecha = 4;
-        hits = 0;
+        hp = 3;
         
 
         Xdestino = Xizquierda;
@@ -80,6 +80,8 @@ public class EaglosBehaving : MonoBehaviour {
 
         uniX0 = distX0 / moduloDist0;
         uniY0 = distY0 / moduloDist0;
+
+
         if(fase!=4)
         {
 
@@ -174,7 +176,7 @@ public class EaglosBehaving : MonoBehaviour {
         //Primer condicional acticado solo una vez por dash para determinar las variables que va a usar.
         if (!Dashing)
         {
-            hits++;
+            hp++;
             //Detiene a Eaglos antes del dash.
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);             
             //Da a Eaglos velocidad de dash.
@@ -260,7 +262,7 @@ public class EaglosBehaving : MonoBehaviour {
     //Función para iniciar la cuarta fase en la que vuela
     void Fly()
     {
-        hits = 0;
+        hp = 0;
         Attacking = true;
         int Speed = 8;
         
@@ -298,5 +300,13 @@ public class EaglosBehaving : MonoBehaviour {
             time = 0;
         }
 
+    }
+
+    void OnTriggerEnter2D(Collider2D cono)
+    {        
+        if (cono.tag == "Attack")
+        {
+            hp--;
+        }
     }
 }

@@ -15,12 +15,14 @@ public class ArcherBehaviour : MonoBehaviour {
     public GameObject player;
     public float time;
     public bool Attacking;
+    int hp;
 
     // Use this for initialization
     void Start () {
         Speed = 4;
         Attacking = false;
         time = 0;
+        hp = 3;
         Xinicial = transform.position.x;
         Yinicial = transform.position.y;
 	}
@@ -121,5 +123,14 @@ public class ArcherBehaviour : MonoBehaviour {
             Attacking = false;
         }
        
+    }
+
+    void OnTriggerEnter2D(Collider2D cono)
+    {
+        
+        if (cono.tag == "Attack")
+        {
+            hp--;
+        }
     }
 }
