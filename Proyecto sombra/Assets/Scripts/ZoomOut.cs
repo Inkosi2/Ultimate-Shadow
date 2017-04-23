@@ -6,6 +6,7 @@ public class ZoomOut : MonoBehaviour {
 
 
     public Camera miCamara;
+    public bool onSlate;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +15,6 @@ public class ZoomOut : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //miCamara.orthographicSize = 9;
 
     }
 
@@ -23,6 +23,14 @@ public class ZoomOut : MonoBehaviour {
         if (coll.tag == "Jugador")
         {
             miCamara.orthographicSize = 9;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        if (coll.tag == "Jugador")
+        {
+            miCamara.orthographicSize = 5;
         }
     }
 

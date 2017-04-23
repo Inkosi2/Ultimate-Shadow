@@ -7,18 +7,19 @@ using UnityEngine;
 public class meleeEnemyBehaviour : MonoBehaviour {
     public double Speed, distX, distY, moduloDist, uniX, uniY;
     //regresar a posición inicial
-    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial;
+    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial, time;
     public bool Attacking;
     public int auxAttack;
     public int hp;
     public bool attackDone, aggro, vulnerability;
     //auxiliares
     public int aux;
-    public float time;
    
     public GameObject player;
 
     public GameObject Enemy;
+
+    public GameObject cono, conoInstanciado;
 
     // Use this for initialization
     void Start () {
@@ -138,17 +139,22 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             //Indicar que está atacando para evitar llamar otras funciones.
             Attacking = true;
 
-            //Dejar quieto a Eaglos
+            //Dejar quieto al enemigo
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             //(Provisional) Marcar la fase de carga del ataque. A la espera de sprite.
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
             //Iniciar la segunda fase del atque en la que lanza el golpe.
+
+            time += Time.deltaTime;
             if (time >= 0.5f && auxAttack == 0)
             {
                 //(Provisional) Marcar la fase de atacar. A la espera de sprite.
                 GetComponent<SpriteRenderer>().color = Color.red;
                 auxAttack++;
+                cono = (GameObject)Instantiate(conoInstanciado);
+                cono.transform.position = new Vector2(transform.position.x, System.Convert.ToSingle(transform.position.y - 0.8));
+                Attacking = true;                
             }
             //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
             else { Attacking = false; }
@@ -160,6 +166,10 @@ public class meleeEnemyBehaviour : MonoBehaviour {
                 GetComponent<SpriteRenderer>().color = Color.green;
 
                 auxAttack++;
+
+                Destroy(cono);
+                Attacking = false;
+
             }
             //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
             else { Attacking = false; }

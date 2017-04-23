@@ -20,6 +20,9 @@ public class ArcherBehaviour : MonoBehaviour {
     public GameObject player;
     public GameObject Enemy;
 
+    public GameObject flecha;
+    public GameObject flechaPrefab;
+
     // Use this for initialization
     void Start () {
         Speed = 4;
@@ -94,6 +97,11 @@ public class ArcherBehaviour : MonoBehaviour {
     //Función para ayacar al jugador.
     void Attack()
     {
+        if (!Attacking)
+        {
+
+        }
+
 
         //Iniciar el ataque, dando valores a las variables que no se verán modificados hasta empezar un nuevo ataque.
         if (moduloDist < 10 && !Attacking)
@@ -114,7 +122,7 @@ public class ArcherBehaviour : MonoBehaviour {
         if (time >= 1 && time < 1.25)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
-            //Instanciar flecha.
+            flecha = (GameObject)Instantiate(flechaPrefab);
         }
         
         //Pausa tras el atque.
