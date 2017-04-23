@@ -7,6 +7,9 @@ TagManager:
   - Wall
   - ZoomSlate
   - Jugador
+  - Attack
+  - Arrow
+  - MeneeEnemy
   layers:
   - Default
   - TransparentFX

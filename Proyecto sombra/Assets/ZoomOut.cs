@@ -14,7 +14,7 @@ public class ZoomOut : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        miCamara.orthographicSize = 9;
+        //miCamara.orthographicSize = 9;
 
     }
 
@@ -25,4 +25,5 @@ public class ZoomOut : MonoBehaviour {
             miCamara.orthographicSize = 9;
         }
     }
+
 }
