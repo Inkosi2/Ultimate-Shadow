@@ -10,16 +10,15 @@ public class meleeEnemyBehaviour : MonoBehaviour {
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial;
     public bool Attacking;
     public int auxAttack;
-    int hp
+    public int hp;
     public bool attackDone, aggro, vulnerability;
     //auxiliares
     public int aux;
-
-
-
     public float time;
    
     public GameObject player;
+
+    public GameObject Enemy;
 
     // Use this for initialization
     void Start () {
@@ -32,84 +31,16 @@ public class meleeEnemyBehaviour : MonoBehaviour {
         moduloDist0 = 1;
         hp = 3;
     }
-    //Función para que persiga al jugador.
-    void Chase()
-    {
-        //Movimiento de Eaglos: Desplazarse hacia el jugador
-        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX), System.Convert.ToSingle(Speed * -uniY));
-    }
-
-    //Función para hacer el ataque básico.
-    void Attack()
-    {
-
-        //Asegurarsse que el jugador está cerca para iniciar el ataque.
-        if (moduloDist < 2)
-        {
-            //Comprovar si ha empzado a atacar o esta en proceso.
-            if (attackDone == true)
-            {
-                //Determinar el timer para la duración de las fases del ataque.
-                time = 0;
-                //Indicar que el ataque se acaba de iniciar.
-                attackDone = false;
-                vulnerability = true;
-            }
-        }
-        //Continuar el ataque ya iniciado inclusi si el jugador no está cerca.
-        if (attackDone == false)
-        {
-            //Auxiliar para que no se solapen las fases.
-            auxAttack = 0;
-            //Indicar que está atacando para evitar llamar otras funciones.
-            Attacking = true;
-
-            //Dejar quieto a Eaglos
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            //(Provisional) Marcar la fase de carga del ataque. A la espera de sprite.
-            GetComponent<SpriteRenderer>().color = Color.yellow;
-
-            //Iniciar la segunda fase del atque en la que lanza el golpe.
-            if (time >= 0.5f && auxAttack == 0)
-            {
-                //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.red;
-                auxAttack++;
-            }
-            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-            else { Attacking = false; }
-
-            //Iniciar la segunda fase del atque en la que se recompone del golpe.
-            if (time >= 0.75d && auxAttack == 1)
-            {
-                //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.green;
-                
-                auxAttack++;
-            }
-            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-            else { Attacking = false; }
-
-            //Finalizar el ataque, reiniciando todos los valores.
-            if (time >= 1.5d && auxAttack == 2)
-            {
-                GetComponent<SpriteRenderer>().color = Color.white;
-                Attacking = false;
-                time = 0;
-                auxAttack++;
-                attackDone = true;
-                vulnerability = false;
-            }
-            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-            else { Attacking = false; }
-
-        }
-
-    }
+    
 
     // Update is called once per frame
     void Update ()
     {
+
+        if (hp <= 0)
+        {
+            Destroy(Enemy);
+        }
 
         //Contador de tiempo
         if (aggro)
@@ -175,9 +106,84 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
     }
 
+    //Función para que persiga al jugador.
+    void Chase()
+    {
+        //Movimiento de Eaglos: Desplazarse hacia el jugador
+        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX), System.Convert.ToSingle(Speed * -uniY));
+    }
+
+    //Función para hacer el ataque básico.
+    void Attack()
+    {
+
+        //Asegurarsse que el jugador está cerca para iniciar el ataque.
+        if (moduloDist < 2)
+        {
+            //Comprovar si ha empzado a atacar o esta en proceso.
+            if (attackDone == true)
+            {
+                //Determinar el timer para la duración de las fases del ataque.
+                time = 0;
+                //Indicar que el ataque se acaba de iniciar.
+                attackDone = false;
+                vulnerability = true;
+            }
+        }
+        //Continuar el ataque ya iniciado inclusi si el jugador no está cerca.
+        if (attackDone == false)
+        {
+            //Auxiliar para que no se solapen las fases.
+            auxAttack = 0;
+            //Indicar que está atacando para evitar llamar otras funciones.
+            Attacking = true;
+
+            //Dejar quieto a Eaglos
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            //(Provisional) Marcar la fase de carga del ataque. A la espera de sprite.
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+
+            //Iniciar la segunda fase del atque en la que lanza el golpe.
+            if (time >= 0.5f && auxAttack == 0)
+            {
+                //(Provisional) Marcar la fase de atacar. A la espera de sprite.
+                GetComponent<SpriteRenderer>().color = Color.red;
+                auxAttack++;
+            }
+            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
+            else { Attacking = false; }
+
+            //Iniciar la segunda fase del atque en la que se recompone del golpe.
+            if (time >= 0.75d && auxAttack == 1)
+            {
+                //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
+                GetComponent<SpriteRenderer>().color = Color.green;
+
+                auxAttack++;
+            }
+            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
+            else { Attacking = false; }
+
+            //Finalizar el ataque, reiniciando todos los valores.
+            if (time >= 1.5d && auxAttack == 2)
+            {
+                GetComponent<SpriteRenderer>().color = Color.white;
+                Attacking = false;
+                time = 0;
+                auxAttack++;
+                attackDone = true;
+                vulnerability = false;
+            }
+            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
+            else { Attacking = false; }
+
+        }
+
+    }
+
     void OnTriggerEnter2D(Collider2D cono)
     {
-        if (cono.tag == "Attack")
+        if (cono.tag == "Attack" || cono.tag == "Arrow")
         {
             hp--;
         }

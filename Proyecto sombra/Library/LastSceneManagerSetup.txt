@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Escena1.unity
+- path: Assets/Eaglos.unity
   isLoaded: 1
   isActive: 1

@@ -12,10 +12,13 @@ public class ArcherBehaviour : MonoBehaviour {
     public double distX, distY, moduloDist, uniX, uniY; //Variables para el vector hacia el jugador.   
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial; //Variables para el vector hacia la posición inicial.   
     public float targetX, targetY; //Variables patra apuntar a su objetivo.
-    public GameObject player;
+    
     public float time;
     public bool Attacking;
-    int hp;
+    public int hp;
+
+    public GameObject player;
+    public GameObject Enemy;
 
     // Use this for initialization
     void Start () {
@@ -31,6 +34,10 @@ public class ArcherBehaviour : MonoBehaviour {
 	void Update ()
     {
 
+        if (hp <= 0)
+        {
+            Destroy(Enemy);
+        }
         //Contador de tiempo.
         time += Time.deltaTime;
 
@@ -128,7 +135,7 @@ public class ArcherBehaviour : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D cono)
     {
         
-        if (cono.tag == "Attack")
+        if (cono.tag == "Attack" || cono.tag == "Arrow")
         {
             hp--;
         }
