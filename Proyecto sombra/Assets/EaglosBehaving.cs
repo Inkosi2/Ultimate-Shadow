@@ -7,11 +7,9 @@ using UnityEngine;
 public class EaglosBehaving : MonoBehaviour {
 
     double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
-    public bool Attacking, dashCD;
+    public bool Attacking, Dashing;
     int fase;
-    public int auxAttack;
-    bool attackDone, dashDone;
-
+    
     float targetX;
     float targetY;
    
@@ -23,11 +21,11 @@ public class EaglosBehaving : MonoBehaviour {
 
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
 
-    int hits;
+    public int hits;
 
     //auxiliares
-    public double auxDashX;
-    public double auxDashY;
+    public double auxDashX, auxDashY, auxDashX2, auxDashY2;
+   
 
 
 
@@ -35,15 +33,21 @@ public class EaglosBehaving : MonoBehaviour {
     void Start() {
         fase = 4;
         Attacking = false;
-        attackDone = true;
-        dashDone = true;
+        Dashing = false;
+        auxDashX = 0;
+        auxDashY = 0;
+        auxDashX2 = 0;
+        auxDashY2 = 0;
+
+        //Velocidad de Eaglos
+        EaglosSpeed = 3;
 
         Xizquierda = -10;
         Xderecha = 10;
         Yizquierda = 4;
         Yderecha = 4;
-
-        dashCD = true;
+        hits = 0;
+        
 
         Xdestino = Xizquierda;
         Ydestino = Yizquierda;
@@ -57,8 +61,7 @@ public class EaglosBehaving : MonoBehaviour {
         //Contador de tiempo
         time += Time.deltaTime;
 
-        //Velocidad de Eaglos
-        EaglosSpeed = 2 + fase + time / 4;
+        
 
         //Movimiento de Eaglos: Obtener vector hacia el jugador
         distX = transform.position.x - player.transform.position.x;
@@ -78,32 +81,25 @@ public class EaglosBehaving : MonoBehaviour {
         uniX0 = distX0 / moduloDist0;
         uniY0 = distY0 / moduloDist0;
         if(fase!=4)
-        { 
-            //Perseguir el jugador.
-            if (Attacking == false && attackDone == true && dashDone == true)
-            {
-                Chase();
-            }
-
-            //Poner el CD de el Dash en listo cuando pasen 3 segundos sin atacar.
-            if (Attacking == false && attackDone == true && time >= 2)
-            {
-                dashCD = true;
-            }
+        {
 
             //Atacar al llegar a cierta distancia al jugador
-            if (Attacking == false && dashDone == true)
+            if ((moduloDist < 2 || Attacking) && !Dashing) 
             {
                 Attack();
             }
 
-
-
-            //Relizar el ataque Dash cuando se está en fase 2 y no se ha atacado en 3 segundos.
-            if (Attacking == false && fase >= 2 && dashCD == true && attackDone == true)
+            //Poner el CD de el Dash en listo cuando pasen 3 segundos sin atacar.
+            else if (fase >1 && time > 2 || Dashing)
             {
                 Dash();
             }
+
+            //Perseguir el jugador.
+            else
+            {
+                Chase();
+            }     
         }
 
         if (fase == 4)
@@ -125,24 +121,20 @@ public class EaglosBehaving : MonoBehaviour {
     void Attack()
     {
         //Asegurarsse que el jugador está cerca para iniciar el ataque.
-        if (moduloDist < 2)
-        {
+        
             //Comprovar si ha empzado a atacar o esta en proceso.
-            if (attackDone == true)
+            if (!Attacking)
             {
                 //Determinar el timer para la duración de las fases del ataque.
                 time = 0;
                 //Indicar que el ataque se acaba de iniciar.
-                attackDone = false;
+                Attacking = true;
             }
-        }
+       
         //Continuar el ataque ya iniciado inclusi si el jugador no está cerca.
-        if (attackDone == false)
-        {
-            //Auxiliar para que no se solapen las fases.
-            auxAttack = 0;
-            //Indicar que está atacando para evitar llamar otras funciones.
-            Attacking = true;
+        
+            //Auxiliar para que no se solapen las fases.            
+            //Indicar que está atacando para evitar llamar otras funciones.           
 
             //Dejar quieto a Eaglos
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
@@ -150,139 +142,119 @@ public class EaglosBehaving : MonoBehaviour {
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
             //Iniciar la segunda fase del atque en la que lanza el golpe.
-            if (time >= 0.5f && auxAttack == 0)
+            if (time >= 0.5 && time < 0.75)
             {
                 //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.red;
-                auxAttack++;
+                GetComponent<SpriteRenderer>().color = Color.red;               
             }
-            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-            else { Attacking = false; }
-
+           
             //Iniciar la segunda fase del atque en la que se recompone del golpe.
-            if (time >= 0.75d && auxAttack == 1)
+            if (time >= 0.75 && time< 1.25)
             {
                 //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
                 GetComponent<SpriteRenderer>().color = Color.green;
-                auxAttack++;
+               
             }
-            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-            else { Attacking = false; }
-
+            
             //Finalizar el ataque, reiniciando todos los valores.
-            if (time >= 1.25d && auxAttack == 2)
+            if (time >= 1.25 )
             {
                 GetComponent<SpriteRenderer>().color = Color.white;
                 Attacking = false;
-                time = 0;
-                auxAttack++;
-                attackDone = true;
-            }
-            //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-            else { Attacking = false; }
-
-        }
+                time = 0;                
+            }                         
 
     }
 
     //Función para dar ataque en dash en la fase 2
     void Dash()
     {
-        //Detiene a Eaglos antes del dash.
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-        //Evilta la ejecución de otras funciones.
-        Attacking = true;
-        //Da a Eaglos velocidad de dash.
-        EaglosSpeed = 10;
+           
 
         //Primer condicional acticado solo una vez por dash para determinar las variables que va a usar.
-
-        if (dashDone == true)
+        if (!Dashing)
         {
+            hits++;
+            //Detiene a Eaglos antes del dash.
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);             
+            //Da a Eaglos velocidad de dash.
+            EaglosSpeed = 6;
             GetComponent<SpriteRenderer>().color = Color.yellow;
-            auxDashX = 0;
-            auxDashY = 0;
-            auxAttack = 0;
-            //Determinar el timer para la duración de las fases del ataque.
+            //Determinar el timer para la duración de las fases del ataque.      
             time = 0;
-            //Indicar que el ataque se acaba de iniciar.
-            dashDone = false;
+            //Determinar que está dasheando
+            Dashing = true;
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
 
         //Segundo condicional, que determina la posición del jugador tras una pausa para cargar.
-        if (time >= 0.5 && auxAttack == 0)
+        if (time >= 0.5 && time < 1.5 && auxDashX == 0 && auxDashY == 0 )
         {
             GetComponent<SpriteRenderer>().color = Color.red;
             auxDashX = uniX;
             auxDashY = uniY;
-            auxAttack++;
+            
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
 
         //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
         GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -auxDashX), System.Convert.ToSingle(EaglosSpeed * -auxDashY));
 
         //Segundo condicional, que determina la posición del jugador para el segundo dash.
-        if (time >= 1.5 && auxAttack == 1 && fase == 3)
+        if (time >= 1.5 && time < 2.5 && auxDashX2 == 0 && auxDashY2 == 0 && fase == 3) 
         {
             GetComponent<SpriteRenderer>().color = Color.red;
             auxDashX = uniX;
             auxDashY = uniY;
-            auxAttack++;
+            auxDashX2 = uniX;
+            auxDashY2 = uniY;
+
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
 
         //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
         GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -auxDashX), System.Convert.ToSingle(EaglosSpeed * -auxDashY));
 
+
         //Para a Eaglos tras el dash completo.
-        if (time >= 1.5 && auxAttack == 1 && fase == 2)
+        if (time >= 1.5 && time < 2 && fase == 2)
         {
             GetComponent<SpriteRenderer>().color = Color.green;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
 
-        if (time >= 2.5 && auxAttack == 2 && fase == 3)
+        if (time >= 2.5 && time > 3 && fase == 3)
         {
             GetComponent<SpriteRenderer>().color = Color.green;
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
+        
 
 
 
         //Restablece los valores y finaliza la función tras una pausa para recuperarse del dash.
-        if (time >= 2 && auxAttack == 1 && fase == 2)
+        if (time >= 2 && fase == 2)
         {
             GetComponent<SpriteRenderer>().color = Color.white;
-            Attacking = false;
+            Dashing = false;
             time = 0;
-            EaglosSpeed = 1 + time / 4;
-            dashDone = true;
-            dashCD = false;
+            EaglosSpeed = 3;
+            auxDashX = 0;
+            auxDashY = 0;
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
+       
 
         //Restablece los valores y finaliza la función tras una pausa para recuperarse del dash.
-        if (time >= 3 && auxAttack == 2 && fase == 3)
+        if (time >= 3 && fase == 3)
         {
             GetComponent<SpriteRenderer>().color = Color.white;
-            Attacking = false;
+            Dashing = false;
             time = 0;
-            EaglosSpeed = 1 + time / 4;
-            dashDone = true;
-            dashCD = false;
+            EaglosSpeed = 3;
+
+            auxDashX = 0;
+            auxDashY = 0;
+            auxDashX2 = 0;
+            auxDashY2 = 0;
         }
-        //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
-        else { Attacking = false; }
+        
     }
 
     //Función para iniciar la cuarta fase en la que vuela
