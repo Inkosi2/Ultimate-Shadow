@@ -306,6 +306,76 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70a0bc345fdbb3f4d9fb805ebfd4a752, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &485315158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 485315161}
+  - component: {fileID: 485315160}
+  - component: {fileID: 485315159}
+  m_Layer: 0
+  m_Name: EtheralWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &485315159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 485315158}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18536dbe7a104844ab01c5e0210fb7df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  muro: {fileID: 0}
+  muroInstanciado: {fileID: 1646846207543324, guid: 11615c3d99b3b1842a52014990bc7552,
+    type: 2}
+  Diana: {fileID: 1857323159}
+--- !u!61 &485315160
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 485315158}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &485315161
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 485315158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &548582441
 Prefab:
   m_ObjectHideFlags: 0
@@ -1128,6 +1198,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1857323159 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1514377512986246, guid: 70a0bc345fdbb3f4d9fb805ebfd4a752,
+    type: 2}
+  m_PrefabInternal: {fileID: 1381018488}
 --- !u!1 &1860007782
 GameObject:
   m_ObjectHideFlags: 0

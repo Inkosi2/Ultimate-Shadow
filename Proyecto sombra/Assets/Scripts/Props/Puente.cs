@@ -12,17 +12,15 @@ public class Puente : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Diana.GetComponent<Diana>().activated)
-        {
-            if (!instanciado)
-            {
+		if (Diana.GetComponent<Diana>().activated && !instanciado)
+        {            
                 puente = (GameObject)Instantiate(puenteInstanciado);
-                instanciado = true;
-            }
+                instanciado = true;           
         }
         else
         {
             Destroy(puente);
+            instanciado = false;
         }
 	}
 }
