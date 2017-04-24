@@ -7,9 +7,11 @@ public class BlockRoute : MonoBehaviour {
 
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
     int Speed;
+    public GameObject Diana;
 
     // Use this for initialization
     void Start () {
+        transform.position = new Vector2(-13, 20); 
         Xderecha = -8;
         Xizquierda = -13;
         Xdestino = Xderecha;
@@ -30,8 +32,11 @@ public class BlockRoute : MonoBehaviour {
         uniX0 = distX0 / moduloDist0;
         uniY0 = distY0 / moduloDist0;
 
-       
-       
+
+        if (Diana.GetComponent<Diana>().activated)
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
 
         if (moduloDist0 > 0.1)
         {

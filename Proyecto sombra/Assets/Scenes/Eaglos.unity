@@ -224,6 +224,21 @@ Prefab:
       propertyPath: Eaglos
       value: 
       objectReference: {fileID: 1622337480}
+    - target: {fileID: 212750486742201478, guid: 8a378e48772c54e4c8a035c6ea54a900,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61060493746125492, guid: 8a378e48772c54e4c8a035c6ea54a900,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114171761524881866, guid: 8a378e48772c54e4c8a035c6ea54a900,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a378e48772c54e4c8a035c6ea54a900, type: 2}
   m_IsPrefabParent: 0
@@ -347,12 +362,12 @@ Prefab:
     - target: {fileID: 61496021925624968, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212632200728791856, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114773770863825006, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
