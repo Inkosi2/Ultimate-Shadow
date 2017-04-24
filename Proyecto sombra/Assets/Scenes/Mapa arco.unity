@@ -423,6 +423,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &842237847 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1514377512986246, guid: 70a0bc345fdbb3f4d9fb805ebfd4a752,
+    type: 2}
+  m_PrefabInternal: {fileID: 474761105}
 --- !u!1 &1057730918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1158,7 @@ MonoBehaviour:
   puente: {fileID: 0}
   puenteInstanciado: {fileID: 1077748031868070, guid: 412fd34bef7feb0419ab6767f779629e,
     type: 2}
-  Diana: {fileID: 335802238}
+  Diana: {fileID: 842237847}
 --- !u!4 &1860007784
 Transform:
   m_ObjectHideFlags: 0
