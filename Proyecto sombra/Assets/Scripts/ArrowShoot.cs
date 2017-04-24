@@ -13,7 +13,7 @@ public class ArrowShoot : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        velVuelo = 5;
+        velVuelo = 10;
         shot = false;
         collided = false;
     }
@@ -95,7 +95,7 @@ public class ArrowShoot : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll)
     {
         Debug.Log("Collide with " + coll.gameObject.tag);
-        if (coll.gameObject.tag == "Wall" || coll.gameObject.tag == "Diana")
+        if (coll.gameObject.tag == "Wall" || coll.gameObject.tag == "Diana" || coll.gameObject.tag == "Bloque movil")
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             collided = true;
