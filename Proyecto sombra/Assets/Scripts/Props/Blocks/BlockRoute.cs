@@ -37,6 +37,7 @@ public class BlockRoute : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().color = Color.green;
         }
+        else { GetComponent<SpriteRenderer>().color = Color.white; }
 
         if (moduloDist0 > 0.1)
         {

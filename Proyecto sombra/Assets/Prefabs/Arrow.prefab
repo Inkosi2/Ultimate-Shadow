@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: 0
   collided: 0
-  player: {fileID: 1684733919045926, guid: 37d97edcfa8bd68428aaebd7d4a9f1ed, type: 2}
+  player: {fileID: 1755580028996118, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
 --- !u!212 &212610217874069748
 SpriteRenderer:
   m_ObjectHideFlags: 1

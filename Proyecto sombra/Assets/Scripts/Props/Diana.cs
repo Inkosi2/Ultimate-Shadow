@@ -14,12 +14,21 @@ public class Diana : MonoBehaviour {
 	void Update () {
 		
 	}
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Arrow")
         {
             activated = true;
             GetComponent<SpriteRenderer>().color = Color.green;
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Arrow")
+        {
+            activated = false;
+            GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 }
