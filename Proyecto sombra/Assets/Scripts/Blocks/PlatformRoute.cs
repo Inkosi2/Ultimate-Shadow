@@ -12,7 +12,7 @@ public class PlatformRoute : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //transform.position = new Vector2 (System.Convert.ToSingle(X1), System.Convert.ToSingle(Y1)); 
-        X1 = -1.5;
+        X1 = 0.8;
         Y1 = 3.4;
         X2 = 5.5;
         Y2 = 3.4;
@@ -38,34 +38,44 @@ public class PlatformRoute : MonoBehaviour {
         uniY0 = distY0 / moduloDist0;
 
 
-        if (Diana.GetComponent<Diana>().activated)
+       /* if (Diana.GetComponent<Diana>().activated)
         {
             GetComponent<SpriteRenderer>().color = Color.green;
-        }
+        }*/
         
-        if (moduloDist0 > 0.1)
+        //movimiento
+        if (moduloDist0 > 0.1 && counter == 1)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
-            
+            counter++;
+            Xdestino = X2;
+            Ydestino = Y2;       
         }
-
-        else if (counter == 2)
+        
+        else if (moduloDist0 > 0.1 && counter == 2)
         {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
+            counter++;
+            Xdestino = X3;
             Ydestino = Y3;
-            counter = 3;
         }
 
-        else if (counter == 3)
+        else if (moduloDist0 > 0.1 && counter == 3)
         {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
+            counter++;
+            Xdestino = X2;
             Ydestino = Y2;
-            counter = 4;
         }
 
-        else if (counter == 4)
+        else if (moduloDist0 > 0.1 && counter == 4)
         {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
+            counter = 1;
             Xdestino = X1;
-            counter = 2;
+            Ydestino = Y1;
         }
+
     }
 }
 
