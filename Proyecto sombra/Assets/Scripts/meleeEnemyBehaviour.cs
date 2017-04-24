@@ -152,8 +152,8 @@ public class meleeEnemyBehaviour : MonoBehaviour {
                 //(Provisional) Marcar la fase de atacar. A la espera de sprite.
                 GetComponent<SpriteRenderer>().color = Color.red;
                 auxAttack++;
-                cono = (GameObject)Instantiate(conoInstanciado);
-                cono.transform.position = new Vector2(transform.position.x, System.Convert.ToSingle(transform.position.y - 0.8));
+                //cono = (GameObject)Instantiate(conoInstanciado);
+                //cono.transform.position = new Vector2(transform.position.x, System.Convert.ToSingle(transform.position.y - 0.8));
                 Attacking = true;                
             }
             //Permitir otro bucle cuando el tiempo entre fases no ha pasado.
