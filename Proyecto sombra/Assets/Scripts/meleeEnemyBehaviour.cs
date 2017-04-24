@@ -13,8 +13,9 @@ public class meleeEnemyBehaviour : MonoBehaviour {
     public bool Attacking;
     public double auxTime;
     public int hp;
-    public bool  vulnerability;
+    public bool vulnerability, conoDone;
     bool Chasing;
+    public float angle;
     //auxiliares
     public int aux;
    
@@ -65,6 +66,8 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
         uniX0 = distX0 / moduloDist0;
         uniY0 = distY0 / moduloDist0;
+
+        angle = System.Convert.ToSingle(Mathf.Atan(System.Convert.ToSingle(uniY / uniX)));
 
         if (moduloDist < 2 || Attacking)
         {
@@ -135,13 +138,22 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             {
                 //(Provisional) Marcar la fase de atacar. A la espera de sprite.
                 GetComponent<SpriteRenderer>().color = Color.red;
-            }
+            if (!conoDone)
+            {
 
-            //Iniciar la segunda fase del atque en la que se recompone del golpe.
-            if (time >= 0.75 && time < 1.25)
+                cono = Instantiate(conoInstanciado);
+                conoDone = true;
+            }
+            cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
+            cono.transform.position = new Vector2 (System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+        }
+
+        //Iniciar la segunda fase del atque en la que se recompone del golpe.
+        if (time >= 0.75 && time < 1.25)
             {
                 //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
                 GetComponent<SpriteRenderer>().color = Color.green;
+                Destroy(cono);
             }
 
             //Finalizar el ataque, reiniciando todos los valores.
@@ -150,6 +162,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
                 GetComponent<SpriteRenderer>().color = Color.white;
                 Attacking = false;
                 time = 0;
+                conoDone = false;   
             }
         }
 

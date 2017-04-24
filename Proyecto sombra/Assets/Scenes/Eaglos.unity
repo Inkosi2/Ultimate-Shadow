@@ -172,6 +172,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: cono
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0
@@ -184,11 +196,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4626202680002150, guid: 8a378e48772c54e4c8a035c6ea54a900, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.1
+      value: -7.27
       objectReference: {fileID: 0}
     - target: {fileID: 4626202680002150, guid: 8a378e48772c54e4c8a035c6ea54a900, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 4626202680002150, guid: 8a378e48772c54e4c8a035c6ea54a900, type: 2}
       propertyPath: m_LocalPosition.z
@@ -227,12 +239,12 @@ Prefab:
     - target: {fileID: 212750486742201478, guid: 8a378e48772c54e4c8a035c6ea54a900,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61060493746125492, guid: 8a378e48772c54e4c8a035c6ea54a900,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114171761524881866, guid: 8a378e48772c54e4c8a035c6ea54a900,
         type: 2}
@@ -362,12 +374,12 @@ Prefab:
     - target: {fileID: 61496021925624968, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212632200728791856, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114773770863825006, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
