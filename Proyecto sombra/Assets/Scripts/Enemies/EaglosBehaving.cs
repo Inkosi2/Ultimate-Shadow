@@ -13,6 +13,8 @@ public class EaglosBehaving : MonoBehaviour
     public GameObject player;
     public GameObject Eaglos;
     public GameObject flecha, flechaPrefab;
+    public GameObject cono, conoInstanciado;
+    public float angle;
 
     //Variables para determinar el movimiento de Eaglos en la 4t fase:
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
@@ -140,17 +142,24 @@ public class EaglosBehaving : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.yellow;
         
         //Iniciar la segunda fase del atque en la que lanza el golpe.
-        if (time >= 0.5 && time < 0.75)
-            {
-                //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.red;            
-            }
+        if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
+        {
+            //(Provisional) Marcar la fase de atacar. A la espera de sprite.
+            GetComponent<SpriteRenderer>().color = Color.red;
+            cono = Instantiate(conoInstanciado);
+            AttackInstanciated = true;
+            cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+        }
+
+        
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
         if (time >= 0.75 && time< 1.25)
         {
             //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
-            GetComponent<SpriteRenderer>().color = Color.green;    
+            GetComponent<SpriteRenderer>().color = Color.green;
+            Destroy(cono);
         }
 
         //Finalizar el ataque, reiniciando todos los valores.
@@ -158,6 +167,7 @@ public class EaglosBehaving : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.white;
             Attacking = false;
+            AttackInstanciated = false;
             time = 0;                
         }                         
     }
