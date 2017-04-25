@@ -159,6 +159,15 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 61467737950837822, guid: fa421234d0e4c7f45aa77ed0f3b3e9d8,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166361507345318, guid: fa421234d0e4c7f45aa77ed0f3b3e9d8, type: 2}
+      propertyPath: m_TagString
+      value: Platform
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114835259625548688, guid: fa421234d0e4c7f45aa77ed0f3b3e9d8, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fa421234d0e4c7f45aa77ed0f3b3e9d8, type: 2}
@@ -640,7 +649,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1231430825}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 969daa97a99a83d41ae699187c599950, type: 3}
   m_Name: 
@@ -659,7 +668,9 @@ MonoBehaviour:
   X3: 0
   Y3: 0
   counter: 0
-  Diana: {fileID: 0}
+  posX: 0
+  posY: 0
+  Diana: {fileID: 335802238}
 --- !u!1001 &1327317988
 Prefab:
   m_ObjectHideFlags: 0
