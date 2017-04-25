@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class ParedPuente : MonoBehaviour {
     public GameObject Diana;
-    public Collider2D coll;
+    public Collider2D collider;
 	// Use this for initialization
 	void Start () {
-        coll.isTrigger = false;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Diana.GetComponent<Diana>().activated > 0)
         {
-            coll.isTrigger = true;
+            collider.isTrigger = true;
         }
         else
         {
-            coll.isTrigger = false;
+            collider.isTrigger = false;
         }
 	}
 }

@@ -89,56 +89,7 @@ public class PlatformRoute : MonoBehaviour {
                 counter = 1;
             }
         }
-      /*  X1 = 0.8;
-        Y1 = 3.4;
-        X2 = 5.5;
-        Y2 = 3.4;
-        X3 = 5.5;
-        Y3 = 24;
-        /* else if (posX != Xdestino && posY != Ydestino && counter == 4)
-         {
-             GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
-
-             if (posX >= Xdestino && posY >= Ydestino)
-             {
-                 Xdestino = X1;
-                 Ydestino = Y1;
-                 counter = 1;
-             }
-         }*/
-
-
-        /*if (moduloDist0 > 0.1 && counter == 1)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
-            counter++;
-            Xdestino = X2;
-            Ydestino = Y2;       
-        }
-        
-        else if (moduloDist0 > 0.1 && counter == 2)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
-            counter++;
-            Xdestino = X3;
-            Ydestino = Y3;
-        }
-
-        else if (moduloDist0 > 0.1 && counter == 3)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
-            counter++;
-            Xdestino = X2;
-            Ydestino = Y2;
-        }
-
-        else if (moduloDist0 > 0.1 && counter == 4)
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
-            counter = 1;
-            Xdestino = X1;
-            Ydestino = Y1;
-        }*/
+   
 
     }
     void OnCollisionEnter2D(Collision2D collision)
