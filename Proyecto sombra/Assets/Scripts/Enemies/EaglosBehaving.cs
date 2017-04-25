@@ -14,7 +14,7 @@ public class EaglosBehaving : MonoBehaviour
     public GameObject Eaglos;
     public GameObject flecha, flechaPrefab;
     public GameObject cono, conoInstanciado;
-    public float angle;
+    public double angle;
 
     //Variables para determinar el movimiento de Eaglos en la 4t fase:
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
@@ -149,29 +149,40 @@ public class EaglosBehaving : MonoBehaviour
             cono = Instantiate(conoInstanciado);
             AttackInstanciated = true;            
             cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+            angle = 405 - System.Convert.ToSingle(Math.Atan(uniY / uniX)) * (180 / System.Convert.ToSingle(Math.PI));
+            cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
 
+            /*
+            //Norte
             if ((uniX < 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 360);
             }
 
-            if ((uniX > 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
+            //Noroeste
+            if ((uniX < -0.2 && uniY < -0.2) || (uniX < -0.2 && uniY < -0.2))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 315);
             }
 
+            //Oeste
             if ((uniX < -0.8 && uniY < 0.2) || (uniX < -0.8 && uniY > -0.2))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 270);
             }
+
+            //Sur
             if ((uniX < 0.2 && uniY > 0.8) || (uniX > 0.2 && uniY > 0.8))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 180);
             }
+
+            //Este
             if ((uniX > 0.8 && uniY < 0.2) || (uniX > 0.8 && uniY > -0.2))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 90);
             }
+            */
 
         }
 
