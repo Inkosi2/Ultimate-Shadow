@@ -8,13 +8,14 @@ using UnityEngine;
 
 public class ArcherBehaviour : MonoBehaviour {
 
-    int Speed;    
+    int Speed, arrowSpeed;    
     public double distX, distY, moduloDist, uniX, uniY; //Variables para el vector hacia el jugador.   
-    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial; //Variables para el vector hacia la posición inicial.   
-    public float targetX, targetY; //Variables patra apuntar a su objetivo.
+    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial; //Variables para el vector hacia la posición inicial.
+    public double angle;   
+    public double targetX, targetY; //Variables patra apuntar a su objetivo.
     
     public float time;
-    public bool Attacking;
+    public bool Attacking, AttackInstanciated;
     public int hp;
 
     public GameObject player;
@@ -62,6 +63,8 @@ public class ArcherBehaviour : MonoBehaviour {
         uniX0 = distX0 / moduloDist0;
         uniY0 = distY0 / moduloDist0;
 
+        angle = Mathf.Atan((transform.position.y - player.transform.position.y) / (transform.position.x - player.transform.position.x));
+
         //DETERMINAR LAS ACCIONES DEL ENEMIGO:
 
         //Huir si el jugador está demasiado cerca y el enemigo no está en medio de un ataque.
@@ -97,10 +100,7 @@ public class ArcherBehaviour : MonoBehaviour {
     //Función para ayacar al jugador.
     void Attack()
     {
-        if (!Attacking)
-        {
-
-        }
+        
 
 
         //Iniciar el ataque, dando valores a las variables que no se verán modificados hasta empezar un nuevo ataque.
@@ -121,8 +121,10 @@ public class ArcherBehaviour : MonoBehaviour {
         //Para de cargar y dispara la flecha.
         if (time >= 1 && time < 1.25)
         {
-            GetComponent<SpriteRenderer>().color = Color.red;
-            flecha = (GameObject)Instantiate(flechaPrefab);
+            if (!AttackInstanciated)
+            {
+                Shoot();
+            }
         }
         
         //Pausa tras el atque.
@@ -136,8 +138,24 @@ public class ArcherBehaviour : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().color = Color.white;
             Attacking = false;
+            AttackInstanciated = false;
         }
        
+    }
+
+    void Shoot()
+    {
+        targetX = distX / moduloDist;
+        targetY = distY / moduloDist;
+
+        GetComponent<SpriteRenderer>().color = Color.red;
+        flecha = (GameObject)Instantiate(flechaPrefab);
+        flecha.transform.position = transform.position;
+        AttackInstanciated = true;
+
+        flecha.transform.rotation = Quaternion.Euler(180, 0, 0);
+        flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+        flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX*10), System.Convert.ToSingle(-targetY*10));
     }
 
     void OnTriggerEnter2D(Collider2D cono)

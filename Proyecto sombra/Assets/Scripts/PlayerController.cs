@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject conoInstanciado;
     public double time;
     public bool attacking, pressedE, previousPressedE;
+    public int HP;
 
     // Use this for initialization
     void Start()
@@ -28,7 +29,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //Para correr
-        
+
+        HP = 1 + GetComponent<Disparar>().municion;
             
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(vel, vel);
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
-                rotation = 360 - 135;
+                rotation = 225;
             }
             else if (Input.GetKey(KeyCode.S) && (Input.GetKey(KeyCode.A)))
             {
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(vel, -vel);
                 transform.localRotation = Quaternion.Euler(0, 0, 0);
-                rotation = 360 - 45;
+                rotation = 315;
             }
 
             //---------------------------------------------------------------
@@ -78,12 +80,12 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKey(KeyCode.W))
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, vel);
-                rotation = 180;
+                rotation = 0;
             }
             else if (Input.GetKey(KeyCode.S))
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, -vel);
-                rotation = 0;
+                rotation = 180;
             }
             else if (Input.GetKey(KeyCode.A))
             {

@@ -13,7 +13,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
     public bool Attacking;
     public double auxTime;
     public int hp;
-    public bool vulnerability, conoDone;
+    public bool vulnerability, AttackInstanciated;
     bool Chasing;
     public float angle;
     //auxiliares
@@ -138,11 +138,11 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             {
                 //(Provisional) Marcar la fase de atacar. A la espera de sprite.
                 GetComponent<SpriteRenderer>().color = Color.red;
-            if (!conoDone)
+            if (!AttackInstanciated)
             {
 
                 cono = Instantiate(conoInstanciado);
-                conoDone = true;
+                AttackInstanciated = true;
                 cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
                 cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
             }
@@ -163,7 +163,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
                 GetComponent<SpriteRenderer>().color = Color.white;
                 Attacking = false;
                 time = 0;
-                conoDone = false;   
+                AttackInstanciated = false;   
             }
         }
 

@@ -6,12 +6,13 @@ using UnityEngine;
 public class EaglosBehaving : MonoBehaviour
 {
     double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
-    public bool Attacking, Dashing;
+    public bool Attacking, Dashing, AttackInstanciated;
     public int fase;
-    float targetX, targetY; 
+    double targetX, targetY; 
     public float time; 
     public GameObject player;
     public GameObject Eaglos;
+    public GameObject flecha, flechaPrefab;
 
     //Variables para determinar el movimiento de Eaglos en la 4t fase:
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
@@ -273,16 +274,34 @@ public class EaglosBehaving : MonoBehaviour
             targetY = player.transform.position.y;
         }
 
-        if (time>=1 && time<=1.5)
+        if (time>=1 && time<=1.5 && !AttackInstanciated)
         {
             GetComponent<SpriteRenderer>().color = Color.red;
+            Shoot();
+            AttackInstanciated = true;
         }
 
         if (time > 1.5)
         {
             GetComponent<SpriteRenderer>().color = Color.white;
             time = 0;
+            AttackInstanciated = false;
         }
+    }
+
+    void Shoot()
+    {
+        targetX = distX / moduloDist;
+        targetY = distY / moduloDist;
+
+        GetComponent<SpriteRenderer>().color = Color.red;
+        flecha = (GameObject)Instantiate(flechaPrefab);
+        flecha.transform.position = transform.position;
+        AttackInstanciated = true;
+
+        flecha.transform.rotation = Quaternion.Euler(180, 0, 0);
+        flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+        flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 10), System.Convert.ToSingle(-targetY * 10));
     }
 
     void OnTriggerEnter2D(Collider2D cono)

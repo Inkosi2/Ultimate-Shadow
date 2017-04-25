@@ -84,11 +84,11 @@ public class Disparar : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Bloque movil")
-        {
-            GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y) ;
-        }
-        else if (coll.gameObject.tag == "Wall")
+        //if (coll.gameObject.tag == "Bloque movil")
+        //{
+            //GetComponent<Rigidbody2D>().velocity = new Vector2 (GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y) ;
+        //}
+        if (coll.gameObject.tag == "Wall")
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
