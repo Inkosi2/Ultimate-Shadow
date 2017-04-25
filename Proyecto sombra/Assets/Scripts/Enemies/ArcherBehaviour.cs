@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class ArcherBehaviour : MonoBehaviour {
 
-    int Speed, arrowSpeed;    
+    int Speed;    
     public double distX, distY, moduloDist, uniX, uniY; //Variables para el vector hacia el jugador.   
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial; //Variables para el vector hacia la posición inicial.
     public double angle;   

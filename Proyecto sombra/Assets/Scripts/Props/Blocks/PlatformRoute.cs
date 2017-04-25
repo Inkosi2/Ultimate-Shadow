@@ -21,9 +21,9 @@ public class PlatformRoute : MonoBehaviour {
         Y3 = 24;
         Xdestino = X2;
         Ydestino = Y2;
-        Speed = 10;
+        Speed = 4;
         counter = 1;
-        movimiento = false;
+        movimiento = true;
         
     }
 	
@@ -41,35 +41,53 @@ public class PlatformRoute : MonoBehaviour {
 
         posX = GameObject.FindGameObjectWithTag("Platform").transform.position.x;
         posY = GameObject.FindGameObjectWithTag("Platform").transform.position.y;
-
+/*
        if (Diana.GetComponent<Diana>().activated > 0)
         {
             GetComponent<SpriteRenderer>().color = Color.green;
             movimiento = true;
         }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+            if (counter == 1)
+            {
+                movimiento = false;
+            }
+        }*/
 
         //movimiento
         if (movimiento)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
         }
-        if (counter == 1 && posX >= Xdestino && posY >= Ydestino)
+
+        if (counter == 1 && moduloDist0 > 0.1)
         {
-            Xdestino = X3;
-            Ydestino = Y3;
-            counter = 2;
+            if (posX >= Xdestino && posY >= Ydestino)
+            {
+                Xdestino = X3;
+                Ydestino = Y3;
+                counter = 2;
+            }
         }
-        else if (counter == 2 && posX >= Xdestino && posY >= Ydestino)
+        else if (counter == 2 && moduloDist0 > 0.1)
         {
-            Xdestino = X2;
-            Ydestino = Y2;
-            counter = 3;
+            if (posX >= Xdestino && posY >= Ydestino)
+            {
+                Xdestino = X2;
+                Ydestino = Y2;
+                counter = 3;
+            }
         }
-        else if ( counter == 3 && posX >= Xdestino && posY >= Ydestino)
+        else if ( counter == 3 && moduloDist0 > 0.1)
         {
-            Xdestino = X1;
-            Ydestino = Y1;
-            counter = 1;
+            if (posX >= Xdestino && posY >= Ydestino)
+            {
+                Xdestino = X1;
+                Ydestino = Y1;
+                counter = 1;
+            }
         }
       /*  X1 = 0.8;
         Y1 = 3.4;
