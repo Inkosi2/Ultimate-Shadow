@@ -33,7 +33,7 @@ public class BlockRoute : MonoBehaviour {
         uniY0 = distY0 / moduloDist0;
 
 
-        if (Diana.GetComponent<Diana>().activated)
+        if (Diana.GetComponent<Diana>().activated > 0)
         {
             GetComponent<SpriteRenderer>().color = Color.green;
         }

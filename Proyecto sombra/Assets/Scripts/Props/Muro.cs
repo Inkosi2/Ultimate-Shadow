@@ -13,15 +13,18 @@ public class Muro : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Diana.GetComponent<Diana>().activated && instanciado)
+        if (Diana.GetComponent<Diana>().activated > 0)
         {
             Destroy(muro);
-            instanciado = false;            
+            instanciado = false;
         }
-        else 
-        {                      
-            muro = (GameObject)Instantiate(muroInstanciado);
-            instanciado = true; 
+        else
+        {
+            if (!instanciado)
+            {
+                muro = (GameObject)Instantiate(muroInstanciado);
+                instanciado = true;
+            }
         }
 	}
 }

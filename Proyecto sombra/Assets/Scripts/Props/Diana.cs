@@ -3,23 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Diana : MonoBehaviour {
-    public bool activated;
+    public int activated;
 	// Use this for initialization
 	void Start () {
-        activated = false;
+        activated = 0;
         GetComponent<SpriteRenderer>().color = Color.red;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (activated > 0)
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
+        }
+
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Arrow")
         {
-            activated = true;
-            GetComponent<SpriteRenderer>().color = Color.green;
+            activated++;
         }
     }
 
@@ -27,8 +36,7 @@ public class Diana : MonoBehaviour {
     {
         if (collision.tag == "Arrow")
         {
-            activated = false;
-            GetComponent<SpriteRenderer>().color = Color.white;
+            activated--;
         }
     }
 }

@@ -143,9 +143,10 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
                 cono = Instantiate(conoInstanciado);
                 conoDone = true;
+                cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
+                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
             }
-            cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
-            cono.transform.position = new Vector2 (System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+           
         }
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
