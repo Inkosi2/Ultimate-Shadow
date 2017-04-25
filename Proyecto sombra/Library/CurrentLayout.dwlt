@@ -360,19 +360,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 43
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scenes
   m_LastFoldersGridSize: 43
   m_LastProjectPath: E:\Escuela\Uni 2.0\Ultimate-Shadow\Proyecto sombra
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: a6250000
-    m_LastClickedID: 9638
-    m_ExpandedIDs: 00000000d4240000622500007a25000000ca9a3bffffff7f
+    m_SelectedIDs: 32250000
+    m_LastClickedID: 9522
+    m_ExpandedIDs: 00000000d2240000602500007625000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -400,7 +400,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000d4240000622500007a250000
+    m_ExpandedIDs: 00000000d22400006025000076250000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -481,7 +481,7 @@ MonoBehaviour:
     y: 92
     width: 504
     height: 926
-  m_ScrollPosition: {x: 0, y: 389.95508}
+  m_ScrollPosition: {x: 0, y: 120}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 160
@@ -516,9 +516,9 @@ MonoBehaviour:
     height: 496
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 10260000
-    m_LastClickedID: 9744
-    m_ExpandedIDs: e2fbffff00000000
+    m_SelectedIDs: 90270000
+    m_LastClickedID: 10128
+    m_ExpandedIDs: 8af6ffff48faffffe2fbffff00000000cc260000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -573,9 +573,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.3185078, y: -0.046453923, z: 0}
+    m_Target: {x: -1.3907123, y: 2.5135443, z: 0}
     speed: 2
-    m_Value: {x: -0.3185078, y: -0.046453923, z: 0}
+    m_Value: {x: -1.3907123, y: 2.5135443, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -602,9 +602,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 12.451688
+    m_Target: 16.11703
     speed: 2
-    m_Value: 12.451688
+    m_Value: 16.11703
   m_Ortho:
     m_Target: 1
     speed: 2

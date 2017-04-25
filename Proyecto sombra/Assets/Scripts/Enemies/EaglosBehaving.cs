@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EaglosBehaving : MonoBehaviour
 {
-    double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
+    public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
     public bool Attacking, Dashing, AttackInstanciated;
     public int fase;
     double targetX, targetY; 
@@ -147,9 +147,32 @@ public class EaglosBehaving : MonoBehaviour
             //(Provisional) Marcar la fase de atacar. A la espera de sprite.
             GetComponent<SpriteRenderer>().color = Color.red;
             cono = Instantiate(conoInstanciado);
-            AttackInstanciated = true;
-            cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
+            AttackInstanciated = true;            
             cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+
+            if ((uniX < 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 360);
+            }
+
+            if ((uniX > 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 315);
+            }
+
+            if ((uniX < -0.8 && uniY < 0.2) || (uniX < -0.8 && uniY > -0.2))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 270);
+            }
+            if ((uniX < 0.2 && uniY > 0.8) || (uniX > 0.2 && uniY > 0.8))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 180);
+            }
+            if ((uniX > 0.8 && uniY < 0.2) || (uniX > 0.8 && uniY > -0.2))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 90);
+            }
+
         }
 
         
