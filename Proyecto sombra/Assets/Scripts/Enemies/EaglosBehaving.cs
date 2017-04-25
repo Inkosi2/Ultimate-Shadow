@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EaglosBehaving : MonoBehaviour
 {
-    double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
+    public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
     public bool Attacking, Dashing, AttackInstanciated;
     public int fase;
     double targetX, targetY; 
@@ -13,6 +13,8 @@ public class EaglosBehaving : MonoBehaviour
     public GameObject player;
     public GameObject Eaglos;
     public GameObject flecha, flechaPrefab;
+    public GameObject cono, conoInstanciado;
+    public float angle;
 
     //Variables para determinar el movimiento de Eaglos en la 4t fase:
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
@@ -140,17 +142,47 @@ public class EaglosBehaving : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.yellow;
         
         //Iniciar la segunda fase del atque en la que lanza el golpe.
-        if (time >= 0.5 && time < 0.75)
+        if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
+        {
+            //(Provisional) Marcar la fase de atacar. A la espera de sprite.
+            GetComponent<SpriteRenderer>().color = Color.red;
+            cono = Instantiate(conoInstanciado);
+            AttackInstanciated = true;            
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+
+            if ((uniX < 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
             {
-                //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.red;            
+                cono.transform.rotation = Quaternion.Euler(0, 0, 360);
             }
+
+            if ((uniX > 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 315);
+            }
+
+            if ((uniX < -0.8 && uniY < 0.2) || (uniX < -0.8 && uniY > -0.2))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 270);
+            }
+            if ((uniX < 0.2 && uniY > 0.8) || (uniX > 0.2 && uniY > 0.8))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 180);
+            }
+            if ((uniX > 0.8 && uniY < 0.2) || (uniX > 0.8 && uniY > -0.2))
+            {
+                cono.transform.rotation = Quaternion.Euler(0, 0, 90);
+            }
+
+        }
+
+        
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
         if (time >= 0.75 && time< 1.25)
         {
             //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
-            GetComponent<SpriteRenderer>().color = Color.green;    
+            GetComponent<SpriteRenderer>().color = Color.green;
+            Destroy(cono);
         }
 
         //Finalizar el ataque, reiniciando todos los valores.
@@ -158,6 +190,7 @@ public class EaglosBehaving : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().color = Color.white;
             Attacking = false;
+            AttackInstanciated = false;
             time = 0;                
         }                         
     }
