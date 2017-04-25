@@ -45,7 +45,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 9
+  controlID: 46
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 10
+  controlID: 47
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 11
+  controlID: 48
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -319,10 +319,10 @@ MonoBehaviour:
   m_DepthBufferBits: 0
   m_Pos:
     serializedVersion: 2
-    x: 278
+    x: 280
     y: 92
-    width: 1127
-    height: 551
+    width: 1132
+    height: 496
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -360,19 +360,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
+<<<<<<< HEAD
     - Assets/Scripts/Props/Blocks
   m_ViewMode: 1
   m_StartGridSize: 43
   m_LastFolders:
   - Assets/Scripts/Props/Blocks
+=======
+    - Assets/Prefabs
+  m_ViewMode: 1
+  m_StartGridSize: 43
+  m_LastFolders:
+  - Assets/Prefabs
+>>>>>>> Puzzle(Meri)
   m_LastFoldersGridSize: 43
-  m_LastProjectPath: E:\Escuela\Uni 2.0\Ultimate-Shadow\Proyecto sombra
+  m_LastProjectPath: C:\Users\Maria\Desktop\PROYECTO\Ultimate-Shadow\Proyecto sombra
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 52250000
     m_LastClickedID: 9554
     m_ExpandedIDs: 00000000d22400006025000076250000b425000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: a4250000
+    m_LastClickedID: 9636
+    m_ExpandedIDs: 00000000d42400006225000078250000b625000000ca9a3bffffff7f
+>>>>>>> Puzzle(Meri)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -400,7 +414,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000d22400006025000076250000b4250000
+=======
+    m_ExpandedIDs: 00000000d42400006225000078250000b6250000
+>>>>>>> Puzzle(Meri)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -481,7 +499,11 @@ MonoBehaviour:
     y: 92
     width: 504
     height: 926
+<<<<<<< HEAD
   m_ScrollPosition: {x: 0, y: 299.95508}
+=======
+  m_ScrollPosition: {x: 0, y: 0}
+>>>>>>> Puzzle(Meri)
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 160
@@ -516,9 +538,15 @@ MonoBehaviour:
     height: 496
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 282b0000
     m_LastClickedID: 11048
     m_ExpandedIDs: ea39fcff8a3afcffe2fbffff00000000
+=======
+    m_SelectedIDs: 50f7ffff
+    m_LastClickedID: 0
+    m_ExpandedIDs: e2fbffff0000000000260000
+>>>>>>> Puzzle(Meri)
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -573,9 +601,15 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: 1.9992572, y: 5.7078996, z: 0}
     speed: 2
     m_Value: {x: 1.9992572, y: 5.7078996, z: 0}
+=======
+    m_Target: {x: 2.5895195, y: 11.804463, z: 13.890625}
+    speed: 2
+    m_Value: {x: 2.5895195, y: 11.804463, z: 13.890625}
+>>>>>>> Puzzle(Meri)
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -602,9 +636,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 23.668818
+    m_Target: 30.512922
     speed: 2
-    m_Value: 23.668818
+    m_Value: 30.512922
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -7,7 +7,7 @@ public class EnemyArrow : MonoBehaviour {
 
     public GameObject player;
     public double distX, distY, moduloDist, uniX, uniY;
-    int Speed;
+    
 
     // Use this for initialization
     void Start () {
