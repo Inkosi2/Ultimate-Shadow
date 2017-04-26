@@ -14,7 +14,7 @@ public class Lobby2 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         time += Time.deltaTime;
-        if (time > 5)
+        if (time > 19)
         {
             SceneManager.LoadScene("Escena1");
         }
