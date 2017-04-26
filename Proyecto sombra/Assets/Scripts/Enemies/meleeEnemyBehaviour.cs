@@ -15,7 +15,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
     public int hp;
     public bool vulnerable, AttackInstanciated;
     bool Chasing;
-    public float angle;
+    public double angle;
     //auxiliares
     public int aux;
    
@@ -126,19 +126,32 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
             //Iniciar la segunda fase del atque en la que lanza el golpe.
-            if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
+            if (time >= 0.5 && time < 0.75 )
             {
                     //(Provisional) Marcar la fase de atacar. A la espera de sprite.
                     GetComponent<SpriteRenderer>().color = Color.red;
                     
              }
 
-            if (!AttackInstanciated)
+            if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
             {
                 cono = Instantiate(conoInstanciado);
-                AttackInstanciated = true;
-                cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
-                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+                AttackInstanciated = true;
+
+                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
+
+                if (uniY < 0)
+                {
+                    angle = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg) + 90;
+                }
+
+                else
+                {
+                    angle = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 90);
+                }
+
+                cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
+
             }
 
             //Iniciar la segunda fase del atque en la que se recompone del golpe.

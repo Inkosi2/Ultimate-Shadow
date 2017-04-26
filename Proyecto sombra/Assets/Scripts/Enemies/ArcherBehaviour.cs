@@ -146,16 +146,34 @@ public class ArcherBehaviour : MonoBehaviour {
     void Shoot()
     {
         targetX = distX / moduloDist;
+
         targetY = distY / moduloDist;
 
+
+
         GetComponent<SpriteRenderer>().color = Color.red;
+
         flecha = (GameObject)Instantiate(flechaPrefab);
+
         flecha.transform.position = transform.position;
+
         AttackInstanciated = true;
 
-        flecha.transform.rotation = Quaternion.Euler(180, 0, 0);
-        flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
-        flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX*10), System.Convert.ToSingle(-targetY*10));
+        flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
+
+        if (targetY < 0)
+        {
+            angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg + 180);
+        }
+
+        else
+        {
+            angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 180);
+        }
+
+        flecha.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
+
+        flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 10), System.Convert.ToSingle(-targetY * 10));
     }
 
     void OnTriggerEnter2D(Collider2D cono)

@@ -310,7 +310,7 @@ public class EaglosBehaving : MonoBehaviour
 
 
 
-        if (!AttackInstanciated)
+        if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
 
         {
 
@@ -318,77 +318,19 @@ public class EaglosBehaving : MonoBehaviour
 
             AttackInstanciated = true;
 
-            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX/3 ), System.Convert.ToSingle(transform.position.y - uniY/3));            
 
-            //angle = 405 - System.Convert.ToSingle(Math.Atan(uniY / uniX)) * (180 / System.Convert.ToSingle(Math.PI));
-            angle = Math.Sin(transform.position.y - player.transform.position.y) * Mathf.Rad2Deg;
+            if (uniY < 0)
+            {
+                angle = ((2 * Math.PI - Math.Acos(uniX)) *Mathf.Rad2Deg) + 90;
+            }
+            
+            else
+            {
+                angle = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 90);
+            }
 
             cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
-
-
-
-            /*
-
-            //Norte
-
-            if ((uniX < 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
-
-            {
-
-                cono.transform.rotation = Quaternion.Euler(0, 0, 360);
-
-            }
-
-
-
-            //Noroeste
-
-            if ((uniX < -0.2 && uniY < -0.2) || (uniX < -0.2 && uniY < -0.2))
-
-            {
-
-                cono.transform.rotation = Quaternion.Euler(0, 0, 315);
-
-            }
-
-
-
-            //Oeste
-
-            if ((uniX < -0.8 && uniY < 0.2) || (uniX < -0.8 && uniY > -0.2))
-
-            {
-
-                cono.transform.rotation = Quaternion.Euler(0, 0, 270);
-
-            }
-
-
-
-            //Sur
-
-            if ((uniX < 0.2 && uniY > 0.8) || (uniX > 0.2 && uniY > 0.8))
-
-            {
-
-                cono.transform.rotation = Quaternion.Euler(0, 0, 180);
-
-            }
-
-
-
-            //Este
-
-            if ((uniX > 0.8 && uniY < 0.2) || (uniX > 0.8 && uniY > -0.2))
-
-            {
-
-                cono.transform.rotation = Quaternion.Euler(0, 0, 90);
-
-            }
-
-            */
-
         }
 
 
@@ -399,7 +341,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
 
-        if (time >= 0.75 && time< 1.25)
+        if (time >= 0.75 && time< 1.75)
 
         {
 
@@ -417,7 +359,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Finalizar el ataque, reiniciando todos los valores.
 
-        if (time >= 1.25 )
+        if (time >= 1.75 )
 
         {
 
@@ -529,7 +471,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Para a Eaglos tras el dash completo.
 
-        if (time >= 1.5 && time < 2 && fase == 2)
+        if (time >= 1.5 && time < 2.5 && fase == 2)
 
         {
 
@@ -541,7 +483,7 @@ public class EaglosBehaving : MonoBehaviour
 
 
 
-        if (time >= 2.5 && time > 3 && fase == 3)
+        if (time >= 2.5 && time > 3.5 && fase == 3)
 
         {
 
@@ -555,7 +497,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Restablece los valores y finaliza la función tras una pausa para recuperarse del dash.
 
-        if (time >= 2 && fase == 2)
+        if (time >= 2.5 && fase == 2)
 
         {
 
@@ -577,7 +519,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Restablece los valores y finaliza la función tras una pausa para recuperarse del dash.
 
-        if (time >= 3 && fase == 3)
+        if (time >= 3.5 && fase == 3)
 
         {
 
@@ -609,7 +551,7 @@ public class EaglosBehaving : MonoBehaviour
 
     {
 
-
+        vulnerable = true;
 
         Attacking = true;
 
@@ -709,12 +651,20 @@ public class EaglosBehaving : MonoBehaviour
 
         AttackInstanciated = true;
 
+        flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
 
+        if (targetY < 0)
+        {
+            angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg + 180);
+        }
 
-        flecha.transform.rotation = Quaternion.Euler(180, 0, 0);
+        else
+        {
+            angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg +180);
+        }
 
-        flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
-
+        flecha.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
+        
         flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 10), System.Convert.ToSingle(-targetY * 10));
 
     }
