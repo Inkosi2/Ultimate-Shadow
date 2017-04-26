@@ -6,6 +6,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
 
 
 public class EaglosBehaving : MonoBehaviour
@@ -28,7 +29,9 @@ public class EaglosBehaving : MonoBehaviour
 
     public GameObject flecha, flechaPrefab;
 
-    public GameObject cono, conoInstanciado;
+    public GameObject cono, conoPrefab;
+
+    public GameObject areaDash, areaDashPrefab;
 
     public Camera miCamara;
 
@@ -54,7 +57,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Stats basicos:
 
-        fase = 1;
+        fase = 2;
 
         hp = 3;
 
@@ -75,7 +78,7 @@ public class EaglosBehaving : MonoBehaviour
 
 
 
-        //Fase 4:
+        //Fase 3:
 
         Xizquierda = -10;
 
@@ -103,12 +106,13 @@ public class EaglosBehaving : MonoBehaviour
 
     {
 
+        
         if (fase == 4)
 
         {
 
             Destroy(Eaglos);
-
+            SceneManager.LoadScene("Escena1");
         }
 
 
@@ -304,7 +308,7 @@ public class EaglosBehaving : MonoBehaviour
 
         {
 
-            cono = Instantiate(conoInstanciado);
+            cono = Instantiate(conoPrefab);
 
             AttackInstanciated = true;
 
@@ -389,7 +393,7 @@ public class EaglosBehaving : MonoBehaviour
 
             //Da a Eaglos velocidad de dash.
 
-            EaglosSpeed = 6;
+            EaglosSpeed = 10;
 
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
@@ -411,43 +415,30 @@ public class EaglosBehaving : MonoBehaviour
 
         //Segundo condicional, que determina la posición del jugador tras una pausa para cargar.
 
-        if (time >= 0.5 && time < 1.5)
+       
 
-        {
-            
-
-            GetComponent<SpriteRenderer>().color = Color.red;
-            cono.transform.position = transform.position;
-
-        }
-
-        if (!AttackInstanciated)
+        if (!AttackInstanciated && time >= 0.5 && time < 1.5)
         {
             targetX = uniX;
             targetY = uniY;
-            cono = Instantiate(conoInstanciado);
-
+            areaDash = Instantiate(areaDashPrefab);
+            areaDash.transform.position = transform.position;
             AttackInstanciated = true;
-
-            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x), System.Convert.ToSingle(transform.position.y));
-
-            if (uniY < 0)
-            {
-                angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg) + 90;
-            }
-
-            else
-            {
-                angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 90);
-            }
-
-            cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
 
             //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -targetX), System.Convert.ToSingle(EaglosSpeed * -targetY));
 
-        }       
+        }
+
+        if (time >= 0.5 && time < 1.5)
+
+        {
+
+            GetComponent<SpriteRenderer>().color = Color.red;
+            areaDash.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x), System.Convert.ToSingle(transform.position.y));
+
+        }
 
         //Para a Eaglos tras el dash completo.
 
@@ -459,6 +450,7 @@ public class EaglosBehaving : MonoBehaviour
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
+            Destroy(areaDash);
         }
 
 
@@ -476,7 +468,7 @@ public class EaglosBehaving : MonoBehaviour
 
             AttackInstanciated = false;
 
-            Destroy(cono);
+            
 
             time = 0;
 
@@ -508,6 +500,8 @@ public class EaglosBehaving : MonoBehaviour
         int Speed = 8;
 
         miCamara.orthographicSize = 9;
+
+        GetComponent<BoxCollider2D>().isTrigger = true;
 
         if (moduloDist0 > 0.1)
 

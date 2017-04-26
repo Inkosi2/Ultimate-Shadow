@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TP : MonoBehaviour {
+public class TPLobby : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +20,7 @@ public class TP : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Jugador")
         {
-            SceneManager.LoadScene("Mapa arco");
+            SceneManager.LoadScene("Escena1");
         }
     }
 }

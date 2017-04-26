@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public GameObject conoInstanciado;
     public double time;
-    public bool attacking, pressedE, previousPressedE;
+    public bool attacking, pressedE, previousPressedE, pressedG, previousPressedG, God;
     public int HP, auxHP;
 
     // Use this for initialization
@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             vel = velwalk;
+        }
+
+        if (HP <= 0)
+        {
+            SceneManager.LoadScene("Escena1");
         }
 
         //Para desplazarse por los ejes de la X e Y (incluído en diagonal)
@@ -129,11 +134,22 @@ public class PlayerController : MonoBehaviour
             attacking = false;
         }
         previousPressedE = pressedE;
+
+
+        pressedG = Input.GetKey(KeyCode.G);
+        time += Time.deltaTime;
+        if (Input.GetKey(KeyCode.G) && pressedG != previousPressedG)
+        {
+           
+            God = !God;
+        }
+        previousPressedG = pressedG;
     }
+
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "EnemyAttack")
+        if (collision.gameObject.tag == "EnemyAttack" && !God)
         {
             auxHP--;
         }
