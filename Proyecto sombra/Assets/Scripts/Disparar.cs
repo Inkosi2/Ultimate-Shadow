@@ -23,7 +23,7 @@ public class Disparar : MonoBehaviour
 
     void Fire()
     {
-        if (Time.time > nextFire && municion > 0)
+        if (Time.time > nextFire && municion > 0 && player.GetComponent<PlayerController>().HP > 1)
         {
             nextFire = Time.time + fireRateBullet;
             //var bullet = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);

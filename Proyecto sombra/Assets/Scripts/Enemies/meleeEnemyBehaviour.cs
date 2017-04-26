@@ -91,15 +91,6 @@ public class meleeEnemyBehaviour : MonoBehaviour {
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
-
-
-
-
-
-
-
-
-
     }
 
     //Función para que persiga al jugador.
@@ -134,20 +125,15 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
             //Iniciar la segunda fase del atque en la que lanza el golpe.
-            if (time >= 0.5 && time < 0.75)
+            if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
             {
-                //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.red;
-            if (!AttackInstanciated)
-            {
-
-                cono = Instantiate(conoInstanciado);
-                AttackInstanciated = true;
-                cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
-                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
-            }
-           
-        }
+                    //(Provisional) Marcar la fase de atacar. A la espera de sprite.
+                    GetComponent<SpriteRenderer>().color = Color.red;
+                    cono = Instantiate(conoInstanciado);
+                    AttackInstanciated = true;
+                    cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
+                    cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+             }
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
         if (time >= 0.75 && time < 1.25)
