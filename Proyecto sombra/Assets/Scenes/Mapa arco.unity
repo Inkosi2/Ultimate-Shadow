@@ -147,9 +147,30 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114773770863825006, guid: 423adcc44481b234c88a0c870a73c208,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
+    - target: {fileID: 114773770863825006, guid: 423adcc44481b234c88a0c870a73c208,
+        type: 2}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 133836777}
+    - target: {fileID: 114773770863825006, guid: 423adcc44481b234c88a0c870a73c208,
+        type: 2}
+      propertyPath: flechaPrefab
+      value: 
+      objectReference: {fileID: 1526400585071822, guid: c8b51717014513749b818dc937519ea7,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 423adcc44481b234c88a0c870a73c208, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &133836777 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1331496222043936, guid: 423adcc44481b234c88a0c870a73c208,
+    type: 2}
+  m_PrefabInternal: {fileID: 111366101}
 --- !u!1001 &174621597
 Prefab:
   m_ObjectHideFlags: 0
@@ -231,6 +252,11 @@ Prefab:
     - {fileID: 61713884384317672, guid: 46026e988ac2a424ea4caa8b37cdaf7c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 46026e988ac2a424ea4caa8b37cdaf7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &284141345 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1346364474188102, guid: 82f13268eaf64eb47ade0de29a16e76f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1657129598}
 --- !u!1001 &295834891
 Prefab:
   m_ObjectHideFlags: 0
@@ -862,6 +888,22 @@ Prefab:
       propertyPath: m_Name
       value: Enemy Melee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 1280125679}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0
@@ -1105,6 +1147,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1222009196 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1346364474188102, guid: 82f13268eaf64eb47ade0de29a16e76f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1934710122}
 --- !u!1 &1231430825 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1166361507345318, guid: fa421234d0e4c7f45aa77ed0f3b3e9d8,
@@ -1238,6 +1285,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 0.1}
   m_EdgeRadius: 0
+--- !u!1 &1280125679 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1346364474188102, guid: 82f13268eaf64eb47ade0de29a16e76f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1151319505}
 --- !u!1001 &1327317988
 Prefab:
   m_ObjectHideFlags: 0
@@ -1897,6 +1949,22 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 284141345}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0
@@ -2034,6 +2102,22 @@ Prefab:
       propertyPath: m_Name
       value: Enemy Melee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 1222009196}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0
