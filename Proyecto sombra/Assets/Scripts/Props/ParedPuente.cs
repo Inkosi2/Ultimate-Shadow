@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParedPuente : MonoBehaviour {
     public GameObject Diana;
-    public Collider2D collider;
+    public Collider2D coll;
 	// Use this for initialization
 	void Start () {
         
@@ -14,11 +14,11 @@ public class ParedPuente : MonoBehaviour {
 	void Update () {
 		if (Diana.GetComponent<Diana>().activated > 0)
         {
-            collider.isTrigger = true;
+            coll.isTrigger = true;
         }
         else
         {
-            collider.isTrigger = false;
+            coll.isTrigger = false;
         }
 	}
 }

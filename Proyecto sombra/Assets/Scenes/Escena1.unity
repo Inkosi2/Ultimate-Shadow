@@ -265,6 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740150551}
   - component: {fileID: 740150550}
+  - component: {fileID: 740150552}
   m_Layer: 0
   m_Name: TP-Arco
   m_TagString: TPArco
@@ -310,6 +311,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &740150552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 740150549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dffc4e699919d32439ca7a6c1d55d4b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &871735293
 GameObject:
   m_ObjectHideFlags: 0

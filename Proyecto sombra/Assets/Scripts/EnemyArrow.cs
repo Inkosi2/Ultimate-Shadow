@@ -27,4 +27,12 @@ public class EnemyArrow : MonoBehaviour {
             player.GetComponent<PlayerController>().HP--;
         }
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
