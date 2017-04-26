@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject conoInstanciado;
     public double time;
     public bool attacking, pressedE, previousPressedE;
-    public int HP, auxHP;
+    public int HP, auxHP, auxVida, municion;
 
     // Use this for initialization
     void Start()
@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
     {
         //Para correr
 
-        HP = auxHP + GetComponent<Disparar>().municion;
+        municion = GetComponent<Disparar>().municion;
+
+        HP = auxHP + municion;
             
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -129,6 +131,28 @@ public class PlayerController : MonoBehaviour
             attacking = false;
         }
         previousPressedE = pressedE;
+
+        //-----------------------------------------------
+        //-------------------- Color --------------------
+        //-----------------------------------------------
+
+        if (HP == 4)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        else if (HP == 3)
+        {
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
+        else if (HP == 2)
+        {
+            GetComponent<SpriteRenderer>().color = Color.magenta;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D collision)
