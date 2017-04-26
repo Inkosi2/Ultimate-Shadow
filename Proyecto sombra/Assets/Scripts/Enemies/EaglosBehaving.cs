@@ -14,7 +14,8 @@ public class EaglosBehaving : MonoBehaviour
     public GameObject Eaglos;
     public GameObject flecha, flechaPrefab;
     public GameObject cono, conoInstanciado;
-    public float angle;
+    public double angle;
+    bool vulnerable;
 
     //Variables para determinar el movimiento de Eaglos en la 4t fase:
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
@@ -48,6 +49,8 @@ public class EaglosBehaving : MonoBehaviour
         Yderecha = 4;
         Xdestino = Xizquierda;
         Ydestino = Yizquierda;
+
+        vulnerable = false;
     }
 
     // Update is called once per frame.
@@ -133,6 +136,7 @@ public class EaglosBehaving : MonoBehaviour
         time = 0;
         //Indicar que el ataque se acaba de iniciar.
         Attacking = true;
+            
         }     
 
         //Dejar quieto a Eaglos
@@ -142,40 +146,55 @@ public class EaglosBehaving : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.yellow;
         
         //Iniciar la segunda fase del atque en la que lanza el golpe.
-        if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
+        if (time >= 0.5 && time < 0.75 )
         {
             //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-            GetComponent<SpriteRenderer>().color = Color.red;
-            cono = Instantiate(conoInstanciado);
-            AttackInstanciated = true;            
-            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+            GetComponent<SpriteRenderer>().color = Color.red;          
 
+        }
+
+        if (!AttackInstanciated)
+        {
+            cono = Instantiate(conoInstanciado);
+            AttackInstanciated = true;
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+            angle = 405 - System.Convert.ToSingle(Math.Atan(uniY / uniX)) * (180 / System.Convert.ToSingle(Math.PI));
+            cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
+
+            /*
+            //Norte
             if ((uniX < 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 360);
             }
 
-            if ((uniX > 0.2 && uniY < -0.8) || (uniX > 0.2 && uniY < -0.8))
+            //Noroeste
+            if ((uniX < -0.2 && uniY < -0.2) || (uniX < -0.2 && uniY < -0.2))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 315);
             }
 
+            //Oeste
             if ((uniX < -0.8 && uniY < 0.2) || (uniX < -0.8 && uniY > -0.2))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 270);
             }
+
+            //Sur
             if ((uniX < 0.2 && uniY > 0.8) || (uniX > 0.2 && uniY > 0.8))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 180);
             }
+
+            //Este
             if ((uniX > 0.8 && uniY < 0.2) || (uniX > 0.8 && uniY > -0.2))
             {
                 cono.transform.rotation = Quaternion.Euler(0, 0, 90);
             }
-
+            */
         }
 
-        
+
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
         if (time >= 0.75 && time< 1.25)
@@ -183,6 +202,7 @@ public class EaglosBehaving : MonoBehaviour
             //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
             GetComponent<SpriteRenderer>().color = Color.green;
             Destroy(cono);
+            vulnerable = true;
         }
 
         //Finalizar el ataque, reiniciando todos los valores.
@@ -191,7 +211,8 @@ public class EaglosBehaving : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.white;
             Attacking = false;
             AttackInstanciated = false;
-            time = 0;                
+            time = 0;
+            vulnerable = false;
         }                         
     }
 
@@ -339,7 +360,7 @@ public class EaglosBehaving : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D cono)
     {        
-        if (cono.tag == "Attack" || cono.tag == "Arrow")
+        if ((cono.tag == "Attack" || cono.tag == "Arrow") & vulnerable)
         {
             hp--;
         }

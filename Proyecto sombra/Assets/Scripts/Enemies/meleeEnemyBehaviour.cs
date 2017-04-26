@@ -13,7 +13,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
     public bool Attacking;
     public double auxTime;
     public int hp;
-    public bool vulnerability, AttackInstanciated;
+    public bool vulnerable, AttackInstanciated;
     bool Chasing;
     public float angle;
     //auxiliares
@@ -30,6 +30,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
         Speed = 2;
         Attacking = false;        
         Chasing = false;
+        vulnerable = false;
         Xinicial=transform.position.x;
         Yinicial=transform.position.y;
         //Inicializar valores de regreso a su posición inicial.
@@ -125,23 +126,29 @@ public class meleeEnemyBehaviour : MonoBehaviour {
             GetComponent<SpriteRenderer>().color = Color.yellow;
 
             //Iniciar la segunda fase del atque en la que lanza el golpe.
-            if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
+            if (time >= 0.5 && time < 0.75)
             {
                     //(Provisional) Marcar la fase de atacar. A la espera de sprite.
                     GetComponent<SpriteRenderer>().color = Color.red;
-                    cono = Instantiate(conoInstanciado);
-                    AttackInstanciated = true;
-                    cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
-                    cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
+                    
              }
 
-        //Iniciar la segunda fase del atque en la que se recompone del golpe.
-        if (time >= 0.75 && time < 1.25)
+            if (!AttackInstanciated)
             {
-                //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
-                GetComponent<SpriteRenderer>().color = Color.green;
-                Destroy(cono);
+                cono = Instantiate(conoInstanciado);
+                AttackInstanciated = true;
+                cono.transform.rotation = Quaternion.Euler(0, 0, 360 - angle * 360);
+                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX), System.Convert.ToSingle(transform.position.y - uniY));
             }
+
+            //Iniciar la segunda fase del atque en la que se recompone del golpe.
+            if (time >= 0.75 && time < 1.25)
+                {
+                    //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
+                    GetComponent<SpriteRenderer>().color = Color.green;
+                    Destroy(cono);
+                    vulnerable = true;
+                }
 
             //Finalizar el ataque, reiniciando todos los valores.
             if (time >= 1.25)
@@ -149,13 +156,14 @@ public class meleeEnemyBehaviour : MonoBehaviour {
                 GetComponent<SpriteRenderer>().color = Color.white;
                 Attacking = false;
                 time = 0;
-                AttackInstanciated = false;   
+                AttackInstanciated = false;
+                vulnerable = false;
             }
         }
 
         void OnTriggerEnter2D(Collider2D cono)
     {
-        if (cono.tag == "Attack" || cono.tag == "Arrow")
+        if ((cono.tag == "Attack" || cono.tag == "Arrow") && vulnerable)
         {
             hp--;
         }

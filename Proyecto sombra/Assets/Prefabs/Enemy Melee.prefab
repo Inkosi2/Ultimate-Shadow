@@ -79,7 +79,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7, y: 0.68}
+    oldSize: {x: 0.72, y: 0.76}
     newSize: {x: 0.7, y: 0.68}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -112,16 +112,18 @@ MonoBehaviour:
   uniY0: 0
   Xinicial: 0
   Yinicial: 0
-  Attacking: 0
-  auxAttack: 0
-  hp: 0
-  attackDone: 0
-  aggro: 0
-  vulnerability: 0
-  aux: 0
   time: 0
+  Attacking: 0
+  auxTime: 0
+  hp: 0
+  vulnerable: 0
+  AttackInstanciated: 0
+  angle: 0
+  aux: 0
   player: {fileID: 0}
   Enemy: {fileID: 0}
+  cono: {fileID: 0}
+  conoInstanciado: {fileID: 0}
 --- !u!212 &212697503116128958
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -154,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 1526111953
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3bb245873de793c4b86afce58aca7807, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d0bab26c806c53f42acab13581029619, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
