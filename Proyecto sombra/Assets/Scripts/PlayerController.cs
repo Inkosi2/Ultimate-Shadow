@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -135,6 +137,11 @@ public class PlayerController : MonoBehaviour
         {
             auxHP--;
         }
+
+        /*if (collision.gameObject.tag == "TPArco")
+        {
+            SceneManager.LoadScene("Mapa arco", LoadSceneMode.Additive);
+        }*/
     }
 
 }
