@@ -7,7 +7,7 @@ public class EnemyArrow : MonoBehaviour {
 
     public GameObject player;
     public double distX, distY, moduloDist, uniX, uniY;
-    int Speed;
+    
 
     // Use this for initialization
     void Start () {
@@ -25,6 +25,14 @@ public class EnemyArrow : MonoBehaviour {
         if (collision.gameObject.tag == "Jugador")
         {
             player.GetComponent<PlayerController>().HP--;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Wall")
+        {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public GameObject conoInstanciado;
     public double time;
     public bool attacking, pressedE, previousPressedE;
-    public int HP;
+    public int HP, auxHP;
 
     // Use this for initialization
     void Start()
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
 
         time = 0;
 
+        auxHP = 1;
     }
 
     // Update is called once per frame
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         //Para correr
 
-        HP = 1 + GetComponent<Disparar>().municion;
+        HP = auxHP + GetComponent<Disparar>().municion;
             
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -126,6 +129,19 @@ public class PlayerController : MonoBehaviour
             attacking = false;
         }
         previousPressedE = pressedE;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyAttack")
+        {
+            auxHP--;
+        }
+
+        /*if (collision.gameObject.tag == "TPArco")
+        {
+            SceneManager.LoadScene("Mapa arco", LoadSceneMode.Additive);
+        }*/
     }
 
 }
