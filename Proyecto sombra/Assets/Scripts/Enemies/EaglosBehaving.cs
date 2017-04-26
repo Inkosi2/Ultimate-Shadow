@@ -57,7 +57,7 @@ public class EaglosBehaving : MonoBehaviour
 
         //Stats basicos:
 
-        fase = 2;
+        fase = 1;
 
         hp = 3;
 
@@ -112,7 +112,7 @@ public class EaglosBehaving : MonoBehaviour
         {
 
             Destroy(Eaglos);
-            SceneManager.LoadScene("Escena1");
+            SceneManager.LoadScene("Victoria");
         }
 
 

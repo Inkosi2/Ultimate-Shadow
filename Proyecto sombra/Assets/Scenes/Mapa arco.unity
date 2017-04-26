@@ -276,7 +276,7 @@ Prefab:
     - target: {fileID: 114773770863825006, guid: 423adcc44481b234c88a0c870a73c208,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 423adcc44481b234c88a0c870a73c208, type: 2}
@@ -756,6 +756,17 @@ Prefab:
       propertyPath: m_Name
       value: Enemy Melee (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0
@@ -1346,6 +1357,17 @@ Prefab:
       propertyPath: m_Name
       value: Enemy Melee (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0
@@ -1869,6 +1891,17 @@ Prefab:
       propertyPath: m_Name
       value: Enemy Melee (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1628135566}
+    - target: {fileID: 114181775120257604, guid: 82f13268eaf64eb47ade0de29a16e76f,
+        type: 2}
+      propertyPath: conoInstanciado
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 82f13268eaf64eb47ade0de29a16e76f, type: 2}
   m_IsPrefabParent: 0

@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
         if (HP <= 0)
         {
-            SceneManager.LoadScene("Escena1");
+            SceneManager.LoadScene("Muerte");
         }
 
         //Para desplazarse por los ejes de la X e Y (incluído en diagonal)

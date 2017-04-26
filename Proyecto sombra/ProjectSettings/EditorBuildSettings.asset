@@ -10,7 +10,13 @@ EditorBuildSettings:
     guid: 895cdc27cdf846e4fb3d701e35e0c677
   - enabled: 1
     path: Assets/Scenes/Eaglos.unity
-    guid: 00000000000000000000000000000000
+    guid: a5d9bb4e06857724a8a35479f70cfc47
   - enabled: 1
     path: Assets/Scenes/Mapa arco.unity
+    guid: 32a4ad3c8074e8f4d95764b68f09b5f4
+  - enabled: 1
+    path: Assets/Scenes/Muerte.unity
+    guid: 431f95ba01fc98743bdee889b2010260
+  - enabled: 1
+    path: Assets/Scenes/Victoria.unity
     guid: 00000000000000000000000000000000
