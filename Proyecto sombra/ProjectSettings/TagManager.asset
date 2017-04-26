@@ -17,6 +17,8 @@ TagManager:
   - Platform
   - Borde
   - ParedPuente
+  - TPArco
+  - MuroPlataforma
   layers:
   - Default
   - TransparentFX
