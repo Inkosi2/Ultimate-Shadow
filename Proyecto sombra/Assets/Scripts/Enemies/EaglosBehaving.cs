@@ -14,11 +14,11 @@ public class EaglosBehaving : MonoBehaviour
 
     public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
 
-    public bool Attacking, Dashing, AttackInstanciated;
+    public bool Attacking, Dashing, AttackInstanciated, DashingTwice;
 
     public int fase;
 
-    double targetX, targetY; 
+    public double targetX, targetY; 
 
     public float time; 
 
@@ -40,13 +40,7 @@ public class EaglosBehaving : MonoBehaviour
 
     public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
 
-    public int hp;
-
-
-
-    //auxiliares.
-
-    public double auxDashX, auxDashY, auxDashX2, auxDashY2;
+    public int hp;  
 
 
 
@@ -72,15 +66,8 @@ public class EaglosBehaving : MonoBehaviour
 
         Dashing = false;
 
-        auxDashX = 0;
-
-        auxDashY = 0;
-
-        auxDashX2 = 0;
-
-        auxDashY2 = 0;
-
-                
+        targetX = 0;
+        targetY = 0;        
 
         EaglosSpeed = 3;
 
@@ -114,7 +101,7 @@ public class EaglosBehaving : MonoBehaviour
 
     {
 
-        if (fase == 5)
+        if (fase == 4)
 
         {
 
@@ -178,7 +165,7 @@ public class EaglosBehaving : MonoBehaviour
 
 
 
-        if(fase!=4)
+        if(fase!=3)
 
         {
 
@@ -222,7 +209,7 @@ public class EaglosBehaving : MonoBehaviour
 
         
 
-        if (fase == 4)
+        if (fase == 3)
 
         {
 
@@ -421,57 +408,47 @@ public class EaglosBehaving : MonoBehaviour
 
         //Segundo condicional, que determina la posición del jugador tras una pausa para cargar.
 
-        if (time >= 0.5 && time < 1.5 && auxDashX == 0 && auxDashY == 0 )
+        if (time >= 0.5 && time < 1.5)
 
         {
+            
 
             GetComponent<SpriteRenderer>().color = Color.red;
-
-            auxDashX = uniX;
-
-            auxDashY = uniY;
+            cono.transform.position = transform.position;
 
         }
 
-
-
-        //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
-
-        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -auxDashX), System.Convert.ToSingle(EaglosSpeed * -auxDashY));
-
-
-
-        //Segundo condicional, que determina la posición del jugador para el segundo dash.
-
-        if (time >= 1.5 && time < 2.5 && auxDashX2 == 0 && auxDashY2 == 0 && fase == 3) 
-
+        if (!AttackInstanciated)
         {
+            targetX = uniX;
+            targetY = uniY;
+            cono = Instantiate(conoInstanciado);
 
+            AttackInstanciated = true;
 
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x), System.Convert.ToSingle(transform.position.y));
 
-            GetComponent<SpriteRenderer>().color = Color.red;
+            if (uniY < 0)
+            {
+                angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg) + 90;
+            }
 
-            auxDashX = uniX;
+            else
+            {
+                angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 90);
+            }
 
-            auxDashY = uniY;
+            cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
 
-            auxDashX2 = uniX;
+            //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
 
-            auxDashY2 = uniY;
+            GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -targetX), System.Convert.ToSingle(EaglosSpeed * -targetY));
 
-        }
-
-
-
-        //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
-
-        GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(EaglosSpeed * -auxDashX), System.Convert.ToSingle(EaglosSpeed * -auxDashY));
-
-
+        }       
 
         //Para a Eaglos tras el dash completo.
 
-        if (time >= 1.5 && time < 2.5 && fase == 2)
+        if (time >= 1.5 && time < 2.5 )
 
         {
 
@@ -482,22 +459,9 @@ public class EaglosBehaving : MonoBehaviour
         }
 
 
-
-        if (time >= 2.5 && time > 3.5 && fase == 3)
-
-        {
-
-            GetComponent<SpriteRenderer>().color = Color.green;
-
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-
-        }
-
-
-
         //Restablece los valores y finaliza la función tras una pausa para recuperarse del dash.
 
-        if (time >= 2.5 && fase == 2)
+        if (time >= 2.5)
 
         {
 
@@ -505,41 +469,24 @@ public class EaglosBehaving : MonoBehaviour
 
             Dashing = false;
 
-            time = 0;
+            DashingTwice = false;
 
-            EaglosSpeed = 3;
+            AttackInstanciated = false;
 
-            auxDashX = 0;
-
-            auxDashY = 0;
-
-        }
-
-
-
-        //Restablece los valores y finaliza la función tras una pausa para recuperarse del dash.
-
-        if (time >= 3.5 && fase == 3)
-
-        {
-
-            GetComponent<SpriteRenderer>().color = Color.white;
-
-            Dashing = false;
+            Destroy(cono);
 
             time = 0;
 
             EaglosSpeed = 3;
 
-            auxDashX = 0;
+            targetX = 0;
 
-            auxDashY = 0;
-
-            auxDashX2 = 0;
-
-            auxDashY2 = 0;
+            targetY = 0;
 
         }
+
+
+      
 
     }
 

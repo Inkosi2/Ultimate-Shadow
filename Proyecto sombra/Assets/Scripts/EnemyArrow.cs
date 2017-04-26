@@ -20,9 +20,10 @@ public class EnemyArrow : MonoBehaviour {
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D colli)
     {
-        if (collision.gameObject.tag == "Jugador")
+        Debug.Log(colli.gameObject.tag);
+        if (colli.gameObject.tag == "Jugador")
         {
             player.GetComponent<PlayerController>().HP--;
         }
@@ -30,6 +31,8 @@ public class EnemyArrow : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        Debug.Log(coll.gameObject.tag);
+
         if (coll.gameObject.tag == "Wall")
         {
             Destroy(this.gameObject);

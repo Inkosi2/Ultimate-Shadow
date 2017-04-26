@@ -11,7 +11,7 @@ public class MuroPlataforma : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        gameObject.tag = "Borde";
         
     }
     void OnTriggerEnter2D (Collider2D coll)
@@ -21,10 +21,16 @@ public class MuroPlataforma : MonoBehaviour {
             coll.isTrigger = true;
             muro.isTrigger = true;
         }
-        else
+        /*else
         {
             coll.isTrigger = false;
             muro.isTrigger = false;
-        }
+        }*/
+    }
+
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        coll.isTrigger = false;
+        muro.isTrigger = false;
     }
 }
