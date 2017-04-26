@@ -105,6 +105,7 @@ MonoBehaviour:
   moduloDist: 0
   uniX: 0
   uniY: 0
+  time: 0
 --- !u!212 &212672980906591646
 SpriteRenderer:
   m_ObjectHideFlags: 1

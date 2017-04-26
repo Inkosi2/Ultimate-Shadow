@@ -179,7 +179,7 @@ public class ArcherBehaviour : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D cono)
     {
         
-        if (cono.tag == "Attack" || cono.tag == "Arrow")
+        if (cono.tag == "Attack")
         {
             hp--;
         }

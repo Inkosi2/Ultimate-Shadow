@@ -14,7 +14,7 @@ public class EaglosBehaving : MonoBehaviour
 
     public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
 
-    public bool Attacking, Dashing, AttackInstanciated, DashingTwice;
+    public bool Attacking, Dashing, Flying, AttackInstanciated, DashingTwice;
 
     public int fase;
 
@@ -29,6 +29,8 @@ public class EaglosBehaving : MonoBehaviour
     public GameObject flecha, flechaPrefab;
 
     public GameObject cono, conoInstanciado;
+
+    public Camera miCamara;
 
     public double angle;
 
@@ -79,9 +81,9 @@ public class EaglosBehaving : MonoBehaviour
 
         Xderecha = 10;
 
-        Yizquierda = 4;
+        Yizquierda = 7;
 
-        Yderecha = 4;
+        Yderecha = 7;
 
         Xdestino = Xizquierda;
 
@@ -263,7 +265,8 @@ public class EaglosBehaving : MonoBehaviour
 
         Attacking = true;
 
-            
+            targetX = uniX;
+            targetY = uniY;    
 
         }     
 
@@ -305,16 +308,16 @@ public class EaglosBehaving : MonoBehaviour
 
             AttackInstanciated = true;
 
-            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX/3 ), System.Convert.ToSingle(transform.position.y - uniY/3));            
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - targetX/3 ), System.Convert.ToSingle(transform.position.y - targetY/3));            
 
-            if (uniY < 0)
+            if (targetY < 0)
             {
-                angle = ((2 * Math.PI - Math.Acos(uniX)) *Mathf.Rad2Deg) + 90;
+                angle = ((2 * Math.PI - Math.Acos(targetX)) *Mathf.Rad2Deg) + 90;
             }
             
             else
             {
-                angle = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 90);
+                angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 90);
             }
 
             cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
@@ -500,11 +503,11 @@ public class EaglosBehaving : MonoBehaviour
 
         vulnerable = true;
 
-        Attacking = true;
+        Flying = true;
 
         int Speed = 8;
 
-
+        miCamara.orthographicSize = 9;
 
         if (moduloDist0 > 0.1)
 

@@ -6,18 +6,23 @@ using UnityEngine;
 public class EnemyArrow : MonoBehaviour {
 
     public GameObject player;
-    public double distX, distY, moduloDist, uniX, uniY;
+    public double distX, distY, moduloDist, uniX, uniY, time;
     
 
     // Use this for initialization
     void Start () {
-        
+        time = 0;
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-
+        time += Time.deltaTime;
+        if (time > 5)
+        {
+            Destroy(this.gameObject);
+            time = 0;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D colli)

@@ -20,7 +20,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
     //regresar a posición inicial
 
-    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial, time;
+    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xinicial, Yinicial, time, targetX, targetY;
 
     public bool Attacking;
 
@@ -236,6 +236,9 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
                 Attacking = true;
 
+                targetX = uniX;
+                targetY = uniY;
+
             }
 
 
@@ -276,16 +279,16 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
                 AttackInstanciated = true;
 
-                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
+                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - targetX / 3), System.Convert.ToSingle(transform.position.y - targetY / 3));
 
-                if (uniY < 0)
+                if (targetY < 0)
                 {
-                    angle = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg) + 90;
+                    angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg) + 90;
                 }
 
                 else
                 {
-                    angle = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 90);
+                    angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 90);
                 }
 
                 cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
