@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject LightBall1, LightBall2, LightBall3, LightBall4;
     public double time;
     public bool attacking, pressedE, previousPressedE, pressedG, previousPressedG, God;
-    public int HP, auxHP, municion;
+    public int HP, maxHP, municion;
 
     // Use this for initialization
     void Start()
@@ -22,11 +22,18 @@ public class PlayerController : MonoBehaviour
         vel = velwalk;
         time = 0;
         HP = 4;
+        maxHP = 4;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
+        if (HP > maxHP)
+        {
+            HP = maxHP;
+        }
         //Para correr
         municion = GetComponent<Disparar>().municion;        
 
@@ -190,6 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyAttack" && !God)
         {
+            maxHP--;
             HP--;
         }
     }
