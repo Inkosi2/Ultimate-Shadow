@@ -110,7 +110,7 @@ public class PlatformRoute : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider2D coll)
+    void OnTriggerStay2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "InteriorPlataforma")
         {
