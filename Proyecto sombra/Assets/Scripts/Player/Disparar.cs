@@ -23,7 +23,7 @@ public class Disparar : MonoBehaviour
 
     void Fire()
     {
-        if (Time.time > nextFire && municion > 0 && player.GetComponent<PlayerController>().HP > 1)
+        if (Time.time > nextFire && municion > 0)
         {
             nextFire = Time.time + fireRateBullet;
             //var bullet = (GameObject)Instantiate(flecha, player.transform.position, flecha.transform.rotation);
@@ -44,6 +44,10 @@ public class Disparar : MonoBehaviour
                 lastShot = 3;
             }
             municion--;
+            if (player.GetComponent<PlayerController>().HP > 1)
+            {
+                player.GetComponent<PlayerController>().HP--;
+            }
         }
     }
 
@@ -65,18 +69,21 @@ public class Disparar : MonoBehaviour
                 Destroy(f1);
                 municion++;
                 lastShot--;
+                player.GetComponent<PlayerController>().HP++;
             }
             else if (lastShot == 2 && municion == 1 && Pressed != previousPressed)
             {
                 Destroy(f2);
                 municion++;
                 lastShot--;
+                player.GetComponent<PlayerController>().HP++;
             }
             else if (lastShot == 3 && municion == 0 && Pressed != previousPressed)
             {
                 Destroy(f3);
                 municion++;
                 lastShot--;
+                player.GetComponent<PlayerController>().HP++;
             }
         }
         previousPressed = Pressed;
