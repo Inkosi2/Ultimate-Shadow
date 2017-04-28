@@ -29,7 +29,7 @@ public class ArcherBehaviour : MonoBehaviour {
         Speed = 4;
         Attacking = false;
         time = 0;
-        hp = 3;
+        hp = 1;
         Xinicial = transform.position.x;
         Yinicial = transform.position.y;
 	}

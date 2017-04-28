@@ -72,7 +72,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
         moduloDist0 = 1;
 
-        hp = 3;
+        hp = 1;
 
     }
 

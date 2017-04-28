@@ -1,51 +1,28 @@
 ﻿using System;
-
 using System.Collections;
-
 using System.Collections.Generic;
-
 using UnityEngine;
-
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class EaglosBehaving : MonoBehaviour
 
 {
-
-    public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY;
-
-    public bool Attacking, Dashing, Flying, AttackInstanciated, DashingTwice;
-
-    public int fase;
-
+    public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY; //Detectar al jugador.
+    public bool Attacking, Dashing, Flying, AttackInstanciated; //Funciones de ataque.
+    public int fase, HP;
     public double targetX, targetY; 
-
-    public float time; 
-
-    public GameObject player;
-
-    public GameObject Eaglos;
-
-    public GameObject flecha, flechaPrefab;
-
-    public GameObject cono, conoPrefab;
-
-    public GameObject areaDash, areaDashPrefab;
-
-    public Camera miCamara;
-
+    public float time;     
     public double angle;
-
     bool vulnerable;
+    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;  //Variables para determinar el movimiento de Eaglos en la 4t fase.
 
-
-
-    //Variables para determinar el movimiento de Eaglos en la 4t fase:
-
-    public double distX0, distY0, moduloDist0, uniX0, uniY0, Xdestino, Ydestino, Xizquierda, Yizquierda, Xderecha, Yderecha;
-
-    public int hp;  
+    //Elementos externos:
+    public GameObject player, Eaglos;
+    public GameObject cono, conoPrefab, flecha, flechaPrefab, areaDash, areaDashPrefab;
+    public Camera miCamara;
+    public Slider HealthBar;
 
 
 
@@ -53,92 +30,52 @@ public class EaglosBehaving : MonoBehaviour
 
     void Start() {
 
-
-
         //Stats basicos:
-
         fase = 1;
-
-        hp = 3;
-
-
+        HP = 3;
+        vulnerable = false;
 
         //Attacking:
-
         Attacking = false;
 
         //Dash:
-
         Dashing = false;
-
         targetX = 0;
-        targetY = 0;        
-
+        targetY = 0; 
         EaglosSpeed = 3;
 
-
-
         //Fase 3:
-
         Xizquierda = -10;
-
         Xderecha = 10;
-
         Yizquierda = 7;
-
         Yderecha = 7;
-
         Xdestino = Xizquierda;
-
-        Ydestino = Yizquierda;
-
-
-
-        vulnerable = false;
-
+        Ydestino = Yizquierda;        
     }
 
-
-
     // Update is called once per frame.
-
     void Update()
-
     {
+        //Contador de tiempo
+        time += Time.deltaTime;
 
-        
+        //Vida de Eaglos:
         if (fase == 4)
-
         {
-
             Destroy(Eaglos);
             SceneManager.LoadScene("Victoria");
         }
 
-
-
-        if(hp <= 0)
-
+        if(HP <= 0)
         {
-
             fase++;
+            HP = 3;
+        }        
 
-            hp = 3;
-
-        }
-
-        
-
-        //Contador de tiempo
-
-        time += Time.deltaTime;   
-
-
+           
 
         //Movimiento de Eaglos: Obtener vector hacia el jugador
-
         distX = transform.position.x - player.transform.position.x;
-
         distY = transform.position.y - player.transform.position.y;
 
 
@@ -464,7 +401,7 @@ public class EaglosBehaving : MonoBehaviour
 
             Dashing = false;
 
-            DashingTwice = false;
+           
 
             AttackInstanciated = false;
 
@@ -607,26 +544,16 @@ public class EaglosBehaving : MonoBehaviour
             angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg +180);
         }
 
-        flecha.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
-        
+        flecha.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));        
         flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 10), System.Convert.ToSingle(-targetY * 10));
-
     }
-
-
 
     void OnTriggerEnter2D(Collider2D cono)
-
     {        
-
         if ((cono.tag == "Attack" || cono.tag == "Arrow") & vulnerable)
-
         {
-
-            hp--;
-
+            HP--;
+            HealthBar.value--;
         }
-
     }
-
 }
