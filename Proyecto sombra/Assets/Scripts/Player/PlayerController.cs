@@ -157,39 +157,39 @@ public class PlayerController : MonoBehaviour
 
         if (HP <= 3)
         {
-            LightBall4.GetComponent<CanvasRenderer>().SetColor(Color.black);    
+            LightBall4.SetActive(false);
         }
         else
         {
-            LightBall4.GetComponent<CanvasRenderer>().SetColor(Color.white);
+            LightBall4.SetActive(true);
         }
 
         if (HP <= 2)
         {
-            LightBall3.GetComponent<CanvasRenderer>().SetColor(Color.black);
+            LightBall3.SetActive(false);
         }
         else
         {
-            LightBall3.GetComponent<CanvasRenderer>().SetColor(Color.white);
+            LightBall3.SetActive(true);
         }
 
         if (HP <= 1)
         {
-            LightBall2.GetComponent<CanvasRenderer>().SetColor(Color.black);
+            LightBall2.SetActive(false);
         }
         else
         {
-            LightBall2.GetComponent<CanvasRenderer>().SetColor(Color.white);
+            LightBall2.SetActive(true);
         }
 
         if (HP <= 0)
         {
-            LightBall1.GetComponent<CanvasRenderer>().SetColor(Color.black);
+            LightBall1.SetActive(false);
             SceneManager.LoadScene("Muerte");
         }
         else
         {
-            LightBall1.GetComponent<CanvasRenderer>().SetColor(Color.white);
+            LightBall1.SetActive(true);
         }
     }
 

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Eaglos 2.0.unity
+- path: Assets/Scenes/Eaglos.unity
   isLoaded: 1
   isActive: 1
