@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 239641363}
   - component: {fileID: 239641365}
   - component: {fileID: 239641364}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Column 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,8 +432,8 @@ GameObject:
   - component: {fileID: 339626729}
   - component: {fileID: 339626731}
   - component: {fileID: 339626730}
-  m_Layer: 8
-  m_Name: Column 5
+  m_Layer: 10
+  m_Name: Column 5 (Broken)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,8 +645,8 @@ GameObject:
   - component: {fileID: 541563851}
   - component: {fileID: 541563853}
   - component: {fileID: 541563852}
-  m_Layer: 8
-  m_Name: Column 2
+  m_Layer: 10
+  m_Name: Column 2 (Broken)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 880809048}
   - component: {fileID: 880809050}
   - component: {fileID: 880809049}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Column 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1099,7 +1099,7 @@ GameObject:
   - component: {fileID: 1179184161}
   - component: {fileID: 1179184163}
   - component: {fileID: 1179184162}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Column 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1258,7 +1258,7 @@ GameObject:
   - component: {fileID: 1224755179}
   - component: {fileID: 1224755181}
   - component: {fileID: 1224755180}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Column 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,7 +1768,7 @@ GameObject:
   - component: {fileID: 1604664143}
   - component: {fileID: 1604664145}
   - component: {fileID: 1604664144}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Column 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1873,8 +1873,8 @@ GameObject:
   - component: {fileID: 1806941762}
   - component: {fileID: 1806941764}
   - component: {fileID: 1806941763}
-  m_Layer: 8
-  m_Name: Column 3
+  m_Layer: 9
+  m_Name: 'Column 3 '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
