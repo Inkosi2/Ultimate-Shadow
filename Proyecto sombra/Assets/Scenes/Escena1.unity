@@ -828,6 +828,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1755580028996118, guid: d00148f81ec044d4c855da16032c9f37,
     type: 2}
   m_PrefabInternal: {fileID: 1316791398}
+--- !u!114 &1162310111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1162310104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2725e80df750ebc4cb25da9e95d5d317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 1063822424571884, guid: f612f6a9457b1334b9fa88d875774c4d, type: 2}
 --- !u!1001 &1316791398
 Prefab:
   m_ObjectHideFlags: 0
@@ -905,6 +917,16 @@ Prefab:
       propertyPath: LightBall4
       value: 
       objectReference: {fileID: 1068588413}
+    - target: {fileID: 114097120911868614, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114248262587861650, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
   m_IsPrefabParent: 0

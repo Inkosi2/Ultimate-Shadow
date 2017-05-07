@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;ç
+using UnityEngine;
     using System;
 
 public class PlayerBehaviour : MonoBehaviour {
 
     bool attacking; // Indica si el jugador se encuentra atacando o no
-    int speed; // Velocidad de movimento del jugador
+    int speed = 4; // Velocidad de movimento del jugador
     int ammo; // Cantidad de acciones que puede usar un jugador (flechas, arcos o activar objetos)
     double arrowRotation;
     int playerMode; // Equipo del jugador en ese momento    
