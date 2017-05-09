@@ -666,7 +666,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1132791925}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b722676f19e9bf949a3ad33be8354698, type: 3}
@@ -822,7 +822,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1132791925}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!1 &1162310104 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1755580028996118, guid: d00148f81ec044d4c855da16032c9f37,
@@ -840,6 +840,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrow: {fileID: 1063822424571884, guid: f612f6a9457b1334b9fa88d875774c4d, type: 2}
+  cam: {fileID: 1132791925}
+  distX: 0
+  distY: 0
+  mouseX: 0
+  mouseY: 0
 --- !u!1001 &1316791398
 Prefab:
   m_ObjectHideFlags: 0

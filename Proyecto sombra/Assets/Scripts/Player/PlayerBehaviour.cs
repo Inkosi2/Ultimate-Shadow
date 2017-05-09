@@ -20,9 +20,14 @@ public class PlayerBehaviour : MonoBehaviour {
     GameObject element2; // Elementos instanciadas
     GameObject element3; //
 
-    double distX, distY; // Vector entre el jugador y el cursor del ratón
+    public GameObject cam;
+
+    public double distX, distY; // Vector entre el jugador y el cursor del ratón
     double uniX, uniY; // Vector unitario entre el jugador y el cursor del ratón
     double moduloDist;
+
+    public double mouseX;
+    public double mouseY;
 
     // Use this for initialization
     void Start () {
@@ -96,17 +101,27 @@ public class PlayerBehaviour : MonoBehaviour {
             // --------------------------------------------------------
             // ----------------------    Arco    ----------------------
             // --------------------------------------------------------
-            
-            if(Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 3)
+
+
+            // ------ Test zone
+
+            // mouseX = Input.mousePosition.x;
+            // mouseY = Input.mousePosition.y;
+
+            mouseX =  Input.mousePosition.x - Screen.width / 2;
+            mouseY = Input.mousePosition.y - Screen.width / 2;
+
+            distX = transform.position.x - mouseX;
+            distY = transform.position.y - mouseY;
+
+
+            moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
+
+            uniX = distX / moduloDist;
+            uniY = distY / moduloDist;
+
+            if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 3)
             {
-                distX = Mathf.Abs(transform.position.x - Input.mousePosition.x);
-                distY = Mathf.Abs(transform.position.y - Input.mousePosition.y);
-
-                moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
-
-                uniX = distX / moduloDist;
-                uniY = distY / moduloDist;
-
                 if (uniY < 0)
                 {
                     arrowRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
@@ -119,7 +134,7 @@ public class PlayerBehaviour : MonoBehaviour {
                 
                 element1 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
 
-                element1.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(uniX), System.Convert.ToSingle(uniY));
+                element1.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX), System.Convert.ToSingle(-uniY));
             }
 
 
