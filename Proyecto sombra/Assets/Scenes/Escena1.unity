@@ -845,6 +845,8 @@ MonoBehaviour:
   distY: 0
   mouseX: 0
   mouseY: 0
+  playerX: 0
+  playerY: 0
 --- !u!1001 &1316791398
 Prefab:
   m_ObjectHideFlags: 0

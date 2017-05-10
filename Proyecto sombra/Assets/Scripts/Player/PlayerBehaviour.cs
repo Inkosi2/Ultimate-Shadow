@@ -29,6 +29,9 @@ public class PlayerBehaviour : MonoBehaviour {
     public double mouseX;
     public double mouseY;
 
+    public double playerX;
+    public double playerY;
+
     // Use this for initialization
     void Start () {
         playerMode = 1;
@@ -109,7 +112,10 @@ public class PlayerBehaviour : MonoBehaviour {
             // mouseY = Input.mousePosition.y;
 
             mouseX =  Input.mousePosition.x - Screen.width / 2;
-            mouseY = Input.mousePosition.y - Screen.width / 2;
+            mouseY = Input.mousePosition.y - Screen.height / 2;
+
+            playerX = transform.position.x;
+            playerY = transform.position.y;
 
             distX = transform.position.x - mouseX;
             distY = transform.position.y - mouseY;
@@ -134,9 +140,48 @@ public class PlayerBehaviour : MonoBehaviour {
                 
                 element1 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
 
-                element1.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX), System.Convert.ToSingle(-uniY));
+                element1.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+
+                ammo--;
             }
 
+            else if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 2)
+            {
+                if (uniY < 0)
+                {
+                    arrowRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
+                }
+
+                else
+                {
+                    arrowRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
+                }
+
+                element2 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+
+                element2.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+
+                ammo--;
+            }
+
+            else if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 1)
+            {
+                if (uniY < 0)
+                {
+                    arrowRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
+                }
+
+                else
+                {
+                    arrowRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
+                }
+
+                element3 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+
+                element3.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+
+                ammo--;
+            }
 
         }
     }
