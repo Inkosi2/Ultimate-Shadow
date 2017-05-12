@@ -7,7 +7,7 @@ public class PlayerBehaviour : MonoBehaviour {
 
     bool attacking; // Indica si el jugador se encuentra atacando o no
     int speed = 4; // Velocidad de movimento del jugador
-    int ammo; // Cantidad de acciones que puede usar un jugador (flechas, arcos o activar objetos)
+    public int ammo; // Cantidad de acciones que puede usar un jugador (flechas, arcos o activar objetos)
     double arrowRotation;
     int playerMode; // Equipo del jugador en ese momento    
         // 1 = arco
@@ -32,6 +32,8 @@ public class PlayerBehaviour : MonoBehaviour {
     public double playerX;
     public double playerY;
 
+    bool qPressed, pQPressed = false;
+
     // Use this for initialization
     void Start () {
         playerMode = 1;
@@ -40,6 +42,8 @@ public class PlayerBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        qPressed = Input.GetKey(KeyCode.Q);
+
         if (!attacking)
         {
             //----------------------------------------------------------------------------
@@ -183,6 +187,27 @@ public class PlayerBehaviour : MonoBehaviour {
                 ammo--;
             }
 
+            //// ---------------------------- ELIMINAR FLECHAS ----------------------------
+            if (qPressed && qPressed != pQPressed)
+            {
+                if (ammo == 0)
+                {
+                    Destroy(element1);
+                    ammo++;
+                }
+                else if (ammo == 1)
+                {
+                    Destroy(element2);
+                    ammo++;
+                }
+                else if (ammo == 2)
+                {
+                    Destroy(element3);
+                    ammo++;
+                }
+            }
+
         }
+        pQPressed = qPressed;
     }
 }
