@@ -32,7 +32,7 @@ public class PlayerBehaviour : MonoBehaviour {
     public double playerX;
     public double playerY;
 
-    bool qPressed, pQPressed = false;
+    bool qPressed = false, pQPressed = false;
 
     // Use this for initialization
     void Start () {
