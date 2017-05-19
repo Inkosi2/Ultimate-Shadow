@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+
 
 public class SombraBehaviour : MonoBehaviour {
 
@@ -11,6 +13,7 @@ public class SombraBehaviour : MonoBehaviour {
     public bool approach, attackInstanciated, acting, spearReady;
     public double angulo; 
     public GameObject player, flecha/*, flechaPrefab*/, shadowHound;
+    public Slider healthBar;
     
     
 
@@ -266,5 +269,14 @@ public class SombraBehaviour : MonoBehaviour {
         shadowHound.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX * 5), System.Convert.ToSingle(transform.position.y - uniY * 5));
         shadowHound.GetComponent<HoundBehaviour>().player = player;
         summonCD = 0;
+    }
+
+    void OnTriggerEnter2D(Collider2D cono)
+    {
+        if ((cono.tag == "Attack" || cono.tag == "Arrow"))
+        {
+            HP--;
+            healthBar.value--;
+        }
     }
 }
