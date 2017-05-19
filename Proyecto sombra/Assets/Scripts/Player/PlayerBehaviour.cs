@@ -16,9 +16,9 @@ public class PlayerBehaviour : MonoBehaviour {
 
     public GameObject arrow; // Referencia para las flechas instanciadas
 
-    GameObject element1; //
-    GameObject element2; // Elementos instanciadas
-    GameObject element3; //
+    public GameObject element1; //
+    public GameObject element2; // Elementos instanciadas
+    public GameObject element3; //
 
     public GameObject cam;
 
@@ -188,11 +188,11 @@ public class PlayerBehaviour : MonoBehaviour {
             }
 
             //// ---------------------------- ELIMINAR FLECHAS ----------------------------
-            if (qPressed && qPressed != pQPressed)
+            if (qPressed && qPressed != pQPressed && qPressed)
             {
                 if (ammo == 0)
                 {
-                    Destroy(element1);
+                    Destroy(element3);
                     ammo++;
                 }
                 else if (ammo == 1)
@@ -202,7 +202,7 @@ public class PlayerBehaviour : MonoBehaviour {
                 }
                 else if (ammo == 2)
                 {
-                    Destroy(element3);
+                    Destroy(element1);
                     ammo++;
                 }
             }

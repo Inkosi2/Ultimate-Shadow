@@ -20,6 +20,7 @@ TagManager:
   - TPArco
   - MuroPlataforma
   - InteriorPlataforma
+  - ShadowBox
   layers:
   - Default
   - TransparentFX
