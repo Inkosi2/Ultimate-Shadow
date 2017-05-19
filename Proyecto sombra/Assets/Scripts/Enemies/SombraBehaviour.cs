@@ -6,11 +6,12 @@ using System;
 public class SombraBehaviour : MonoBehaviour {
 
     public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY, targetX, targetY; //Detectar al jugador.
-    public double jumpAngleRange, time, angle;
+    public double jumpAngleRange, time, angle, summonCD;
     public int fase, HP, SombraSpeed, optimRange;    
     public bool approach, attackInstanciated, acting, spearReady;
     public double angulo; 
-    public GameObject player, flecha, flechaPrefab;
+    public GameObject player, flecha/*, flechaPrefab*/, shadowHound;
+    
     
 
     // Use this for initialization
@@ -20,6 +21,7 @@ public class SombraBehaviour : MonoBehaviour {
         fase = 1;
         optimRange = 10;
         time = 0;
+        summonCD = 0;
         acting = false;
        // jumpAngleRange = Math.PI/2+Math.PI/10;  
 	}
@@ -28,7 +30,7 @@ public class SombraBehaviour : MonoBehaviour {
 	void Update () {
         //Calcular el tiempo:
         time += Time.deltaTime;
-
+        summonCD += Time.deltaTime;
 
         // Vector hacia el jugador.
         distX = player.transform.position.x - transform.position.x;
@@ -43,7 +45,7 @@ public class SombraBehaviour : MonoBehaviour {
         {
             if (moduloDist < optimRange || acting)
             {
-                charge();
+                attack();
             }
             else
             {
@@ -53,6 +55,10 @@ public class SombraBehaviour : MonoBehaviour {
         else if (fase == 2)
         {
             movement();
+            if (summonCD > 3)
+            {
+                summonHound();                
+            }
         }
         else if (fase == 1)
         {
@@ -184,7 +190,7 @@ public class SombraBehaviour : MonoBehaviour {
         if (!attackInstanciated)
 
         {                
-            flecha = (GameObject)Instantiate(flechaPrefab);
+            flecha = (GameObject)Instantiate(flecha/*Prefab*/);
             flecha.transform.position = transform.position;
             attackInstanciated = true;
             flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
@@ -207,38 +213,58 @@ public class SombraBehaviour : MonoBehaviour {
         attackInstanciated = false; 
     }
 
-    void charge()
+    void attack
+        ()
     {       
         if (!acting)
         {
-            targetX = -uniX;
-            targetY = -uniY;            
+            targetX = uniX;
+            targetY = uniY;            
             acting = true;
-            time = 0;
-            GetComponent<SpriteRenderer>().color = Color.red;
+            time = 0;            
         }
-        GetComponent<Rigidbody2D>().velocity = new Vector2((float)-targetX * 15, (float)-targetY * 15);
-        if (time > 1)
+
+        if (time < 1)
         {
+            GetComponent<SpriteRenderer>().color = Color.red;
+            charge();
+        }
+        
+        if (time >= 1 && time <= 2)
+        {
+            GetComponent<SpriteRenderer>().color = Color.green;
             jumpAway();
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
         if (time > 2)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            GetComponent<SpriteRenderer>().color = Color.white;            
+            spearThrow();
             acting = false;
-        }
+        }       
         
+    }
+    void charge()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2((float)targetX * 15, (float)targetY * 15);
     }
     void jumpAway()
     {
-        targetX = uniX;
-        targetY = uniY;
+        targetX = -uniX;
+        targetY = -uniY;
         GetComponent<Rigidbody2D>().velocity = new Vector2((float)targetX * 15, (float)targetY * 15);
     }
 
     void chase()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2((float)uniX * SombraSpeed, (float)uniY * SombraSpeed);
+    }
+
+    void summonHound()
+    {
+        shadowHound = (GameObject)Instantiate(shadowHound);
+        shadowHound.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX * 5), System.Convert.ToSingle(transform.position.y - uniY * 5));
+        shadowHound.GetComponent<HoundBehaviour>().player = player;
+        summonCD = 0;
     }
 }
