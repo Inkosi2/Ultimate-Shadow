@@ -1,24 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    using System;
+using System;
 
-public class PlayerBehaviour : MonoBehaviour {
+public class PlayerBehaviour : MonoBehaviour
+{
 
     bool attacking; // Indica si el jugador se encuentra atacando o no
     int speed = 4; // Velocidad de movimento del jugador
-    public int ammo; // Cantidad de acciones que puede usar un jugador (flechas, arcos o activar objetos)
+    public int ammo; // Cantidad de acciones que puede usar un jugador (flechas o cajas)
     double arrowRotation;
-    int playerMode; // Equipo del jugador en ese momento    
-        // 1 = arco
-        // 2 = bloque
-        // 3 = corazón (activador)
+    public int playerMode; // Equipo del jugador en ese momento    
+                    // 1 = arco
+                    // 2 = bloque
 
     public GameObject arrow; // Referencia para las flechas instanciadas
+    public GameObject box; // Referencia para las cajas instanciadas
 
-    public GameObject element1; //
-    public GameObject element2; // Elementos instanciadas
-    public GameObject element3; //
+    public GameObject element; //
 
     public GameObject cam;
 
@@ -32,16 +31,22 @@ public class PlayerBehaviour : MonoBehaviour {
     public double playerX;
     public double playerY;
 
-    bool qPressed = false, pQPressed = false;
+    public float boxX, boxY; // Offset entre el jugador y la caja al instanciarla
+
+    bool qPressed = false, pQPressed = false; // Estado de la tecla 'q' pulsada (para eliminar elementos)
+
+    public Queue<GameObject> items = new Queue<GameObject>();
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         playerMode = 1;
         ammo = 3;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         qPressed = Input.GetKey(KeyCode.Q);
 
         if (!attacking)
@@ -115,7 +120,7 @@ public class PlayerBehaviour : MonoBehaviour {
             // mouseX = Input.mousePosition.x;
             // mouseY = Input.mousePosition.y;
 
-            mouseX =  Input.mousePosition.x - Screen.width / 2;
+            mouseX = Input.mousePosition.x - Screen.width / 2;
             mouseY = Input.mousePosition.y - Screen.height / 2;
 
             playerX = transform.position.x;
@@ -130,26 +135,9 @@ public class PlayerBehaviour : MonoBehaviour {
             uniX = distX / moduloDist;
             uniY = distY / moduloDist;
 
-            if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 3)
-            {
-                if (uniY < 0)
-                {
-                    arrowRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
-                }
 
-                else
-                {
-                    arrowRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
-                }
-                
-                element1 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
 
-                element1.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
-
-                ammo--;
-            }
-
-            else if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 2)
+            if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo > 0)
             {
                 if (uniY < 0)
                 {
@@ -161,53 +149,55 @@ public class PlayerBehaviour : MonoBehaviour {
                     arrowRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
                 }
 
-                element2 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                element = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                element.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+                items.Enqueue(element);
+                ammo--;
+            }
+            if (Input.GetMouseButtonDown(0) && playerMode == 2 && ammo > 0)
+            {
 
-                element2.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+                if (Mathf.Abs((float)mouseY) > Mathf.Abs((float)mouseX) && mouseY > 0)
+                {
+                    boxY = (float)1.5;
+                    boxX = 0;
+                }
+                else if (Mathf.Abs((float)mouseY) > Mathf.Abs((float)mouseX) && mouseY < 0)
+                {
+                    boxY = (float)-1.5;
+                    boxX = 0;
+                }
+                else if (Mathf.Abs((float)mouseY) < Mathf.Abs((float)mouseX) && mouseX > 0)
+                {
+                    boxY = 0;
+                    boxX = 1;
+                }
+                else if (Mathf.Abs((float)mouseY) < Mathf.Abs((float)mouseX) && mouseX < 0)
+                {
+                    boxY = 0;
+                    boxX = -1;
+                }
 
+                element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                items.Enqueue(element);
                 ammo--;
             }
 
-            else if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 1)
+
+                //// ---------------------------- ELIMINAR FLECHAS ----------------------------
+                if (qPressed && qPressed != pQPressed)
             {
-                if (uniY < 0)
+                if (ammo <= 3)
                 {
-                    arrowRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
-                }
-
-                else
-                {
-                    arrowRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
-                }
-
-                element3 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
-
-                element3.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
-
-                ammo--;
-            }
-
-            //// ---------------------------- ELIMINAR FLECHAS ----------------------------
-            if (qPressed && qPressed != pQPressed && qPressed)
-            {
-                if (ammo == 0)
-                {
-                    Destroy(element3);
+                    Destroy(items.Dequeue());
                     ammo++;
                 }
-                else if (ammo == 1)
-                {
-                    Destroy(element2);
-                    ammo++;
-                }
-                else if (ammo == 2)
-                {
-                    Destroy(element1);
-                    ammo++;
-                }
+
             }
 
         }
         pQPressed = qPressed;
     }
 }
+
+

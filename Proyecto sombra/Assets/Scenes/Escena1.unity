@@ -907,10 +907,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo: 0
+  playerMode: 2
   arrow: {fileID: 1063822424571884, guid: f612f6a9457b1334b9fa88d875774c4d, type: 2}
-  element1: {fileID: 0}
-  element2: {fileID: 0}
-  element3: {fileID: 0}
+  box: {fileID: 1913062542385302, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+  element: {fileID: 0}
   cam: {fileID: 1132791925}
   distX: 0
   distY: 0
@@ -918,6 +918,8 @@ MonoBehaviour:
   mouseY: 0
   playerX: 0
   playerY: 0
+  boxX: 0
+  boxY: 0
 --- !u!1001 &1316791398
 Prefab:
   m_ObjectHideFlags: 0
