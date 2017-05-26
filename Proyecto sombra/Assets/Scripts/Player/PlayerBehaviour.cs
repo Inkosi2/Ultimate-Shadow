@@ -1,37 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    using System;
+using System;
 
-public class PlayerBehaviour : MonoBehaviour {
+public class PlayerBehaviour : MonoBehaviour
+{
 
     bool attacking; // Indica si el jugador se encuentra atacando o no
     int speed = 4; // Velocidad de movimento del jugador
-    int ammo; // Cantidad de acciones que puede usar un jugador (flechas, arcos o activar objetos)
+    public int ammo; // Cantidad de acciones que puede usar un jugador (flechas o cajas)
     double arrowRotation;
-    int playerMode; // Equipo del jugador en ese momento    
-        // 1 = arco
-        // 2 = bloque
-        // 3 = corazón (activador)
+    public int playerMode; // Equipo del jugador en ese momento    
+                    // 1 = arco
+                    // 2 = bloque
 
     public GameObject arrow; // Referencia para las flechas instanciadas
+    public GameObject box; // Referencia para las cajas instanciadas
 
-    GameObject element1; //
-    GameObject element2; // Elementos instanciadas
-    GameObject element3; //
+    public GameObject element; //
 
-    double distX, distY; // Vector entre el jugador y el cursor del ratón
+    public GameObject cam;
+
+    public double distX, distY; // Vector entre el jugador y el cursor del ratón
     double uniX, uniY; // Vector unitario entre el jugador y el cursor del ratón
     double moduloDist;
 
+    public double mouseX;
+    public double mouseY;
+
+    public double playerX;
+    public double playerY;
+
+    public float boxX, boxY; // Offset entre el jugador y la caja al instanciarla
+
+    bool qPressed = false, pQPressed = false; // Estado de la tecla 'q' pulsada (para eliminar elementos)
+
+    public Queue<GameObject> items = new Queue<GameObject>();
+
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         playerMode = 1;
         ammo = 3;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        qPressed = Input.GetKey(KeyCode.Q);
+
         if (!attacking)
         {
             //----------------------------------------------------------------------------
@@ -96,17 +113,32 @@ public class PlayerBehaviour : MonoBehaviour {
             // --------------------------------------------------------
             // ----------------------    Arco    ----------------------
             // --------------------------------------------------------
-            
-            if(Input.GetMouseButtonDown(0) && playerMode == 1 && ammo == 3)
+
+
+            // ------ Test zone
+
+            // mouseX = Input.mousePosition.x;
+            // mouseY = Input.mousePosition.y;
+
+            mouseX = Input.mousePosition.x - Screen.width / 2;
+            mouseY = Input.mousePosition.y - Screen.height / 2;
+
+            playerX = transform.position.x;
+            playerY = transform.position.y;
+
+            distX = transform.position.x - mouseX;
+            distY = transform.position.y - mouseY;
+
+
+            moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
+
+            uniX = distX / moduloDist;
+            uniY = distY / moduloDist;
+
+
+
+            if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo > 0)
             {
-                distX = Mathf.Abs(transform.position.x - Input.mousePosition.x);
-                distY = Mathf.Abs(transform.position.y - Input.mousePosition.y);
-
-                moduloDist = Math.Sqrt(Math.Pow(distX, 2) + Math.Pow(distY, 2));
-
-                uniX = distX / moduloDist;
-                uniY = distY / moduloDist;
-
                 if (uniY < 0)
                 {
                     arrowRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
@@ -116,13 +148,56 @@ public class PlayerBehaviour : MonoBehaviour {
                 {
                     arrowRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 180);
                 }
-                
-                element1 = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
 
-                element1.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(uniX), System.Convert.ToSingle(uniY));
+                element = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                element.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+                items.Enqueue(element);
+                ammo--;
+            }
+            if (Input.GetMouseButtonDown(0) && playerMode == 2 && ammo > 0)
+            {
+
+                if (Mathf.Abs((float)mouseY) > Mathf.Abs((float)mouseX) && mouseY > 0)
+                {
+                    boxY = (float)1.5;
+                    boxX = 0;
+                }
+                else if (Mathf.Abs((float)mouseY) > Mathf.Abs((float)mouseX) && mouseY < 0)
+                {
+                    boxY = (float)-1.5;
+                    boxX = 0;
+                }
+                else if (Mathf.Abs((float)mouseY) < Mathf.Abs((float)mouseX) && mouseX > 0)
+                {
+                    boxY = 0;
+                    boxX = 1;
+                }
+                else if (Mathf.Abs((float)mouseY) < Mathf.Abs((float)mouseX) && mouseX < 0)
+                {
+                    boxY = 0;
+                    boxX = -1;
+                }
+
+                element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                items.Enqueue(element);
+                ammo--;
             }
 
 
+                //// ---------------------------- ELIMINAR FLECHAS ----------------------------
+                if (qPressed && qPressed != pQPressed)
+            {
+                if (ammo <= 3)
+                {
+                    Destroy(items.Dequeue());
+                    ammo++;
+                }
+
+            }
+
         }
+        pQPressed = qPressed;
     }
 }
+
+
