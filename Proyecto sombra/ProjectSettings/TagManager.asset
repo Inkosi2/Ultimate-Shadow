@@ -20,6 +20,8 @@ TagManager:
   - TPArco
   - MuroPlataforma
   - InteriorPlataforma
+  - sideWall
+  - horitzontalWall
   layers:
   - Default
   - TransparentFX
@@ -30,11 +32,11 @@ TagManager:
   - 
   - 
   - Background
-  - Units
-  - 
-  - 
-  - 
-  - 
+  - Blocking Scenography
+  - Floor Level Scenography
+  - Touchable Characters
+  - Untouchable Characters
+  - Items
   - 
   - 
   - 

@@ -10,7 +10,8 @@ using UnityEngine;
 
 
 
-public class meleeEnemyBehaviour : MonoBehaviour {
+public class meleeEnemyBehaviour : MonoBehaviour
+{
 
 
 
@@ -38,7 +39,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
     public int aux;
 
-   
+
 
     public GameObject player;
 
@@ -54,19 +55,20 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
     // Use this for initialization
 
-    void Start () {
+    void Start()
+    {
 
         Speed = 2;
 
-        Attacking = false;        
+        Attacking = false;
 
         Chasing = false;
 
         vulnerable = false;
 
-        Xinicial=transform.position.x;
+        Xinicial = transform.position.x;
 
-        Yinicial=transform.position.y;
+        Yinicial = transform.position.y;
 
         //Inicializar valores de regreso a su posición inicial.
 
@@ -76,13 +78,13 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
     }
 
-    
+
 
 
 
     // Update is called once per frame
 
-    void Update ()
+    void Update()
 
     {
 
@@ -100,7 +102,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
         time += Time.deltaTime;
 
-       
+
 
         //Movimiento de el enemigo: Obtener vector hacia el jugador.
 
@@ -160,13 +162,13 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
         }
 
-        
 
-        if (moduloDist > 10  && moduloDist0 > 0.1)
+
+        if (moduloDist > 10 && moduloDist0 > 0.1)
 
         {
 
-            
+
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(Speed * -uniX0), System.Convert.ToSingle(Speed * -uniY0));
 
@@ -174,7 +176,7 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
 
 
-        }       
+        }
 
 
 
@@ -206,138 +208,138 @@ public class meleeEnemyBehaviour : MonoBehaviour {
 
 
 
-   
 
-    
 
 
 
-        //Función para hacer el ataque básico.
 
-        void Attack()
 
-     {
+    //Función para hacer el ataque básico.
 
+    void Attack()
 
+    {
 
-            //Comprovar si ha empzado a atacar o esta en proceso.
 
-            if (!Attacking)
 
-            {
+        //Comprovar si ha empzado a atacar o esta en proceso.
 
+        if (!Attacking)
 
+        {
 
-                ///Determinar el timer para la duración de las fases del ataque.
 
-                time = 0;
 
-                //Indicar que el ataque se acaba de iniciar.
+            ///Determinar el timer para la duración de las fases del ataque.
 
-                Attacking = true;
+            time = 0;
 
-                targetX = uniX;
-                targetY = uniY;
+            //Indicar que el ataque se acaba de iniciar.
 
-            }
+            Attacking = true;
 
-
-
-            //Dejar quieto a Eaglos
-
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-
-
-
-            //(Provisional) Marcar la fase de carga del ataque. A la espera de sprite.
-
-            GetComponent<SpriteRenderer>().color = Color.yellow;
-
-
-
-            //Iniciar la segunda fase del atque en la que lanza el golpe.
-
-            if (time >= 0.5 && time < 0.75 )
-
-            {
-
-                    //(Provisional) Marcar la fase de atacar. A la espera de sprite.
-
-                    GetComponent<SpriteRenderer>().color = Color.red;
-
-                    
-
-             }
-
-
-
-            if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
-
-            {
-
-                cono = Instantiate(conoInstanciado);
-
-                AttackInstanciated = true;
-
-                cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - targetX / 3), System.Convert.ToSingle(transform.position.y - targetY / 3));
-
-                if (targetY < 0)
-                {
-                    angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg) + 90;
-                }
-
-                else
-                {
-                    angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 90);
-                }
-
-                cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
-
-            }
-
-
-
-            //Iniciar la segunda fase del atque en la que se recompone del golpe.
-
-            if (time >= 0.75 && time < 1.25)
-
-                {
-
-                    //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
-
-                    GetComponent<SpriteRenderer>().color = Color.green;
-
-                    Destroy(cono);
-
-                    vulnerable = true;
-
-                }
-
-
-
-            //Finalizar el ataque, reiniciando todos los valores.
-
-            if (time >= 1.25)
-
-            {
-
-                GetComponent<SpriteRenderer>().color = Color.white;
-
-                Attacking = false;
-
-                time = 0;
-
-                AttackInstanciated = false;
-
-                vulnerable = false;
-
-            }
+            targetX = uniX;
+            targetY = uniY;
 
         }
 
 
 
-        void OnTriggerEnter2D(Collider2D cono)
+        //Dejar quieto a Eaglos
+
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+
+
+
+        //(Provisional) Marcar la fase de carga del ataque. A la espera de sprite.
+
+        GetComponent<SpriteRenderer>().color = Color.yellow;
+
+
+
+        //Iniciar la segunda fase del atque en la que lanza el golpe.
+
+        if (time >= 0.5 && time < 0.75)
+
+        {
+
+            //(Provisional) Marcar la fase de atacar. A la espera de sprite.
+
+            GetComponent<SpriteRenderer>().color = Color.red;
+
+
+
+        }
+
+
+
+        if (time >= 0.5 && time < 0.75 && !AttackInstanciated)
+
+        {
+
+            cono = Instantiate(conoInstanciado);
+
+            AttackInstanciated = true;
+
+            cono.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - targetX / 3), System.Convert.ToSingle(transform.position.y - targetY / 3));
+
+            if (targetY < 0)
+            {
+                angle = ((2 * Math.PI - Math.Acos(targetX)) * Mathf.Rad2Deg) + 90;
+            }
+
+            else
+            {
+                angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 90);
+            }
+
+            cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
+
+        }
+
+
+
+        //Iniciar la segunda fase del atque en la que se recompone del golpe.
+
+        if (time >= 0.75 && time < 1.25)
+
+        {
+
+            //(Provisional) Marcar la fase recomponerse tras atacar. A la espera de sprite.
+
+            GetComponent<SpriteRenderer>().color = Color.green;
+
+            Destroy(cono);
+
+            vulnerable = true;
+
+        }
+
+
+
+        //Finalizar el ataque, reiniciando todos los valores.
+
+        if (time >= 1.25)
+
+        {
+
+            GetComponent<SpriteRenderer>().color = Color.white;
+
+            Attacking = false;
+
+            time = 0;
+
+            AttackInstanciated = false;
+
+            vulnerable = false;
+
+        }
+
+    }
+
+
+
+    void OnTriggerEnter2D(Collider2D cono)
 
     {
 
