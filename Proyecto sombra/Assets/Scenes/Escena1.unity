@@ -300,6 +300,26 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1162310104}
+    - target: {fileID: 1913062542385302, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+      propertyPath: m_TagString
+      value: ShadowBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1517193195622754, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+      propertyPath: m_TagString
+      value: ShadowBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675704273776568, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+      propertyPath: m_TagString
+      value: ShadowBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110968180677460, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+      propertyPath: m_TagString
+      value: ShadowBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913615412340570, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+      propertyPath: m_TagString
+      value: ShadowBox
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
   m_IsPrefabParent: 0
