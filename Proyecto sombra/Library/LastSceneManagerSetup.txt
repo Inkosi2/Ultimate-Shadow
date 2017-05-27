@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Sombra Maestra.unity
+- path: Assets/Scenes/Eaglos.unity
   isLoaded: 1
   isActive: 1

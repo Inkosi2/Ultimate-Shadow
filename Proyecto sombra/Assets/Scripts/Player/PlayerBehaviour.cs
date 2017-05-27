@@ -40,7 +40,7 @@ public class PlayerBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        playerMode = 1;
+        playerMode = 2;
         ammo = 3;
     }
 
@@ -108,6 +108,20 @@ public class PlayerBehaviour : MonoBehaviour
             else
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            }
+
+
+            // ----------------------------------------------------------------
+            // ----------------------    Cambiar modo    ----------------------
+            // ----------------------------------------------------------------
+            if (Input.GetKey(KeyCode.Alpha1))
+            {
+                playerMode = 1;
+            }
+
+            else if (Input.GetKey(KeyCode.Alpha2))
+            {
+                playerMode = 2;
             }
 
             // --------------------------------------------------------
@@ -178,16 +192,16 @@ public class PlayerBehaviour : MonoBehaviour
                     boxX = -1;
                 }
 
-                element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, 0));
                 items.Enqueue(element);
                 ammo--;
             }
 
 
                 //// ---------------------------- ELIMINAR FLECHAS ----------------------------
-                if (qPressed && qPressed != pQPressed)
+            if (qPressed && qPressed != pQPressed)
             {
-                if (ammo <= 3)
+                if (ammo < 3)
                 {
                     Destroy(items.Dequeue());
                     ammo++;
