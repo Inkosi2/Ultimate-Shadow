@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+
 
 
 
@@ -134,7 +137,11 @@ public class BrotherBehaviour : MonoBehaviour {
         {
             hp--;
             HealthBar.value--;
-            if (lastHit) Destroy(this.gameObject); ;
+            if (lastHit)
+            {
+                Destroy(this.gameObject);
+                SceneManager.LoadScene("Visctoria");
+            }
         }
         
     }

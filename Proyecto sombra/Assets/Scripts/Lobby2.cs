@@ -19,7 +19,7 @@ public class Lobby : MonoBehaviour
         time += Time.deltaTime;
         if (time > 5)
         {
-            SceneManager.LoadScene("Escena1");
+            SceneManager.LoadScene("Creditos");
         }
     }
 }

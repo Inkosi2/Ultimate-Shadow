@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class SombraBehaviour : MonoBehaviour {
 
@@ -20,7 +20,7 @@ public class SombraBehaviour : MonoBehaviour {
     // Use this for initialization
     void Start () {
         SombraSpeed = 8;
-        HP = 10;
+        HP = 6;
         fase = 3;
         optimRange = 10;
         time = 0;
@@ -44,9 +44,13 @@ public class SombraBehaviour : MonoBehaviour {
         uniX = distX / moduloDist;
         uniY = distY / moduloDist;
 
-        if (HP <= 0) Destroy(this.gameObject);
-        else if (HP <= 6) fase = 3;
-        else if (HP <= 8) fase = 2;
+        if (HP <= 0)
+        {
+            Destroy(this.gameObject);
+            SceneManager.LoadScene("Sombra Maestra");
+        }
+        else if (HP <= 2) fase = 3;
+        else if (HP <= 4) fase = 2;
         
         if (fase == 3)
         {

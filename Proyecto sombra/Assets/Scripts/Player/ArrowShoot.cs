@@ -94,15 +94,37 @@ public class ArrowShoot : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D coll)
     {
-        Debug.Log("Collide with " + coll.gameObject.tag);
+        
         if (coll.gameObject.tag == "Wall" || coll.gameObject.tag == "Diana" || coll.gameObject.tag == "Bloque movil" || coll.gameObject.tag == "ShadowBox")
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
-            collided = true;
+            Debug.Log("Collide with " + coll.gameObject.tag);
+            if (coll.gameObject.tag == "Wall" || coll.gameObject.tag == "Diana" || coll.gameObject.tag == "Bloque movil" || coll.gameObject.tag == "ShadowBox")
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                collided = true;
+            }
         }
     }
 
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Diana" || collision.gameObject.tag == "Bloque movil" || collision.gameObject.tag == "ShadowBox")
+        {
+            Debug.Log("Collide with " + collision.gameObject.tag);
+            if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Diana" || collision.gameObject.tag == "Bloque movil" || collision.gameObject.tag == "ShadowBox")
+            {
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                collided = true;
+            }
+        }
+    }
 }
+
+
+
+
 
 //collisionEnter con el tag de la pared, si chocan fuerza contraria
 //Objeto vacío, cuando se pulse la tecla, "instanciate" (prefab, posición, rotación)

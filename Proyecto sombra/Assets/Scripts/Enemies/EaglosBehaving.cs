@@ -63,7 +63,7 @@ public class EaglosBehaving : MonoBehaviour
         if (fase == 4)
         {
             Destroy(Eaglos);
-            SceneManager.LoadScene("Victoria");
+            SceneManager.LoadScene("La sombra de los bosques");
         }
 
         if(HP <= 0)
