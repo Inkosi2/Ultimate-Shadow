@@ -35,27 +35,27 @@ public class MenuDoor : MonoBehaviour
     {
         if (collision.gameObject.tag == "Jugador")
         {
-            if (D1.GetComponent<Diana>().activated > 0)
+            if (D1.GetComponent<Diana>().activated)
             {
                 SceneManager.LoadScene("Eaglos");
             }
-            else if (D2.GetComponent<Diana>().activated > 0)
+            else if (D2.GetComponent<Diana>().activated)
             {
                 SceneManager.LoadScene("La sombra de los bosques");
             }
-            else if (D3.GetComponent<Diana>().activated > 0)
+            else if (D3.GetComponent<Diana>().activated)
             {
                 SceneManager.LoadScene("Sombra Maestra");
             }
-            else if (D4.GetComponent<Diana>().activated > 0)
+            else if (D4.GetComponent<Diana>().activated)
             {
                 output = 4;
             }
-            else if (D5.GetComponent<Diana>().activated > 0)
+            else if (D5.GetComponent<Diana>().activated)
             {
                 output = 5;
             }
-            else if (D6.GetComponent<Diana>().activated > 0)
+            else if (D6.GetComponent<Diana>().activated)
             {
                 output = 6;
             }

@@ -13,7 +13,7 @@ public class Muro : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Diana.GetComponent<Diana>().activated > 0)
+        if (Diana.GetComponent<Diana>().activated)
         {
             Destroy(muro);
             instanciado = false;

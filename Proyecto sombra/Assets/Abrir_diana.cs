@@ -11,7 +11,7 @@ public class Abrir_diana : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (PP1.GetComponent<Preassure_plate>().activated == true && PP2.GetComponent<Preassure_plate>().activated == true)
+		if (PP1.GetComponent<Preassure_plate>().activated > 0 && PP2.GetComponent<Preassure_plate>().activated > 0)
         {
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;

@@ -90,7 +90,7 @@ public class PlatformRoute : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
         }
 
-        if (Diana.GetComponent<Diana>().activated > 0)
+        if (Diana.GetComponent<Diana>().activated)
         {
             movimiento = true;
         }

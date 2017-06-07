@@ -11,7 +11,7 @@ public class Abrir_boton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Diana.GetComponent<Diana>().activated > 0)
+        if (Diana.GetComponent<Diana>().activated)
         {
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<SpriteRenderer>().enabled = false;
