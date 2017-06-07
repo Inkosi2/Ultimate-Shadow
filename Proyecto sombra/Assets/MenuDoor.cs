@@ -38,30 +38,36 @@ public class MenuDoor : MonoBehaviour
             if (D1.GetComponent<Diana>().activated)
             {
                 SceneManager.LoadScene("Eaglos");
+                GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else if (D2.GetComponent<Diana>().activated)
             {
                 SceneManager.LoadScene("La sombra de los bosques");
+                GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else if (D3.GetComponent<Diana>().activated)
             {
                 SceneManager.LoadScene("Sombra Maestra");
+                GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else if (D4.GetComponent<Diana>().activated)
             {
-                output = 4;
+                SceneManager.LoadScene("Puzzle");
+                GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else if (D5.GetComponent<Diana>().activated)
             {
-                output = 5;
+                SceneManager.LoadScene("Creditos");
+                GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else if (D6.GetComponent<Diana>().activated)
             {
-                output = 6;
+                Application.Quit();
+                GetComponent<BoxCollider2D>().isTrigger = true;
             }
             else
             {
-                output = 0;
+                GetComponent<BoxCollider2D>().isTrigger = false;
             }
         }
     }
