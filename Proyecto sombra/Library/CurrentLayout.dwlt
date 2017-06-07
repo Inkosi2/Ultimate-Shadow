@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 7}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -354,7 +354,8 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Scripts/Player
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: E:\Escuela\Uni 2.0\Ultimate-Shadow\Proyecto sombra
+  m_LastProjectPath: C:\Users\Oscar\Documents\Ultimate shadow\Ultimate-Shadow\Proyecto
+    sombra
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 13}
