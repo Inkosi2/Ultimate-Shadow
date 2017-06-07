@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 
@@ -9,14 +10,16 @@ public class BrotherBehaviour : MonoBehaviour {
 
     public double distX, distY, moduloDist, uniX, uniY, mouthX, mouthY;
     float dirX, dirY;
-    public int fase, proyectilSpd;
+    public int hp, fase, proyectilSpd;
     public GameObject player, RightEye, LeftEye;
-    public GameObject proyectil;
-    
-	// Use this for initialization
-	void Start () {
+    public GameObject proyectilPrefab;
+    GameObject proyectil;
+    public Slider HealthBar;
+
+    // Use this for initialization
+    void Start () {
         proyectilSpd = 5;
-       
+        hp = 2;
         mouthX = 0;
         mouthY = 16;
         fase = 1;
@@ -51,7 +54,14 @@ public class BrotherBehaviour : MonoBehaviour {
         uniY = distY / moduloDist;
 
         if(RightEye.GetComponent<ShadowEyes>().hurt == true && LeftEye.GetComponent<ShadowEyes>().hurt == true)
+        {
+            Destroy(this.gameObject);
+        }
             
+        if(hp <= 0)
+            {
+                fase = 2;
+            }
         
 
         if (fase == 1)
@@ -74,35 +84,35 @@ public class BrotherBehaviour : MonoBehaviour {
 
     void burst ()
     {
-        proyectil= (GameObject)Instantiate(proyectil);        
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(-proyectilSpd, 0);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(proyectilSpd, 0);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(0, proyectilSpd);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -proyectilSpd);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(proyectilSpd, proyectilSpd);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(-proyectilSpd, proyectilSpd);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(proyectilSpd, -proyectilSpd);
 
-        proyectil = (GameObject)Instantiate(proyectil);
+        proyectil = (GameObject)Instantiate(proyectilPrefab);
         proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
         proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(-proyectilSpd, -proyectilSpd);   
 
@@ -112,9 +122,17 @@ public class BrotherBehaviour : MonoBehaviour {
         for (int i = 0; i < 6; i++)
         {
             float randomX1 = UnityEngine.Random.Range(0.7f, -0.7f);
-            proyectil = (GameObject)Instantiate(proyectil);
+            proyectil = (GameObject)Instantiate(proyectilPrefab);
             proyectil.transform.position = new Vector2(transform.position.x, transform.position.y);
             proyectil.GetComponent<Rigidbody2D>().velocity = new Vector2(randomX1 * 10, -10);
         }        
+    }
+    void OnTriggerEnter2D(Collider2D cono)
+    {
+        if ((cono.tag == "Attack" || cono.tag == "Arrow") & fase == 1)
+        {
+            hp--;
+            HealthBar.value--;
+        }
     }
 }

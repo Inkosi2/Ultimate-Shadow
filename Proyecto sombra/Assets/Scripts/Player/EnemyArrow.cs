@@ -38,7 +38,7 @@ public class EnemyArrow : MonoBehaviour {
     {
         Debug.Log(coll.gameObject.tag);
 
-        if (coll.gameObject.tag == "Wall")
+        if (coll.gameObject.tag == "Wall" || coll.gameObject.tag == "ShadowBox")
         {
             Destroy(this.gameObject);
         }

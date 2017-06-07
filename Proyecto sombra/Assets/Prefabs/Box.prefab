@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 61725582831857806}
   m_Layer: 0
   m_Name: DHB
-  m_TagString: Untagged
+  m_TagString: ShadowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 61074964832243668}
   m_Layer: 0
   m_Name: THB
-  m_TagString: Untagged
+  m_TagString: ShadowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 61801290299168032}
   m_Layer: 0
   m_Name: LHB
-  m_TagString: Untagged
+  m_TagString: ShadowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 61797959521402092}
   m_Layer: 0
   m_Name: RHB
-  m_TagString: Untagged
+  m_TagString: ShadowBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
