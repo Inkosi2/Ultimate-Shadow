@@ -12,7 +12,7 @@ public class ZoomOut : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        zoom = 9;
+        zoom = 15;
 	}
 	
 	// Update is called once per frame
@@ -25,8 +25,8 @@ public class ZoomOut : MonoBehaviour {
         if (coll.tag == "Jugador")
         {
             miCamara.orthographicSize = zoom;
-            miCamara.transform.position = new Vector3(referencia.transform.position.x, referencia.transform.position.y, -10);
-            miCamara.GetComponent<CameraMove>().fixOnPlayer = false;
+            //miCamara.transform.position = new Vector2(referencia.transform.position.x, referencia.transform.position.y);
+            miCamara.GetComponent<CameraMove>().fixOnPlayer = true;
         }
     }
 
