@@ -21,7 +21,7 @@ public class SombraBehaviour : MonoBehaviour {
     void Start () {
         SombraSpeed = 8;
         HP = 6;
-        fase = 3;
+        fase = 1;
         optimRange = 10;
         time = 0;
         summonCD = 0;

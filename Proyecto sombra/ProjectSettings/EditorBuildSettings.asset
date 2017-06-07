@@ -6,23 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Escena1.unity
-    guid: 895cdc27cdf846e4fb3d701e35e0c677
+    path: Assets/Scenes/Menu.unity
+    guid: 8bfccb990f2732f4a82febd4451ae0b5
+  - enabled: 1
+    path: Assets/Scenes/Puzzle.unity
+    guid: 5d6a1b74349711c4a80397f24e947a74
   - enabled: 1
     path: Assets/Scenes/Eaglos.unity
     guid: a5d9bb4e06857724a8a35479f70cfc47
-  - enabled: 1
-    path: Assets/Scenes/Mapa arco.unity
-    guid: 32a4ad3c8074e8f4d95764b68f09b5f4
-  - enabled: 1
-    path: Assets/Scenes/Muerte.unity
-    guid: 431f95ba01fc98743bdee889b2010260
-  - enabled: 1
-    path: Assets/Scenes/Victoria.unity
-    guid: bfff7d96478b57f408e86797a5b1b624
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
-    guid: 8bfccb990f2732f4a82febd4451ae0b5
   - enabled: 1
     path: Assets/Scenes/La sombra de los bosques.unity
     guid: 7aba6cb12aae1a842a931c23bf3b73f7
@@ -30,8 +21,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Sombra Maestra.unity
     guid: f191af75e54fd7f4a98673194720ffe2
   - enabled: 1
-    path: Assets/Scenes/Puzzle.unity
-    guid: 5d6a1b74349711c4a80397f24e947a74
+    path: Assets/Scenes/Muerte.unity
+    guid: 431f95ba01fc98743bdee889b2010260
+  - enabled: 1
+    path: Assets/Scenes/Victoria.unity
+    guid: bfff7d96478b57f408e86797a5b1b624
   - enabled: 1
     path: Assets/Scenes/Creditos.unity
     guid: fc960a396d2b3bb4394d6dfe57b60255

@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 10
+  controlID: 24
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -117,8 +117,8 @@ MonoBehaviour:
     y: 0
     width: 204
     height: 646
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -237,7 +237,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 11
+  controlID: 25
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 12
+  controlID: 26
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -348,20 +348,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Oscar\Documents\Ultimate shadow\Ultimate-Shadow\Proyecto
-    sombra
+  m_LastProjectPath: C:\Users\Maria\Desktop\PROYECTO\Ultimate-Shadow\Proyecto sombra
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 13}
-    m_SelectedIDs: 06250000
-    m_LastClickedID: 9478
-    m_ExpandedIDs: 0000000006250000de2500003a26000086260000ac26000000ca9a3bffffff7f
+    m_SelectedIDs: 022b0000
+    m_LastClickedID: 11010
+    m_ExpandedIDs: 00000000a42a00002a2b0000542b0000722b00007c2b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -389,7 +388,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000006250000de2500003a26000086260000ac260000
+    m_ExpandedIDs: 00000000a42a00002a2b0000542b0000722b00007c2b0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -533,21 +532,21 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: b44fffffa454ffff2ca9ffff5ce9ffff6ee9ffff70e9ffffeee9ffffeaeaffff82f5ffff94f5ffff96f5ffffe4f5ffffe6f5ffff14f6ffffa0f7ffff7ef8ffffacf9ffffaefaffffe2fbffff000000009c2c0000a22c0000fc420000
+    m_ExpandedIDs: e079ffffb87affffae7bffffb47bffffba7bffffbe7bffff047cffff707cffffda7cffffa07dffff687fffffec7fffffe280ffffe880ffffee80fffff280ffff3881ffffa481ffff0e82ffffd482ffffba84ffff3e85ffff3486ffff3a86ffff4086ffff4486ffff8a86fffff686ffff6087ffff2688ffff9489ffff188affff0e8bffff148bffff1a8bffff1e8bffff648bffffd08bffff3a8cffff008dffff1ac1ffff30e2ffff4ae6ffff30e7ffff26e8ffff2ce8ffff32e8ffff36e8ffff7ce8ffffe8e8ffff52e9ffff18eaffff6eecffff5cedffff32eeffff98eeffff9ceeffffe2eeffffa4efffffaaefffffb0efffff9cf0ffff08f1ffffa8f1ffff3cf4ffff00000000d0380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: fomdo 2
+      m_OriginalName: fomdo 2
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 14006
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 5}
     m_SearchString: 
@@ -583,14 +582,14 @@ MonoBehaviour:
     width: 1376
     height: 625
   m_SceneLighting: 1
-  lastFramingTime: 6495.072158901455
+  lastFramingTime: 693.4205879949184
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.89940345, y: 0.8928246, z: 0}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 0.89940345, y: 0.8928246, z: 0}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -617,9 +616,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 31.249546
+    m_Target: 45.44989
     speed: 2
-    m_Value: 31.249546
+    m_Value: 45.44989
   m_Ortho:
     m_Target: 1
     speed: 2
