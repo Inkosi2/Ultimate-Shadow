@@ -285,6 +285,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &264095032 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114552339895235366, guid: 1f75a5dc8c07cb640899537e9083ded4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840320411}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &317736349 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1755580028996118, guid: d00148f81ec044d4c855da16032c9f37,
@@ -450,6 +456,44 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 317736349}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: Eaglos
+      value: 
+      objectReference: {fileID: 997947865}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: conoPrefab
+      value: 
+      objectReference: {fileID: 1769460315583608, guid: 613f5edfd43fa19478a65dd265d80468,
+        type: 2}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: flechaPrefab
+      value: 
+      objectReference: {fileID: 1526400585071822, guid: c8b51717014513749b818dc937519ea7,
+        type: 2}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: areaDashPrefab
+      value: 
+      objectReference: {fileID: 1868807268859282, guid: fc81828370233d0419b2fedeacd6af35,
+        type: 2}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 264095032}
+    - target: {fileID: 114551707280494814, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: miCamara
+      value: 
+      objectReference: {fileID: 1111020356}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 726624ff0f92b704dbfd3b4da8b5a58f, type: 2}
   m_IsPrefabParent: 0
@@ -536,6 +580,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 908879511}
+--- !u!1 &997947865 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1924328776685548, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+    type: 2}
+  m_PrefabInternal: {fileID: 545152540}
 --- !u!1 &1055821214
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +612,7 @@ Transform:
   m_Children:
   - {fileID: 505834866}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111020352
 GameObject:
@@ -653,7 +702,7 @@ Transform:
   m_Children:
   - {fileID: 138649855}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1478657645
 GameObject:
