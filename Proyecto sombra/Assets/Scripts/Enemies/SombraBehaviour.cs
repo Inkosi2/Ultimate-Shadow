@@ -10,18 +10,18 @@ public class SombraBehaviour : MonoBehaviour {
     public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY, targetX, targetY; //Detectar al jugador.
     public double jumpAngleRange, time, angle, summonCD;
     public int fase, HP, SombraSpeed, optimRange;    
-    public bool approach, attackInstanciated, acting, spearReady;
+    public bool approach, attackInstanciated, acting, spearReady, charging;
     public double angulo; 
     public GameObject player, shadowHound, shadowHoundPrefab;
-    public GameObject spear, spearPrefab;
+    public GameObject spear, spearPrefab;   
     public Slider healthBar;
        
 
     // Use this for initialization
     void Start () {
         SombraSpeed = 8;
-        HP = 12;
-        fase = 1;
+        HP = 10;
+        fase = 3;
         optimRange = 10;
         time = 0;
         summonCD = 0;
@@ -45,7 +45,7 @@ public class SombraBehaviour : MonoBehaviour {
         uniY = distY / moduloDist;
 
         if (HP <= 0) Destroy(this.gameObject);
-        else if (HP <= 4) fase = 3;
+        else if (HP <= 6) fase = 3;
         else if (HP <= 8) fase = 2;
         
         if (fase == 3)
@@ -219,7 +219,7 @@ public class SombraBehaviour : MonoBehaviour {
                 }
 
                 spear.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
-                spear.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 20), System.Convert.ToSingle(-targetY * 20));
+                spear.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 15), System.Convert.ToSingle(-targetY * 15));
             }
 
             attackInstanciated = false;
@@ -260,9 +260,13 @@ public class SombraBehaviour : MonoBehaviour {
     void charge()
     {
         GetComponent<Rigidbody2D>().velocity = new Vector2((float)targetX * 15, (float)targetY * 15);
+        charging = true;
+        
+
     }
     void jumpAway()
     {
+        charging = false;
         targetX = -uniX;
         targetY = -uniY;
         GetComponent<Rigidbody2D>().velocity = new Vector2((float)targetX * 15, (float)targetY * 15);
@@ -275,7 +279,7 @@ public class SombraBehaviour : MonoBehaviour {
 
     void summonHound()
     {
-        shadowHound = (GameObject)Instantiate(shadowHound);
+        shadowHound = (GameObject)Instantiate(shadowHoundPrefab);
         shadowHound.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX * 5), System.Convert.ToSingle(transform.position.y - uniY * 5));
         shadowHound.GetComponent<HoundBehaviour>().player = player;
         summonCD = 0;
@@ -283,10 +287,19 @@ public class SombraBehaviour : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D cono)
     {
-        if ((cono.tag == "Attack" || cono.tag == "Arrow"))
+        if (cono.tag == "Attack" || cono.tag == "Arrow")
         {
             HP--;
             healthBar.value--;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (charging && collision.gameObject.tag == "Jugador")
+        {
+            player.GetComponent<PlayerBehaviour>().HP--;
+            player.GetComponent<PlayerBehaviour>().maxHP--;
         }
     }
 }

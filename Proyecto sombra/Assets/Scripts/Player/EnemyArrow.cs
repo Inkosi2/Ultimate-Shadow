@@ -18,7 +18,7 @@ public class EnemyArrow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         time += Time.deltaTime;
-        if (time > 5)
+        if (time > 10)
         {
             Destroy(this.gameObject);
             time = 0;

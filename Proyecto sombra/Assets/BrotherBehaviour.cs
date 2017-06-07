@@ -11,21 +11,24 @@ public class BrotherBehaviour : MonoBehaviour {
     public double distX, distY, moduloDist, uniX, uniY, mouthX, mouthY;
     float dirX, dirY;
     public int hp, fase, proyectilSpd;
-    public GameObject player, RightEye, LeftEye;
+    public GameObject player;
     public GameObject proyectilPrefab;
     GameObject proyectil;
     public Slider HealthBar;
+    public bool lastHit;
 
     // Use this for initialization
     void Start () {
         proyectilSpd = 5;
-        hp = 2;
+        hp = 4;
         mouthX = 0;
         mouthY = 16;
         fase = 1;
         dirX = 10;
         dirY = 10;
-	}
+        lastHit = false;
+
+    }
 
     void OnCollisionEnter2D(Collision2D bounce)
     {
@@ -53,10 +56,7 @@ public class BrotherBehaviour : MonoBehaviour {
         uniX = distX / moduloDist;
         uniY = distY / moduloDist;
 
-        if(RightEye.GetComponent<ShadowEyes>().hurt == true && LeftEye.GetComponent<ShadowEyes>().hurt == true)
-        {
-            Destroy(this.gameObject);
-        }
+       
             
         if(hp <= 0)
             {
@@ -72,11 +72,12 @@ public class BrotherBehaviour : MonoBehaviour {
         else
         {
             GetComponent<BoxCollider2D>().isTrigger = true;
-            if (moduloDist > 0.1) GetComponent<Rigidbody2D>().velocity = new Vector2((float)uniX * 10, (float)uniY * 10);
+            if (moduloDist > 0.1) GetComponent<Rigidbody2D>().velocity = new Vector2((float)uniX * 6, (float)uniY * 6);
 
             else
             {
                 GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+                lastHit = true;
                 darkWave();
             }
         }
@@ -129,10 +130,12 @@ public class BrotherBehaviour : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D cono)
     {
-        if ((cono.tag == "Attack" || cono.tag == "Arrow") & fase == 1)
+        if (cono.tag == "Attack" || cono.tag == "Arrow")
         {
             hp--;
             HealthBar.value--;
+            if (lastHit) Destroy(this.gameObject); ;
         }
+        
     }
 }

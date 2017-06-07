@@ -574,6 +574,16 @@ Prefab:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1874801360096410, guid: 619d3ab9ba7427c409163a0736d177af, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114129375204895886, guid: 619d3ab9ba7427c409163a0736d177af,
+        type: 2}
+      propertyPath: areadDashPrefab
+      value: 
+      objectReference: {fileID: 1868807268859282, guid: fc81828370233d0419b2fedeacd6af35,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 114705146872894662, guid: 619d3ab9ba7427c409163a0736d177af, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 619d3ab9ba7427c409163a0736d177af, type: 2}
@@ -657,9 +667,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 12
+  m_MaxValue: 10
   m_WholeNumbers: 0
-  m_Value: 12
+  m_Value: 10
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -830,7 +840,7 @@ RectTransform:
   - {fileID: 1886208294}
   - {fileID: 907918732}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -925,6 +935,36 @@ Prefab:
       propertyPath: m_Size.y
       value: 3.35
       objectReference: {fileID: 0}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: element
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall2
+      value: 
+      objectReference: {fileID: 1720312011}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall1
+      value: 
+      objectReference: {fileID: 95176674}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall3
+      value: 
+      objectReference: {fileID: 1752495562}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall4
+      value: 
+      objectReference: {fileID: 138970412}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 476790444}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
   m_IsPrefabParent: 0
@@ -1091,7 +1131,7 @@ Prefab:
     - target: {fileID: 224133496556214302, guid: 86ea1298221dafe4c8f21114d90ab008,
         type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224133496556214302, guid: 86ea1298221dafe4c8f21114d90ab008,
         type: 2}

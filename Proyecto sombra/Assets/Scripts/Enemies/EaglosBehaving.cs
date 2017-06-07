@@ -20,7 +20,7 @@ public class EaglosBehaving : MonoBehaviour
 
     //Elementos externos:
     public GameObject player, Eaglos;
-    public GameObject cono, conoPrefab, flecha, flechaPrefab, areaDash, areaDashPrefab;
+    public GameObject cono, conoPrefab, flecha, flechaPrefab;
     public Camera miCamara;
     public Slider HealthBar;
 
@@ -354,8 +354,7 @@ public class EaglosBehaving : MonoBehaviour
         {
             targetX = uniX;
             targetY = uniY;
-            areaDash = Instantiate(areaDashPrefab);
-            areaDash.transform.position = transform.position;
+           
             AttackInstanciated = true;
 
             //Desplaza a Eaglos hacia dodne estaba el jugador cuando empezó el desplazamiento.
@@ -369,7 +368,7 @@ public class EaglosBehaving : MonoBehaviour
         {
 
             GetComponent<SpriteRenderer>().color = Color.red;
-            areaDash.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x), System.Convert.ToSingle(transform.position.y));
+            
 
         }
 
@@ -383,7 +382,7 @@ public class EaglosBehaving : MonoBehaviour
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 
-            Destroy(areaDash);
+           
         }
 
 
@@ -550,6 +549,15 @@ public class EaglosBehaving : MonoBehaviour
         {
             HP--;
             HealthBar.value--;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (Dashing && collision.gameObject.tag == "Jugador")
+        {
+            player.GetComponent<PlayerBehaviour>().HP--;
+            player.GetComponent<PlayerBehaviour>().maxHP--;
         }
     }
 }

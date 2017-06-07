@@ -52,6 +52,11 @@ public class HoundBehaviour : MonoBehaviour {
             GetComponent<Rigidbody2D>().velocity = new Vector2((float)uniX * speed, (float)uniY * speed);
         }
 
+        
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Jugador" || collision.gameObject.tag == "Attack" || collision.gameObject.tag == "Arrow") Destroy(this.gameObject);
     }
 }
