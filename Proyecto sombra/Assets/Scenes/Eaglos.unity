@@ -324,6 +324,23 @@ MonoBehaviour:
   playerY: 0
   boxX: 0
   boxY: 0
+--- !u!95 &317736351
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 317736349}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e1aa2cf642419547b1e26c83d5e42db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &380248358
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,12 +561,7 @@ Prefab:
         type: 2}
       propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 61632140331931400, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 264095032}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 726624ff0f92b704dbfd3b4da8b5a58f, type: 2}
   m_IsPrefabParent: 0
@@ -1202,6 +1214,40 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212747254026014266, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 431e52342741ca74589d1fce37818c3b,
+        type: 3}
+    - target: {fileID: 4476198658383704, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476198658383704, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 61161677215603198, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 61161677215603198, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 3.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 61161677215603198, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_Size.x
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 61161677215603198, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 3.35
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37, type: 2}

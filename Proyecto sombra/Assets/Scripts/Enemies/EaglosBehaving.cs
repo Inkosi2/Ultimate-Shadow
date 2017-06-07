@@ -543,9 +543,9 @@ public class EaglosBehaving : MonoBehaviour
         flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 10), System.Convert.ToSingle(-targetY * 10));
     }
 
-    void OnTriggerEnter2D(Collider2D cono)
+    void OnTriggerEnter2D(Collider2D obj)
     {        
-        if ((cono.tag == "Attack" || cono.tag == "Arrow") & vulnerable)
+        if ((obj.tag == "Attack" || obj.tag == "Arrow") & vulnerable)
         {
             HP--;
             HealthBar.value--;

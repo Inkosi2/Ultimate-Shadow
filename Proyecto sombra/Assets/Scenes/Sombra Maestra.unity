@@ -475,6 +475,26 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86ea1298221dafe4c8f21114d90ab008, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &171046686 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1194653931877232, guid: 86ea1298221dafe4c8f21114d90ab008,
+    type: 2}
+  m_PrefabInternal: {fileID: 171046685}
+--- !u!1 &171046687 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1234450015222760, guid: 86ea1298221dafe4c8f21114d90ab008,
+    type: 2}
+  m_PrefabInternal: {fileID: 171046685}
+--- !u!1 &171046688 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1920272421175992, guid: 86ea1298221dafe4c8f21114d90ab008,
+    type: 2}
+  m_PrefabInternal: {fileID: 171046685}
+--- !u!1 &171046689 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1518811260748302, guid: 86ea1298221dafe4c8f21114d90ab008,
+    type: 2}
+  m_PrefabInternal: {fileID: 171046685}
 --- !u!1 &385379420
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,6 +900,40 @@ GameObject:
   m_PrefabParentObject: {fileID: 1755580028996118, guid: d00148f81ec044d4c855da16032c9f37,
     type: 2}
   m_PrefabInternal: {fileID: 161282871}
+--- !u!114 &1985585515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1985585508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2725e80df750ebc4cb25da9e95d5d317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 0
+  maxHP: 0
+  attacking: 0
+  ammo: 0
+  playerMode: 0
+  time: 0
+  arrow: {fileID: 1063822424571884, guid: f612f6a9457b1334b9fa88d875774c4d, type: 2}
+  box: {fileID: 1913062542385302, guid: c06960ff1ec64a34692f53a4f01896e9, type: 2}
+  cono: {fileID: 1769460315583608, guid: 9156849ed3af1b247848b975e5fe34c3, type: 2}
+  element: {fileID: 0}
+  LightBall1: {fileID: 171046689}
+  LightBall2: {fileID: 171046688}
+  LightBall3: {fileID: 171046687}
+  LightBall4: {fileID: 171046686}
+  cam: {fileID: 133989568}
+  distX: 0
+  distY: 0
+  mouseX: 0
+  mouseY: 0
+  playerX: 0
+  playerY: 0
+  boxX: 0
+  boxY: 0
 --- !u!1 &2146712379
 GameObject:
   m_ObjectHideFlags: 0

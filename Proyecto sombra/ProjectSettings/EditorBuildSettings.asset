@@ -19,4 +19,13 @@ EditorBuildSettings:
     guid: 431f95ba01fc98743bdee889b2010260
   - enabled: 1
     path: Assets/Scenes/Victoria.unity
+    guid: bfff7d96478b57f408e86797a5b1b624
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 8bfccb990f2732f4a82febd4451ae0b5
+  - enabled: 1
+    path: Assets/Scenes/La sombra de los bosques.unity
+    guid: 7aba6cb12aae1a842a931c23bf3b73f7
+  - enabled: 1
+    path: Assets/Scenes/Sombra Maestra.unity
     guid: 00000000000000000000000000000000
