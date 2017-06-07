@@ -39,5 +39,11 @@ public class THB : MonoBehaviour
                 box.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 1);
             }
         }
+
+        if (coll.gameObject.tag == "ShadowBox")
+        {
+            coll.gameObject.GetComponent<Rigidbody2D>().velocity = box.GetComponent<Rigidbody2D>().velocity;
+        }
     }
+    
 }

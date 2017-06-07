@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public int HP, maxHP;
 
-    bool attacking; // Indica si el jugador se encuentra atacando o no
+    public bool attacking; // Indica si el jugador se encuentra atacando o no
     int speed = 4; // Velocidad de movimento del jugador
     public int ammo; // Cantidad de acciones que puede usar un jugador (flechas o cajas)
-    double arrowRotation;
+    double arrowRotation, swordRotation;
     public int playerMode; // Equipo del jugador en ese momento    
-                    // 1 = arco
-                    // 2 = bloque
+                           // 1 = arco
+                           // 2 = bloque
+
+    public double time;
 
     public GameObject arrow; // Referencia para las flechas instanciadas
     public GameObject box; // Referencia para las cajas instanciadas
+    public GameObject cono;
 
-    public GameObject element; //
+    public GameObject element; // Elemento instanciado
+
+    public GameObject LightBall1, LightBall2, LightBall3, LightBall4; //Vida
 
     public GameObject cam;
 
@@ -40,6 +47,8 @@ public class PlayerBehaviour : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        HP = 4;
+        maxHP = 4;
         playerMode = 2;
         ammo = 3;
     }
@@ -47,7 +56,14 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+
         qPressed = Input.GetKey(KeyCode.Q);
+
+        if (HP > maxHP)
+        {
+            HP = maxHP;
+        }
 
         if (!attacking)
         {
@@ -151,7 +167,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 
 
-            if (Input.GetMouseButtonDown(0) && playerMode == 1 && ammo > 0)
+            if (Input.GetMouseButtonDown(1) && playerMode == 1 && ammo > 0)
             {
                 if (uniY < 0)
                 {
@@ -165,10 +181,12 @@ public class PlayerBehaviour : MonoBehaviour
 
                 element = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
                 element.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+                HP--;
                 items.Enqueue(element);
                 ammo--;
             }
-            if (Input.GetMouseButtonDown(0) && playerMode == 2 && ammo > 0)
+
+            if (Input.GetMouseButtonDown(1) && playerMode == 2 && ammo > 0)
             {
 
                 if (Mathf.Abs((float)mouseY) > Mathf.Abs((float)mouseX) && mouseY > 0)
@@ -193,25 +211,110 @@ public class PlayerBehaviour : MonoBehaviour
                 }
 
                 element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, 0));
+                HP--;
                 items.Enqueue(element);
                 ammo--;
             }
 
+            
 
-                //// ---------------------------- ELIMINAR FLECHAS ----------------------------
+            //// ---------------------------- ELIMINAR OBJETOS ----------------------------
             if (qPressed && qPressed != pQPressed)
             {
                 if (ammo < 3)
                 {
                     Destroy(items.Dequeue());
                     ammo++;
+                    HP++;
                 }
 
             }
 
         }
+
+        if (Input.GetMouseButtonDown(0) && !attacking)
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            time = 0;
+            if (uniY < 0)
+            {
+                swordRotation = ((2 * Math.PI - Math.Acos(uniX)) * Mathf.Rad2Deg + 90);
+            }
+
+            else
+            {
+                swordRotation = ((Math.Acos(uniX)) * Mathf.Rad2Deg + 90);
+            }
+            
+            element = (GameObject)Instantiate(cono, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(swordRotation)));
+
+            element.transform.position = transform.position;
+            element.transform.rotation = Quaternion.Euler(0, 0, (float)swordRotation);
+            attacking = true;
+
+        }
+
+        if (time >= 0.5 && attacking)
+        {
+            Destroy(element);
+            attacking = false;
+        }
+
+
         pQPressed = qPressed;
+
+        //-----------------------------------------------
+        //-------------------- HUD --------------------
+        //-----------------------------------------------
+
+        if (HP <= 3)
+        {
+            LightBall4.SetActive(false);
+        }
+        else
+        {
+            LightBall4.SetActive(true);
+        }
+
+        if (HP <= 2)
+        {
+            LightBall3.SetActive(false);
+        }
+        else
+        {
+            LightBall3.SetActive(true);
+        }
+
+        if (HP <= 1)
+        {
+            LightBall2.SetActive(false);
+        }
+        else
+        {
+            LightBall2.SetActive(true);
+        }
+
+        if (HP <= 0)
+        {
+            LightBall1.SetActive(false);
+            SceneManager.LoadScene("Muerte");
+        }
+        else
+        {
+            LightBall1.SetActive(true);
+        }
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "EnemyAttack")
+        {
+            Debug.Log("A");
+            maxHP--;
+            HP--;
+        }
+    }
+
 }
 
 
