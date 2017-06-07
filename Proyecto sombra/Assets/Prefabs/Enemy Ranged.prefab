@@ -72,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -111,13 +111,17 @@ MonoBehaviour:
   uniY0: 0
   Xinicial: 0
   Yinicial: 0
+  angle: 0
   targetX: 0
   targetY: 0
   time: 0
   Attacking: 0
+  AttackInstanciated: 0
   hp: 0
   player: {fileID: 0}
   Enemy: {fileID: 0}
+  flecha: {fileID: 0}
+  flechaPrefab: {fileID: 0}
 --- !u!212 &212632200728791856
 SpriteRenderer:
   m_ObjectHideFlags: 1
