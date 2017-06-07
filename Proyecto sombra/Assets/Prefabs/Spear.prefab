@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4648785487243898}
   - component: {fileID: 212695520660939202}
   - component: {fileID: 95676814754481710}
-  - component: {fileID: 114512758462429992}
+  - component: {fileID: 61274267741079122}
   - component: {fileID: 50673270756518346}
+  - component: {fileID: 114586479506517418}
   m_Layer: 0
   m_Name: Spear
   m_TagString: EnemyAttack
@@ -63,6 +64,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61274267741079122
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1738181366575056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 0.96}
+    newSize: {x: 4, y: 0.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 0.96}
+  m_EdgeRadius: 0
 --- !u!95 &95676814754481710
 Animator:
   serializedVersion: 3
@@ -80,7 +106,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114512758462429992
+--- !u!114 &114586479506517418
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -88,13 +114,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1738181366575056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f132f16015df3fc4397583b49e296cc2, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ffb19e4799df7e438bbf67f4c8ea9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1755580028996118, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
-  mori: {fileID: 1023858543894272, guid: a0b7c6d62acf0f1458ceb72d7af6ded4, type: 2}
-  hit: 0
-  flying: 0
+  player: {fileID: 0}
+  distX: 0
+  distY: 0
+  moduloDist: 0
+  uniX: 0
+  uniY: 0
+  time: 0
 --- !u!212 &212695520660939202
 SpriteRenderer:
   m_ObjectHideFlags: 1

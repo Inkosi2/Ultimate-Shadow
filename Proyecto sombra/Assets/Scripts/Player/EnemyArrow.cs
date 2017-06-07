@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyArrow : MonoBehaviour {
 
-    public GameObject player;
+    
     public double distX, distY, moduloDist, uniX, uniY, time;
     
 
@@ -25,14 +25,7 @@ public class EnemyArrow : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter2D(Collision2D colli)
-    {
-        Debug.Log(colli.gameObject.tag);
-        if (colli.gameObject.tag == "Jugador")
-        {
-            player.GetComponent<PlayerController>().HP--;
-        }
-    }
+    
 
     void OnTriggerEnter2D(Collider2D coll)
     {
