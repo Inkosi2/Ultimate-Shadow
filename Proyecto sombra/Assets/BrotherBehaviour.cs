@@ -140,7 +140,7 @@ public class BrotherBehaviour : MonoBehaviour {
             if (lastHit)
             {
                 Destroy(this.gameObject);
-                SceneManager.LoadScene("Visctoria");
+                SceneManager.LoadScene("Victoria");
             }
         }
         
