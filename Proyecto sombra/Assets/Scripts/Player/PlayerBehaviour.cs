@@ -178,7 +178,7 @@ public class PlayerBehaviour : MonoBehaviour
                     boxX = -1;
                 }
 
-                element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
+                element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, 0));
                 items.Enqueue(element);
                 ammo--;
             }

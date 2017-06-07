@@ -15,6 +15,16 @@ public class Preassure_plate : MonoBehaviour {
 	}
     void OnTriggerEnter2D(Collider2D collision)
     {
-        activated = true;
+        if (collision.gameObject.tag == "Jugador" || collision.gameObject.tag == "ShadowBox")
+        {
+            activated = true;
+        }
+    }
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Jugador" || collision.gameObject.tag == "ShadowBox")
+        {
+            activated = false;
+        }
     }
 }
