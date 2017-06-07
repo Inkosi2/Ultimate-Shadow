@@ -181,7 +181,10 @@ public class PlayerBehaviour : MonoBehaviour
 
                 element = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
                 element.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
-                HP--;
+                if (HP > 1)
+                {
+                    HP--;
+                }
                 items.Enqueue(element);
                 ammo--;
             }
@@ -211,7 +214,10 @@ public class PlayerBehaviour : MonoBehaviour
                 }
 
                 element = (GameObject)Instantiate(box, new Vector2(transform.position.x + boxX, transform.position.y + boxY), Quaternion.Euler(0, 0, 0));
-                HP--;
+                if (HP > 1)
+                {
+                    HP--;
+                }
                 items.Enqueue(element);
                 ammo--;
             }

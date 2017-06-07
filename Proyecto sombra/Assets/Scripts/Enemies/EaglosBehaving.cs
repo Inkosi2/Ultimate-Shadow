@@ -116,7 +116,7 @@ public class EaglosBehaving : MonoBehaviour
 
             //Atacar al llegar a cierta distancia al jugador
 
-            if ((moduloDist < 2 || Attacking) && !Dashing) 
+            if ((moduloDist < 2.5 || Attacking) && !Dashing) 
 
             {
 
@@ -264,11 +264,7 @@ public class EaglosBehaving : MonoBehaviour
             cono.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
         }
 
-
-
-
-
-
+        
 
         //Iniciar la segunda fase del atque en la que se recompone del golpe.
 
