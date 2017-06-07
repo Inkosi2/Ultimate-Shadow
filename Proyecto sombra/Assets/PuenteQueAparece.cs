@@ -14,7 +14,7 @@ public class PuenteQueAparece : MonoBehaviour {
 		if (diana.GetComponent<Diana>().activated)
         {
             GetComponent<BoxCollider2D>().enabled = false;
-            bridge.GetComponent<BoxCollider2D>().enabled = true;            
+            bridge.GetComponent<SpriteRenderer>().enabled = true;            
         }
 	}
 }
