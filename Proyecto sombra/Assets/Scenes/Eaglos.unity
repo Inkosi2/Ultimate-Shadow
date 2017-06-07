@@ -561,7 +561,12 @@ Prefab:
         type: 2}
       propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 264095032}
+      objectReference: {fileID: 1104361731}
+    - target: {fileID: 61632140331931400, guid: 726624ff0f92b704dbfd3b4da8b5a58f,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 726624ff0f92b704dbfd3b4da8b5a58f, type: 2}
   m_IsPrefabParent: 0
@@ -687,6 +692,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1104361731 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114552339895235366, guid: 1f75a5dc8c07cb640899537e9083ded4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840320411}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1111020352
 GameObject:
   m_ObjectHideFlags: 0
