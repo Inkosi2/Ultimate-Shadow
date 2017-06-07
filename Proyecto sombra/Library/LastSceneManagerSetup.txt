@@ -1,8 +1,1 @@
-sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Muerte.unity
-=======
-- path: Assets/Scenes/Sombra Maestra.unity
->>>>>>> MasterShadow
-  isLoaded: 1
-  isActive: 1
+sceneSetups: []
