@@ -49,7 +49,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         HP = 4;
         maxHP = 4;
-        playerMode = 2;
+        playerMode = 1;
         ammo = 3;
     }
 
@@ -180,7 +180,7 @@ public class PlayerBehaviour : MonoBehaviour
                 }
 
                 element = (GameObject)Instantiate(arrow, transform.position, Quaternion.Euler(0, 0, System.Convert.ToSingle(arrowRotation)));
-                element.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 5, System.Convert.ToSingle(-uniY) * 5);
+                element.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-uniX) * 15, System.Convert.ToSingle(-uniY) * 15);
                 HP--;
                 items.Enqueue(element);
                 ammo--;

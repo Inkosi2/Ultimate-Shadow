@@ -10,17 +10,17 @@ public class SombraBehaviour : MonoBehaviour {
     public double EaglosSpeed, distX, distY, moduloDist, uniX, uniY, targetX, targetY; //Detectar al jugador.
     public double jumpAngleRange, time, angle, summonCD;
     public int fase, HP, SombraSpeed, optimRange;    
-    public bool approach, attackInstanciated, acting, spearReady, flyingArrow;
+    public bool approach, attackInstanciated, acting, spearReady;
     public double angulo; 
-    public GameObject player, flecha/*, flechaPrefab*/, shadowHound;
-    public GameObject spear;
+    public GameObject player, shadowHound, shadowHoundPrefab;
+    public GameObject spear, spearPrefab;
     public Slider healthBar;
        
 
     // Use this for initialization
     void Start () {
-        SombraSpeed = 12;
-        HP = 10;
+        SombraSpeed = 8;
+        HP = 12;
         fase = 1;
         optimRange = 10;
         time = 0;
@@ -43,6 +43,10 @@ public class SombraBehaviour : MonoBehaviour {
         
         uniX = distX / moduloDist;
         uniY = distY / moduloDist;
+
+        if (HP <= 0) Destroy(this.gameObject);
+        else if (HP <= 4) fase = 3;
+        else if (HP <= 8) fase = 2;
         
         if (fase == 3)
         {
@@ -107,7 +111,7 @@ public class SombraBehaviour : MonoBehaviour {
 
         }
 
-        if (time >= 0.6)
+        if (time >= 0.8)
         {
             acting = false;
             spearReady = !spearReady;
@@ -189,20 +193,19 @@ public class SombraBehaviour : MonoBehaviour {
 
     void spearThrow()
     {
-        if (!flyingArrow)
-        {
-            flyingArrow = true;
+       
+           
             targetX = -uniX;
             targetY = -uniY;
 
             if (!attackInstanciated)
             {
-                flecha = (GameObject)Instantiate(flecha/*Prefab*/);
-                flecha.transform.position = transform.position;
+                spear = (GameObject)Instantiate(spearPrefab);
+                
                 
 
                 attackInstanciated = true;
-                flecha.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
+                spear.transform.position = new Vector2(System.Convert.ToSingle(transform.position.x - uniX / 3), System.Convert.ToSingle(transform.position.y - uniY / 3));
                 
 
                 if (targetY < 0)
@@ -215,12 +218,12 @@ public class SombraBehaviour : MonoBehaviour {
                     angle = ((Math.Acos(targetX)) * Mathf.Rad2Deg + 180);
                 }
 
-                flecha.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
-                flecha.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 20), System.Convert.ToSingle(-targetY * 20));
+                spear.transform.rotation = Quaternion.Euler(0, 0, System.Convert.ToSingle(angle));
+                spear.GetComponent<Rigidbody2D>().velocity = new Vector2(System.Convert.ToSingle(-targetX * 20), System.Convert.ToSingle(-targetY * 20));
             }
 
             attackInstanciated = false;
-        }
+        
     }
 
     void attack
