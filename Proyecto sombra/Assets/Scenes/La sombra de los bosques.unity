@@ -925,6 +925,31 @@ Prefab:
       propertyPath: m_Size.y
       value: 3.35
       objectReference: {fileID: 0}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall1
+      value: 
+      objectReference: {fileID: 95176674}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall2
+      value: 
+      objectReference: {fileID: 1720312011}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall3
+      value: 
+      objectReference: {fileID: 1752495562}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: LightBall4
+      value: 
+      objectReference: {fileID: 138970412}
+    - target: {fileID: 114649098902495520, guid: d00148f81ec044d4c855da16032c9f37,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 476790444}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d00148f81ec044d4c855da16032c9f37, type: 2}
   m_IsPrefabParent: 0
